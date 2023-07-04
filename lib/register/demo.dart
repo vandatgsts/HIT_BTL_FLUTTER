@@ -1,23 +1,15 @@
+import 'package:btl_flutter/register/password_filed.dart';
+import 'package:btl_flutter/register/phone_filed.dart';
+import 'package:btl_flutter/register/username_filed.dart';
 import 'package:flutter/material.dart';
 
-import 'package:pizza/register/address_filed.dart';
-import 'package:pizza/register/confirmpassword_filed.dart';
-import 'package:pizza/register/gender_filed.dart';
-import 'package:pizza/register/name_filed.dart';
-import 'package:pizza/register/notepassword_filed.dart';
-import 'package:pizza/register/password_filed.dart';
-import 'package:pizza/register/phone_filed.dart';
-import 'package:pizza/register/username_filed.dart';
-import 'package:pizza/register/date_filed.dart';
-import 'package:pizza/register/email_filed.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intl/intl.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
-import 'package:email_validator/email_validator.dart';
+import 'address_filed.dart';
+import 'confirmpassword_filed.dart';
+import 'date_filed.dart';
+import 'email_filed.dart';
+import 'gender_filed.dart';
+import 'name_filed.dart';
+import 'notepassword_filed.dart';
 
 class demo extends StatefulWidget {
   const demo({super.key});
@@ -28,7 +20,7 @@ class demo extends StatefulWidget {
 
 class _demoState extends State<demo> {
   final _formKey = GlobalKey<FormState>();
-  
+
   final TextEditingController name = TextEditingController();
   final TextEditingController userName = TextEditingController();
   final TextEditingController dateController = TextEditingController();
