@@ -1,6 +1,3 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 class EmailFiled extends StatefulWidget {
@@ -24,8 +21,8 @@ class _EmailFiledState extends State<EmailFiled> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: const [
+        const Row(
+          children: [
             Text(
               "Email",
               style: TextStyle(fontSize: 15, color: Colors.black),

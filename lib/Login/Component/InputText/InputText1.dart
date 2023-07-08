@@ -14,7 +14,7 @@ class InputText1 extends StatelessWidget {
         controller: emailController,
         textAlign: TextAlign.left,
         style: const TextStyle(
-          color: Color(0xFFff2828),
+          color: Color(0x891c1a1a),
         ),
         decoration: const InputDecoration(
           hintText: 'Email',

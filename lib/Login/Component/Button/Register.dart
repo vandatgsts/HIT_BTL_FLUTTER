@@ -1,5 +1,5 @@
+import 'package:btl_flutter/register/register_screen.dart';
 import 'package:flutter/material.dart';
-import '../../Screen/TestScreen.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
@@ -8,7 +8,7 @@ class Register extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => TestScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
         },
         child: const Text(
           'Sign Up',

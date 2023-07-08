@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:intl/intl.dart';
 
 class DateFiled extends StatefulWidget {
@@ -16,8 +14,8 @@ class _DateFiledState extends State<DateFiled> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: const [
+        const Row(
+          children: [
             Text(
               "Ngày sinh",
               style: TextStyle(fontSize: 15, color: Colors.black),

@@ -1,4 +1,4 @@
-import 'package:btl_flutter/Login/Screen/TestScreen.dart';
+import 'package:btl_flutter/register/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class BtnLogin extends StatelessWidget {
@@ -28,7 +28,7 @@ class BtnLogin extends StatelessWidget {
           ),
           TextButton(
              onPressed: () {
-               Navigator.push(context,MaterialPageRoute(builder: (context)=>TestScreen()));
+               Navigator.push(context,MaterialPageRoute(builder: (context)=>RegisterScreen()));
              }, child:
             const Text('LOGIN',
               textAlign: TextAlign.center,

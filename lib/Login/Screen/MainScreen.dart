@@ -21,26 +21,26 @@ class MainScreen extends StatelessWidget {
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(color: Colors.white),
             child: Stack(children: [
-              const Positioned(
-                left: 93,
-                top: 91,
-                child: Logo(),
+               const Positioned(
+                left: 93.0,
+                top: 91.0,
+                child:Logo(),
               ),
               Positioned(
-                left: -104,
-                top: -89,
+                left: -104.0,
+                top: -89.0,
                 child: SizedBox(
-                  width: 290,
-                  height: 270,
+                  width: 290.0,
+                  height: 270.0,
                   // hinh tron do
                   child: Stack(
                     children: [
                       Positioned(
                         left: 0,
-                        top: 70,
+                        top: 70.0,
                         child: Container(
-                          width: 200,
-                          height: 200,
+                          width: 200.0,
+                          height: 200.0,
                           decoration: const ShapeDecoration(
                             color: Color(0x7CF31132),
                             shape: OvalBorder(),
@@ -51,7 +51,7 @@ class MainScreen extends StatelessWidget {
                         left: 90,
                         top: 0,
                         child: Container(
-                          width: 200,
+                          width: 200.0,
                           height: 200,
                           decoration: const ShapeDecoration(
                             color: Color(0x7CF31132),
@@ -87,8 +87,8 @@ class MainScreen extends StatelessWidget {
                 top: 411,
                 child: const BtnLogin(),
               ),
-              const Positioned(
-                left: 20,
+             const Positioned(
+                left: 20.0,
                   top: 511,
                   child:
                   ForgotPassWord(),
@@ -97,7 +97,7 @@ class MainScreen extends StatelessWidget {
                 right: 20,
                   top: 511,
                   child:
-                  Register(),
+                 Register(),
               )
             ])));
   }

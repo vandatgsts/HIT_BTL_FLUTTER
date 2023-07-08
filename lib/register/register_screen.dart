@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:email_validator/email_validator.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -97,7 +95,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               key: _formKey,
               child: ListView(
                 children: [
-                  Column(children: const [
+                  const Column(children: [
                     Text(
                       "Đăng ký",
                       style: TextStyle(
@@ -113,8 +111,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           fontWeight: FontWeight.w100),
                     )
                   ]),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Text(
                         "Họ và tên",
                         style: TextStyle(fontSize: 15, color: Colors.black),
@@ -145,8 +143,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Text(
                         "Tên tài khoản",
                         style: TextStyle(fontSize: 15, color: Colors.black),
@@ -184,8 +182,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           width: MediaQuery.of(context).size.width * 0.45,
                           child: Column(
                             children: [
-                              Row(
-                                children: const [
+                              const Row(
+                                children: [
                                   Text(
                                     "Ngày sinh",
                                     style: TextStyle(
@@ -241,8 +239,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.45,
                           child: Column(children: [
-                            Row(
-                              children: const [
+                            const Row(
+                              children: [
                                 Text(
                                   "Giới tính",
                                   style: TextStyle(
@@ -287,8 +285,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Text(
                         "Số điện thoại",
                         style: TextStyle(fontSize: 15, color: Colors.black),
@@ -323,8 +321,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Text(
                         "Địa chỉ",
                         style: TextStyle(fontSize: 15, color: Colors.black),
@@ -362,8 +360,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           width: MediaQuery.of(context).size.width * 0.45,
                           child: Column(
                             children: [
-                              Row(
-                                children: const [
+                              const Row(
+                                children: [
                                   Text(
                                     "Mật khẩu",
                                     style: TextStyle(
@@ -417,8 +415,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.45,
                           child: Column(children: [
-                            Row(
-                              children: const [
+                            const Row(
+                              children: [
                                 Text(
                                   "Xác nhận mật khẩu",
                                   style: TextStyle(
@@ -591,8 +589,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Text(
                         "Email",
                         style: TextStyle(fontSize: 15, color: Colors.black),
@@ -642,7 +640,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ]),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: const Color.fromARGB(255, 60, 186, 64)),
+                          backgroundColor: const Color.fromARGB(255, 60, 186, 64)),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           print("da nhap");
