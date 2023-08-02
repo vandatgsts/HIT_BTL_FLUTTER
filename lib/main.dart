@@ -1,24 +1,31 @@
-import 'package:btl_flutter/Login/Screen/MainScreen.dart';
+import 'package:btl_flutter/AppRouter/AppRouter.dart';
+import 'package:btl_flutter/binding/AppBinding.dart';
+import 'package:btl_flutter/binding/LoginBinding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'AppRouter/AppPage.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+void main(){
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    ScreenUtilInit(
+      designSize: const Size(414, 896),
+      builder: (context, widget) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialBinding: AppBinding(),
+        initialRoute: AppRouter.login,
+        defaultTransition: Transition.fade,
+        getPages: AppPage.pages,
+        // supportedLocales: AppConstant.availableLocales,
+        theme: ThemeData(
+          primaryColor: Colors.white,
+          fontFamily: 'SF-Pro-Display',
+          textSelectionTheme: const TextSelectionThemeData(selectionHandleColor: Colors.transparent),
+          colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black),
+        ),
       ),
-      home:const MainScreen(),
-    );
-  }
+    ),
+  );
 }
