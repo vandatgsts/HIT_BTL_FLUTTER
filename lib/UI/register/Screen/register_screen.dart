@@ -424,7 +424,6 @@ class RegisterScreen extends GetView<RegisterController> {
                         duration: const Duration(microseconds: 500),
                         width: 20,
                         height: 20,
-
                         /// goi qua .value
                         decoration: BoxDecoration(
                             color: controller.isPasswordEightCharacters

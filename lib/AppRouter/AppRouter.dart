@@ -3,4 +3,5 @@ class AppRouter{
   static const String forgotPassWord='/forgotPassWordScreen';
   static const String login='/loginScreen';
   static const String register='/registerScreen';
+  static const String mapScreen='/mapScreen';
 }

@@ -1,8 +1,9 @@
 
+import 'package:btl_flutter/AppRouter/AppRouter.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ForgotPassWord/Screen/Screen1.dart';
-
+import 'package:get/get.dart';
 
 
 class ForgotPassWord extends StatelessWidget {
@@ -11,7 +12,7 @@ class ForgotPassWord extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassWordScreen1())),
+        onPressed: ()=>Get.toNamed(AppRouter.forgotPassWord),
         child: const Text(
           'Forgot PassWord',
           style: TextStyle(

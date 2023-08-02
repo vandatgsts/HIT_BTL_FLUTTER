@@ -1,51 +1,65 @@
-
 import 'package:btl_flutter/UI/Main/Compoment/btn_fomart.dart';
+import 'package:btl_flutter/controller/main_screen_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../login/Component/Logo/Logo.dart';
+import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../Compoment/btn2.dart';
 
-
-class MainScreen extends StatelessWidget {
+class MainScreen extends GetView<MainScreenController> {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Center(
-          child: Logo(),
-        ),
-        actions: const [
-          Icon(Icons.notifications),
-        ],
-      ),
+      backgroundColor: Colors.white,
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   title: const Center(
+      //     child:
+      //   ),
+      //   actions: const [
+      //     Icon(Icons.notifications),
+      //   ],
+      // ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Pizza_Hut_classic_logo.svg/800px-Pizza_Hut_classic_logo.svg.png',
-              fit: BoxFit.fill,
-              height: 100,
+            SizedBox(
+              height: Get.height/16,
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Expanded(child: Logo()),
+                IconButton(
+                      onPressed:(){},
+                  icon:const Icon(Icons.notifications),),
+              ],
+            ),
+            Image.network(
+              'https://khoinguonsangtao.vn/wp-content/uploads/2022/08/hinh-anh-anime-ngau-chat-va-nghe-thuat.jpg',
+            ),
+            SizedBox(height: 10.sp,),
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Chào mừng trở lai',
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 16),
                 ),
-                Text('Vui lòng chon Giao Hàng tận nơi hoăc Mua Mang Về'),
+                Text('Vui lòng chon Giao Hàng tận nơi hoăc Mua Mang Về',style: TextStyle(fontSize: 16),),
               ],
             ),
+            SizedBox(height: 10.sp,),
             const BtnShip(),
-            const BtnShip(),
+            Btn2(),
+            SizedBox(height: 10.sp,),
             Container(
-              margin: const EdgeInsets.only(left: 10,right: 10),
+              margin: const EdgeInsets.only(left: 10, right: 10),
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -58,9 +72,7 @@ class MainScreen extends StatelessWidget {
                   ),
                   Text(
                     'Xem thưc đơn',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12),
+                    style: TextStyle(color: Colors.black, fontSize: 12),
                   ),
                 ],
               ),
@@ -71,16 +83,42 @@ class MainScreen extends StatelessWidget {
                   itemCount: 15,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemBuilder:(context,index){
-                return Container(
-                    margin: const EdgeInsets.all(8),
-                    child: Image.network('https://thuthuatnhanh.com/wp-content/uploads/2019/12/anh-anime-dep-de-thuong.jpg'));
-
-              }),
+                  itemBuilder: (context, index) {
+                    return Container(
+                        margin: const EdgeInsets.all(8),
+                        child: Image.network(
+                            'https://thuthuatnhanh.com/wp-content/uploads/2019/12/anh-anime-dep-de-thuong.jpg'));
+                  }),
             )
           ],
         ),
       ),
+      bottomNavigationBar: Obx(() => BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.grey,
+                ),
+                label: 'Trang chủ',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.business, color: Colors.grey),
+                label: 'Thực đơn',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.school, color: Colors.grey),
+                label: 'Giảm giá',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings, color: Colors.grey),
+                label: 'Tài Khoản',
+              ),
+            ],
+            currentIndex: controller.selectedIndex.value,
+            selectedItemColor: Colors.blue,
+            onTap: controller.onItemTapped,
+          )),
     );
   }
 }

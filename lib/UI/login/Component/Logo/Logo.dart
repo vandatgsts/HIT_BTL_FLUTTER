@@ -11,7 +11,6 @@ class Logo extends StatelessWidget {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: NetworkImage("https://www.saokim.com.vn/blog/wp-content/uploads/2020/03/thiet-ke-logo-Pizza-Hut.png"),
-          fit: BoxFit.cover,
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class InputText1 extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
 
@@ -8,9 +8,9 @@ class InputText1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300,
-      height: 23,
-      child: TextFormField(
+      width: 300.sp,
+      height: 40.sp,
+      child: TextField(
         controller: emailController,
         textAlign: TextAlign.left,
         style: const TextStyle(

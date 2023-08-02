@@ -51,14 +51,22 @@ dev_dependencies:
   intl: ^0.18.1
   flutter_pw_validator: ^1.6.0
   email_validator: ^2.1.17
-  google_fonts: ^5.1.0
+  google_fonts: ^4.0.1
   dependency_container: ^0.1.4
   geolocator: ^9.0.2
   google_maps_flutter_android: ^2.3.3
+  geocoding: ^2.1.0
   get: ^4.6.5
   flutter_svg: ^2.0.7
   cached_network_image: ^3.2.3
   flutter_cache_manager: ^3.3.1
+  custom_info_window: ^1.0.1
+  http: ^0.13.0
+  easy_debounce: ^2.0.3
+  google_maps_webservice: ^0.0.20-nullsafety.5
+  flutter_typeahead: ^4.6.2
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -75,7 +83,7 @@ flutter:
   assets:
     - lib/res/image/svg/
     - lib/res/image/Png/
-    - lib/res/string/
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
