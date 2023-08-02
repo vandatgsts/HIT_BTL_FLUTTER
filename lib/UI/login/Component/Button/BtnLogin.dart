@@ -30,7 +30,7 @@ class BtnLogin extends StatelessWidget {
           ),
           TextButton(
              onPressed: () {
-               Get.toNamed(AppRouter.forgotPassWord);
+               Get.toNamed(AppRouter.mainScreen);
              }, child:
             const Text('LOGIN',
               textAlign: TextAlign.center,

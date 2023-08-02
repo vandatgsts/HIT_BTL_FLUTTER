@@ -5,7 +5,8 @@ class ForgotPassWordBingding extends Bindings{
   @override
   void dependencies() {
     // TODO: implement dependencies
-    Get.lazyPut(() => ForgotPassWordController());
+    // Get.lazyPut(() => ForgotPassWordController());/// put
+    Get.put(ForgotPassWordController());
   }
 
 }

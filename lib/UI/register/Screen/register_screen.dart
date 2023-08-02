@@ -1,3 +1,4 @@
+import 'package:btl_flutter/AppRouter/AppRouter.dart';
 import 'package:btl_flutter/UI/Widget/app_image_widget.dart';
 import 'package:btl_flutter/res/AppImage.dart';
 import 'package:flutter/material.dart';
@@ -8,16 +9,15 @@ import 'package:email_validator/email_validator.dart';
 import 'package:get/get.dart';
 import '../../../controller/register_controller.dart';
 
-class RegisterScreen extends  GetView<RegisterController> {
-
-
+class RegisterScreen extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Get.back();
+              // Get.back();
+              Get.toNamed(AppRouter.forgotPassWord);
             },
             icon: const Icon(
               Icons.arrow_back_ios,
@@ -312,18 +312,19 @@ class RegisterScreen extends  GetView<RegisterController> {
                                   )
                                 ],
                               ),
+                              Obx(() =>
                               TextField(
                                 onChanged: (password) =>
                                     controller.onPasswordChanged(password),
                                 controller: controller.passWordcontroller,
-                                obscureText: !controller.isVisible,
+                                obscureText: !controller.isVisible.value,
                                 decoration: InputDecoration(
                                     suffixIcon: IconButton(
                                       onPressed: () {
-                                        {
-                                          controller.isVisible = !controller.isVisible;
-                                        }                                      },
-                                      icon: controller.isVisible
+                                        controller.isVisible.value =
+                                            !controller.isVisible.value;
+                                      },
+                                      icon: controller.isVisible.value
                                           ? const Icon(
                                               Icons.visibility,
                                               color: Colors.black,
@@ -343,6 +344,7 @@ class RegisterScreen extends  GetView<RegisterController> {
                                     ),
                                     hintText: "Mật khẩu"),
                               ),
+                              )
                             ],
                           ),
                         ),
@@ -367,13 +369,14 @@ class RegisterScreen extends  GetView<RegisterController> {
                               ],
                             ),
                             TextFormField(
-                              controller:controller.confirmPassWordController,
-                              obscureText:controller.isVisibleConfirm,
+                              controller: controller.confirmPassWordController,
+                              obscureText: controller.isVisibleConfirm,
                               decoration: InputDecoration(
                                   suffixIcon: IconButton(
                                     onPressed: () {
                                       {
-                                        controller.isVisibleConfirm = !controller.isVisibleConfirm;
+                                        controller.isVisibleConfirm =
+                                            !controller.isVisibleConfirm;
                                       }
                                     },
                                     icon: controller.isVisibleConfirm
@@ -421,6 +424,8 @@ class RegisterScreen extends  GetView<RegisterController> {
                         duration: const Duration(microseconds: 500),
                         width: 20,
                         height: 20,
+
+                        /// goi qua .value
                         decoration: BoxDecoration(
                             color: controller.isPasswordEightCharacters
                                 ? Colors.green
@@ -542,7 +547,7 @@ class RegisterScreen extends  GetView<RegisterController> {
                     height: 5,
                   ),
                   TextFormField(
-                    controller: controller. emailController,
+                    controller: controller.emailController,
                     decoration: InputDecoration(
                       hintText: "Email",
                       border: OutlineInputBorder(
@@ -561,26 +566,29 @@ class RegisterScreen extends  GetView<RegisterController> {
                   Column(children: [
                     Row(
                       children: [
+                        /// bat thay doi va reload lai no
                         Obx(() => Checkbox(
                             value: controller.firsValue.value,
                             checkColor: Colors.white,
                             activeColor: Colors.green,
-                            onChanged: (value){
-                               controller.firsValue.value = !controller.firsValue.value;
-                            })
-                        ),
+                            onChanged: (value) {
+                              controller.firsValue.value =
+                                  !controller.firsValue.value;
+                            })),
                         const Text(
-                            "Tôi đồng ý với các điều khoản của Pizza Hut Việt Nam",style: TextStyle(fontSize: 12),),
+                          "Tôi đồng ý với các điều khoản của Pizza Hut Việt Nam",
+                          style: TextStyle(fontSize: 12),
+                        ),
                       ],
                     )
                   ]),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 60, 186, 64)),
+                          backgroundColor:
+                              const Color.fromARGB(255, 60, 186, 64)),
                       onPressed: () {
                         if (controller.formKey.currentState!.validate()) {
                           print("da nhap");
-
                         } else {
                           print("Chua nhap");
                         }

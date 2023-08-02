@@ -13,7 +13,7 @@ class RegisterController extends GetxController{
   final TextEditingController phoneNumber = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   String dropdownValue = "Khác";
-  bool isVisible = false;
+  RxBool isVisible = false.obs;
   bool isVisibleConfirm = false;
   RxBool isSuccess = false.obs;
   RxBool firsValue = false.obs;
@@ -22,7 +22,9 @@ class RegisterController extends GetxController{
   bool hasPasswordOneNumber = false;
   bool hasUpperCase = false;
   bool hasSpecialCharacters = false;
-
+  /// init, khi khoi ta
+  /// ready dang chay
+  /// close
   onPasswordChanged(String password) {
     final numbericRegex = RegExp(r'[0-9]');
     final specialRegex = RegExp(r'[!@#$%^&*(),.?":{}|<>]');
