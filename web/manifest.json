@@ -1,6 +1,6 @@
 {
-    "name": "btl_flutter",
-    "short_name": "btl_flutter",
+    "name": "menu_pizza",
+    "short_name": "menu_pizza",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
