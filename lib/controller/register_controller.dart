@@ -12,13 +12,14 @@ class RegisterController extends GetxController{
   TextEditingController();
   final TextEditingController phoneNumber = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController addressController= TextEditingController();
   String dropdownValue = "Khác";
   RxBool isVisible = false.obs;
   bool isVisibleConfirm = false;
   RxBool isSuccess = false.obs;
   RxBool firsValue = false.obs;
 
-  bool isPasswordEightCharacters = false;
+  RxBool isPasswordEightCharacters = false.obs;
   bool hasPasswordOneNumber = false;
   bool hasUpperCase = false;
   bool hasSpecialCharacters = false;
@@ -31,9 +32,9 @@ class RegisterController extends GetxController{
     final upperCaseRegex = RegExp(r'[A-Z]');
 
     {
-      isPasswordEightCharacters = false;
+      isPasswordEightCharacters = false.obs;
       if (password.length >= 8) {
-        isPasswordEightCharacters = true;
+        isPasswordEightCharacters = true.obs;
       }
       hasPasswordOneNumber = false;
       if (numbericRegex.hasMatch(password)) {
