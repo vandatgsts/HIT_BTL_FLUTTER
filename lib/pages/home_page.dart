@@ -1,18 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:menu_pizza/widgets/combo_kidsbox.dart';
-import 'package:menu_pizza/widgets/combo_limo_combo.dart';
-import 'package:menu_pizza/widgets/combo_mua1duoc3.dart';
-import 'package:menu_pizza/widgets/combo_mybox.dart';
-import 'package:menu_pizza/widgets/combo_vihe.dart';
+import '../widgets/combo_kidsbox.dart';
+import '../widgets/combo_limo_combo.dart';
+import '../widgets/combo_mua1duoc3.dart';
+import '../widgets/combo_mybox.dart';
+import '../widgets/combo_vihe.dart';
+import '../widgets/menu49k.dart';
+import '../widgets/monkhaivi.dart';
+import '../widgets/my_y_va_com.dart';
+import '../widgets/pizza.dart';
+import '../widgets/summer_menu.dart';
+import '../widgets/thucuong.dart';
 
-import 'package:menu_pizza/widgets/menu49k.dart';
-import 'package:menu_pizza/widgets/monkhaivi.dart';
-import 'package:menu_pizza/widgets/my_y_va_com.dart';
-import 'package:menu_pizza/widgets/pizza.dart';
-import 'package:menu_pizza/widgets/summer_menu.dart';
-import 'package:menu_pizza/widgets/thucuong.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -59,7 +60,7 @@ class HomePage extends StatelessWidget {
               labelColor: Colors.white,
               unselectedLabelColor: Colors.black,
               indicator: BoxDecoration(
-                color: Color.fromARGB(255, 216, 45, 96),
+                color: const Color.fromARGB(255, 216, 45, 96),
                 borderRadius: BorderRadius.circular(8.0),
               ),
               tabs: const [
@@ -78,10 +79,10 @@ class HomePage extends StatelessWidget {
             ),
             backgroundColor: Colors.white,
           ),
-          backgroundColor: Color.fromARGB(255, 245, 242, 242),
-          body: SafeArea(
+          backgroundColor: const Color.fromARGB(255, 245, 242, 242),
+          body: const SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(top: 10),
+              padding: EdgeInsets.only(top: 10),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

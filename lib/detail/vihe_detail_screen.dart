@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:menu_pizza/bottom/bottom_drink.dart';
-import 'package:menu_pizza/bottom/bottom_pizza.dart';
+
+import '../bottom/bottom_drink.dart';
+import '../bottom/bottom_pizza.dart';
+
 
 class ViHeDetailScreen extends StatelessWidget {
   const ViHeDetailScreen({super.key});

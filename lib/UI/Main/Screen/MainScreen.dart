@@ -15,15 +15,6 @@ class MainScreen extends GetView<MainScreenController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   title: const Center(
-      //     child:
-      //   ),
-      //   actions: const [
-      //     Icon(Icons.notifications),
-      //   ],
-      // ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -93,32 +84,6 @@ class MainScreen extends GetView<MainScreenController> {
           ],
         ),
       ),
-      bottomNavigationBar: Obx(() => BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  color: Colors.grey,
-                ),
-                label: 'Trang chủ',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.business, color: Colors.grey),
-                label: 'Thực đơn',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.school, color: Colors.grey),
-                label: 'Giảm giá',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.settings, color: Colors.grey),
-                label: 'Tài Khoản',
-              ),
-            ],
-            currentIndex: controller.selectedIndex.value,
-            selectedItemColor: Colors.blue,
-            onTap: controller.onItemTapped,
-          )),
     );
   }
 }

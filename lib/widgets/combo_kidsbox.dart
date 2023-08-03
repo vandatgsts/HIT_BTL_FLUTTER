@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:menu_pizza/detail/kidsbox_detail_screen.dart';
+
+import '../detail/kidsbox_detail_screen.dart';
+
 
 
 class KidsBox extends StatelessWidget {

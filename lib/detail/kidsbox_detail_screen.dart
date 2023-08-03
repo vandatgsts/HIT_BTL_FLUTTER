@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:menu_pizza/bottom/bottom_appetizer.dart';
-import 'package:menu_pizza/bottom/bottom_pizza.dart';
+
+import '../bottom/bottom_appetizer.dart';
 import '../bottom/bottom_drink_can.dart';
+import '../bottom/bottom_pizza.dart';
 
 class KidsBoxDetaiScreen extends StatelessWidget {
   const KidsBoxDetaiScreen({super.key});

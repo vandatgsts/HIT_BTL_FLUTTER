@@ -30,7 +30,7 @@ class BtnLogin extends StatelessWidget {
           ),
           TextButton(
              onPressed: () {
-               Get.toNamed(AppRouter.mainScreen);
+               Get.toNamed(AppRouter.stateMainScreen);
              }, child:
             const Text('LOGIN',
               textAlign: TextAlign.center,
