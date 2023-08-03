@@ -37,14 +37,13 @@ class MapScreen extends GetView<MapController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Obx(() => Text(
+              Text(
                 "Khoảng cách của bạn ",
                 style: TextStyle(
                   color: AppColor.black333,
                   fontSize: 20.0.sp,
                   fontWeight: FontWeight.w500,
                 ),
-              ),
               )
             ],
           ),

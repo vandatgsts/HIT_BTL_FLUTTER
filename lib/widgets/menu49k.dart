@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class Menu49K extends StatefulWidget {
@@ -42,7 +43,7 @@ class _Menu49KState extends State<Menu49K> {
                   child: SizedBox.fromSize(
                     child: Image.asset(
                       'assets/Menu49K/Mi_Y_Thanh_Cua.jpg',
-                    ),
+                    height: 80.sp,),
                   ),
                 ),
                 Container(

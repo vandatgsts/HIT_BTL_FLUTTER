@@ -6,4 +6,5 @@ class AppRouter{
   static const String mapScreen='/mapScreen';
   static const String settingScreen='/settingScreen';
   static const String stateMainScreen='/stateMainScreen';
+  static const String accountScreen='/accountScreen';
 }

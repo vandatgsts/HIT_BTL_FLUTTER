@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class ThucUong extends StatefulWidget {
@@ -43,7 +44,7 @@ class _ThucUongState extends State<ThucUong> {
                   child: SizedBox.fromSize(
                     child: Image.asset(
                       'assets/ThucUong/Mirinda_Soda_Can.jpg',
-                    ),
+                    height: 80.sp,),
                   ),
                 ),
                 Container(

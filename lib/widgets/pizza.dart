@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Pizza extends StatefulWidget {
   const Pizza({super.key});
@@ -44,6 +44,7 @@ class _PizzaState extends State<Pizza> {
                   child: SizedBox.fromSize(
                     child: Image.asset(
                       'assets/Pizza/Pizza_Gap_Doi_Nhan_Phu_Hai_San_Xot_Tieu_Den.jpg',
+                      height: 80.sp,
                     ),
                   ),
                 ),

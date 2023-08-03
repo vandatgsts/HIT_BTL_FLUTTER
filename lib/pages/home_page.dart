@@ -1,3 +1,4 @@
+import 'package:btl_flutter/controller/home_page_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +13,10 @@ import '../widgets/my_y_va_com.dart';
 import '../widgets/pizza.dart';
 import '../widgets/summer_menu.dart';
 import '../widgets/thucuong.dart';
+import 'package:get/get.dart';
 
 
-
-class HomePage extends StatelessWidget {
+class HomePage extends GetView<HomePageController>{
   const HomePage({super.key});
 
   @override

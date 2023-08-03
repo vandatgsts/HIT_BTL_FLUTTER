@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 class SummerMenu extends StatefulWidget {
   const SummerMenu({super.key});
 
@@ -26,14 +27,14 @@ class _SummerMenuState extends State<SummerMenu> {
             childAspectRatio: 0.57),
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+            margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
                       color:
-                          Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
+                          const Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
                       spreadRadius: 1,
                       blurRadius: 2)
                 ]),
@@ -46,8 +47,7 @@ class _SummerMenuState extends State<SummerMenu> {
                       topRight: Radius.circular(6)),
                   child: SizedBox.fromSize(
                     child: Image.asset(
-                      'assets/SummerMenu/Pizza_Thit_Bo_va_Hai_San.jpg',
-                    ),
+                      'assets/SummerMenu/Pizza_Thit_Bo_va_Hai_San.jpg',height: 80.sp,fit: BoxFit.fitWidth,),
                   ),
                 ),
                 Container(
@@ -83,31 +83,31 @@ class _SummerMenuState extends State<SummerMenu> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        const Row(
+                       Row(
                           children: [
                             SizedBox(
-                              height: 5,
+                              height: 5.sp,
                             ),
                             Text(
                               "Chọn cỡ bánh",
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: Colors.grey,
                               ),
                             ),
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 6, bottom: 8),
-                          padding: EdgeInsets.only(left: 15),
+                          margin: EdgeInsets.only(top: 6.sp, bottom: 8.sp),
+                          padding: EdgeInsets.only(left: 15.sp),
                           //width: 200,
-                          height: 30,
+                          height: 30.sp,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                    color: Color.fromARGB(255, 154, 152, 152)
+                                    color: const Color.fromARGB(255, 154, 152, 152)
                                         .withOpacity(0.4),
                                     spreadRadius: 1,
                                     blurRadius: 2)
@@ -122,7 +122,7 @@ class _SummerMenuState extends State<SummerMenu> {
                                 value: value,
                                 child: Text(
                                   value,
-                                  style: TextStyle(fontSize: 15),
+                                  style: const TextStyle(fontSize: 15),
                                 ),
                               );
                             }).toList(),
@@ -133,31 +133,31 @@ class _SummerMenuState extends State<SummerMenu> {
                             },
                           ),
                         ),
-                        const Row(
+                        Row(
                           children: [
                             SizedBox(
-                              height: 5,
+                              height: 5.sp,
                             ),
                             Text(
                               "Chọn đế viền",
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: Colors.grey,
                               ),
                             ),
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 6, bottom: 16),
-                          padding: EdgeInsets.only(left: 15),
+                          margin: const EdgeInsets.only(top: 6, bottom: 16),
+                          padding: const EdgeInsets.only(left: 15),
                           // width: 200,
-                          height: 30,
+                          height: 30.sp,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                    color: Color.fromARGB(255, 154, 152, 152)
+                                    color: const Color.fromARGB(255, 154, 152, 152)
                                         .withOpacity(0.4),
                                     spreadRadius: 1,
                                     blurRadius: 2)
@@ -175,7 +175,7 @@ class _SummerMenuState extends State<SummerMenu> {
                                 value: value,
                                 child: Text(
                                   value,
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(fontSize: 15.sp),
                                 ),
                               );
                             }).toList(),
@@ -194,7 +194,7 @@ class _SummerMenuState extends State<SummerMenu> {
                                     style: ButtonStyle(
                                       minimumSize:
                                           MaterialStateProperty.all<Size>(
-                                              Size(150, 50)),
+                                              Size(150.sp, 50.sp)),
                                       backgroundColor:
                                           MaterialStateProperty.all<Color>(
                                               Colors.green),
@@ -203,13 +203,13 @@ class _SummerMenuState extends State<SummerMenu> {
                                               Colors.teal),
                                       foregroundColor:
                                           MaterialStateProperty.all<Color>(
-                                              Color.fromARGB(
+                                              const Color.fromARGB(
                                                   255, 246, 205, 205)),
                                     ),
-                                    child: const Text(
+                                    child: Text(
                                       "Thêm 129,000đ",
                                       style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 16.sp,
                                           color: Colors.white,
                                           fontWeight: FontWeight.w300),
                                     ))),

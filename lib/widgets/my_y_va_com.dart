@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class MyYvaCom extends StatefulWidget {
   const MyYvaCom({super.key});
 
@@ -42,6 +42,7 @@ class _MyYvaComState extends State<MyYvaCom> {
                   child: SizedBox.fromSize(
                     child: Image.asset(
                       'assets/MyYvaCom/Com_Chien_Tom_Vi_Cay.jpg',
+                      height: 80.sp,
                     ),
                   ),
                 ),

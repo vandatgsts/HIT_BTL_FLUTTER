@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class MonKhaiVi extends StatefulWidget {
@@ -42,7 +43,7 @@ class _MonKhaiViState extends State<MonKhaiVi> {
                   child: SizedBox.fromSize(
                     child: Image.asset(
                       'assets/MonKhaiVi/Xa_Lach_Ca_Ngu.jpg',
-                    ),
+                    height: 100.sp,),
                   ),
                 ),
                 Container(
@@ -80,7 +81,7 @@ class _MonKhaiViState extends State<MonKhaiVi> {
                         ),
                         SizedBox(height: 10,),
                         Row(
-                          
+
                           children: [
                             Expanded(
                                 child: ElevatedButton(

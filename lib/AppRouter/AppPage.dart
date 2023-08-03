@@ -1,4 +1,5 @@
 import 'package:btl_flutter/AppRouter/AppRouter.dart';
+import 'package:btl_flutter/UI/Account/acount_screen.dart';
 import 'package:btl_flutter/UI/ForgotPassWord/Screen/Screen1.dart';
 import 'package:btl_flutter/UI/Main/Screen/map_screen.dart';
 import 'package:btl_flutter/UI/login/Component/Button/FogotPassWord.dart';
@@ -12,6 +13,7 @@ import 'package:btl_flutter/binding/forgot_pass_word_binding.dart';
 import 'package:btl_flutter/binding/map_binding.dart';
 import 'package:btl_flutter/binding/setting_binding.dart';
 import 'package:btl_flutter/binding/state_main_binding.dart';
+import 'package:btl_flutter/controller/account_controller.dart';
 import 'package:get/get.dart';
 
 import '../UI/setting/setting_screen.dart';
@@ -48,6 +50,11 @@ class AppPage {
         name: AppRouter.stateMainScreen,
         page: () => StateMainScreen(),
         binding: StateMainBinding()),
+    GetPage(
+        name: AppRouter.accountScreen,
+        page: () => AccountScreen(),
+        binding: StateMainBinding()),
+
 
 
   ];
