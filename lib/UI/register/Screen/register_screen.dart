@@ -275,6 +275,7 @@ class RegisterScreen extends GetView<RegisterController> {
                     height: 5,
                   ),
                   TextFormField(
+                    controller: controller.addressController,
                     decoration: InputDecoration(
                         hintText: "Địa chỉ",
                         border: OutlineInputBorder(
@@ -420,25 +421,28 @@ class RegisterScreen extends GetView<RegisterController> {
                   ),
                   Row(
                     children: [
-                      AnimatedContainer(
-                        duration: const Duration(microseconds: 500),
-                        width: 20,
-                        height: 20,
-                        /// goi qua .value
-                        decoration: BoxDecoration(
-                            color: controller.isPasswordEightCharacters
-                                ? Colors.green
-                                : Colors.transparent,
-                            border: controller.isPasswordEightCharacters
-                                ? Border.all(color: Colors.transparent)
-                                : Border.all(color: Colors.grey.shade400),
-                            borderRadius: BorderRadius.circular(50)),
-                        child: const Center(
-                            child: Icon(
-                          Icons.check,
-                          color: Colors.white,
-                          size: 15,
-                        )),
+                      Obx(
+                        () => AnimatedContainer(
+                          duration: const Duration(microseconds: 500),
+                          width: 20,
+                          height: 20,
+
+                          /// goi qua .value
+                          decoration: BoxDecoration(
+                              color: controller.isPasswordEightCharacters.value
+                                  ? Colors.green
+                                  : Colors.transparent,
+                              border: controller.isPasswordEightCharacters.value
+                                  ? Border.all(color: Colors.transparent)
+                                  : Border.all(color: Colors.grey.shade400),
+                              borderRadius: BorderRadius.circular(50)),
+                          child: const Center(
+                              child: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 15,
+                          )),
+                        ),
                       ),
                       const SizedBox(
                         width: 10,

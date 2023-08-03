@@ -3,7 +3,7 @@ class AppImage{
   static const String _internalImagePathPng = 'lib/res/image/Png/';
 
   /// png
-  static const String headerLogo = '${_internalImagePathPng}header_logo.png';
+  static const String headerLogo = '${_internalImagePathPng}logopizzahut.jpg';
 
   ///svg
   static const String icMyLocation = '${_internalImagePathSvg}ic_my_location.svg';
