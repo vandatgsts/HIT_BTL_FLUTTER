@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:menu_pizza/dialog/dialog.dart';
 
 class BottomPizza extends StatefulWidget {
   const BottomPizza({super.key});
