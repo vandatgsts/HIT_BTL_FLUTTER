@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
 
+import '../Data/User.dart';
+
 class AppControleer extends SuperController{
+
+  late User currentUser;
   @override
   void onDetached() {
     // TODO: implement onDetached

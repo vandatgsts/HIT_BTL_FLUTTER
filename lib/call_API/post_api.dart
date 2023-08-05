@@ -1,10 +1,14 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:get/get.dart';
+
+import '../AppRouter/AppRouter.dart';
+
 
 class PostAPI{
-  String apiBase='http://207.148.118.106:8080/';
-  void postLogin(String userName,String password) async {
+  static String apiBase='http://207.148.118.106:8080/';
+  static void postLogin(String userName,String password) async {
     String api='${apiBase}api/v1/auth/login';// link api hoan chinh
     final response= await http.post(Uri.parse(api),/// put,get lay du lieu, delele xoa du lieu
         headers: {
