@@ -9,6 +9,7 @@ import 'package:btl_flutter/binding/LoginBinding.dart';
 import 'package:btl_flutter/UI/login/Screen/LoginScreen.dart';
 import 'package:btl_flutter/binding/MainBinding.dart';
 import 'package:btl_flutter/UI/Main/Screen/MainScreen.dart';
+import 'package:btl_flutter/binding/account_binding.dart';
 import 'package:btl_flutter/binding/forgot_pass_word_binding.dart';
 import 'package:btl_flutter/binding/map_binding.dart';
 import 'package:btl_flutter/binding/setting_binding.dart';
@@ -53,7 +54,7 @@ class AppPage {
     GetPage(
         name: AppRouter.accountScreen,
         page: () => AccountScreen(),
-        binding: StateMainBinding()),
+        binding: AccountBinding()),
 
 
 

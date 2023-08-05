@@ -20,5 +20,4 @@ class AppControleer extends SuperController{
   void onResumed() {
     // TODO: implement onResumed
   }
-
 }

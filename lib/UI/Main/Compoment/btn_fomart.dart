@@ -1,5 +1,6 @@
 import 'package:btl_flutter/AppRouter/AppRouter.dart';
 import 'package:btl_flutter/UI/Main/Screen/map_screen.dart';
+import 'package:btl_flutter/controller/AppControler.dart';
 import 'package:btl_flutter/controller/main_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,8 +14,8 @@ class BtnShip extends GetView<MainScreenController> {
     return TextButton(
       onPressed: () async {
         Position currentPosition = await getCurrentPosition(context);
-        Get.toNamed(AppRouter.mapScreen,
-            arguments: {'myLocation': currentPosition});
+        // Get.toNamed(AppRouter.mapScreen,
+        //     arguments: {'myLocation': currentPosition});
       },
       child: Container(
         width: Get.width,

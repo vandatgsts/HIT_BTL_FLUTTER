@@ -1,5 +1,6 @@
 import 'package:btl_flutter/UI/Main/Compoment/btn_fomart.dart';
 import 'package:btl_flutter/controller/main_screen_controller.dart';
+import 'package:btl_flutter/controller/state_main_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../login/Component/Logo/Logo.dart';
@@ -47,23 +48,27 @@ class MainScreen extends GetView<MainScreenController> {
             ),
             SizedBox(height: 10.sp,),
             const BtnShip(),
-            Btn2(),
+            const Btn2(),
             SizedBox(height: 10.sp,),
             Container(
               margin: const EdgeInsets.only(left: 10, right: 10),
-              child: const Row(
+              child:  Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Ưu đãi khủng',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20),
                   ),
-                  Text(
-                    'Xem thưc đơn',
+                  TextButton(
+                    onPressed:(){
+                     controller.onPressSeeMenu();
+                    },
+                    child: const Text('Xem thưc đơn',
                     style: TextStyle(color: Colors.black, fontSize: 12),
+                  ),
                   ),
                 ],
               ),

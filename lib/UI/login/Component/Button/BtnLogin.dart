@@ -1,9 +1,10 @@
 import 'package:btl_flutter/AppRouter/AppRouter.dart';
 import 'package:btl_flutter/UI/register/Screen/register_screen.dart';
+import 'package:btl_flutter/controller/login_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BtnLogin extends StatelessWidget {
+class BtnLogin extends GetView<LoginScreenController> {
   const BtnLogin({super.key});
 
   @override
@@ -30,7 +31,7 @@ class BtnLogin extends StatelessWidget {
           ),
           TextButton(
              onPressed: () {
-               Get.toNamed(AppRouter.stateMainScreen);
+               controller.postLoginApi();
              }, child:
             const Text('LOGIN',
               textAlign: TextAlign.center,

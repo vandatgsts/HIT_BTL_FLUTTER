@@ -1,7 +1,7 @@
 import 'package:btl_flutter/controller/account_controller.dart';
 import 'package:get/get.dart';
 
-class Account extends Bindings{
+class AccountBinding extends Bindings{
   @override
   void dependencies() {
     // TODO: implement dependencies
