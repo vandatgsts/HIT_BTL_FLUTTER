@@ -50,7 +50,7 @@ class KidsBox extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "PHẦN ĂN CHO BÉ 2",
                       style: TextStyle(
@@ -76,7 +76,7 @@ class KidsBox extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -87,13 +87,13 @@ class KidsBox extends StatelessWidget {
                           Text(
                             "Từ: ",
                             style: TextStyle(
-                                fontSize: 15, color: Colors.black),
+                                fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "114,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -151,7 +151,7 @@ class KidsBox extends StatelessWidget {
                   Row(
                     children: [
                       const Expanded(
-                        flex: 6,
+                        flex: 4,
                         child: Text(
                           "PHẦN ĂN CHO BÉ 1",
                           style: TextStyle(
@@ -177,7 +177,7 @@ class KidsBox extends StatelessWidget {
                     ],
                   ),
                   const Divider(
-                    color: Colors.grey,
+                    color: Colors.black,
                   ),
                   Row(
                     children: [
@@ -188,13 +188,13 @@ class KidsBox extends StatelessWidget {
                               Text(
                                 "Từ: ",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.black),
+                                    fontSize: 18, color: Colors.black),
                               ),
                               Text(
                                 "89,000đ",
                                 style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
+                                    fontSize: 18,
+                                    color: Colors.red,
                                     fontWeight: FontWeight.bold),
                               ),
                             ],

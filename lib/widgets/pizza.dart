@@ -20,7 +20,7 @@ class _PizzaState extends State<Pizza> {
             crossAxisCount: 2,
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 10.0,
-            childAspectRatio: 0.57),
+            childAspectRatio: 0.5),
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
@@ -44,7 +44,7 @@ class _PizzaState extends State<Pizza> {
                   child: SizedBox.fromSize(
                     child: Image.asset(
                       'assets/Pizza/Pizza_Gap_Doi_Nhan_Phu_Hai_San_Xot_Tieu_Den.jpg',
-                      height: 80.sp,
+                    
                     ),
                   ),
                 ),

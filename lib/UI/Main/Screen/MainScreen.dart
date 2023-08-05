@@ -30,9 +30,7 @@ class MainScreen extends GetView<MainScreenController> {
                   icon:const Icon(Icons.notifications),),
               ],
             ),
-            Image.network(
-              'https://khoinguonsangtao.vn/wp-content/uploads/2022/08/hinh-anh-anime-ngau-chat-va-nghe-thuat.jpg',
-            ),
+            Image.asset("assets/ViHe/Banner.jpg",fit: BoxFit.fill,height: 150.sp,),
             SizedBox(height: 10.sp,),
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,8 +75,7 @@ class MainScreen extends GetView<MainScreenController> {
                   itemBuilder: (context, index) {
                     return Container(
                         margin: const EdgeInsets.all(8),
-                        child: Image.network(
-                            'https://thuthuatnhanh.com/wp-content/uploads/2019/12/anh-anime-dep-de-thuong.jpg'));
+                        child: Image.asset("assets/Pizza/Pizza_Gap_Doi_Nhan_Phu_Hai_San_Xot_Pesto.jpg"));
                   }),
             )
           ],

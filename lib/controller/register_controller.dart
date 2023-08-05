@@ -13,6 +13,7 @@ class RegisterController extends GetxController{
   final TextEditingController phoneNumber = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController addressController= TextEditingController();
+
   String dropdownValue = "Khác";
   RxBool isVisible = false.obs;
   bool isVisibleConfirm = false;

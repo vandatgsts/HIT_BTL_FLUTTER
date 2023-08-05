@@ -47,7 +47,7 @@ class Mua1Duoc3 extends StatelessWidget {
             Row(
               children: [
                 const Expanded(
-                  flex: 6,
+                  flex: 4,
                   child: Text(
                     "MUA 1 ĐƯỢC 3 (CỠ LỚN)",
                     style: TextStyle(
@@ -135,7 +135,7 @@ class Mua1Duoc3 extends StatelessWidget {
             Row(
               children: [
                 const Expanded(
-                  flex: 6,
+                  flex: 4,
                   child: Text(
                     "MUA 1 ĐƯỢC 3 ( CỠ VỪA) ",
                     style: TextStyle(

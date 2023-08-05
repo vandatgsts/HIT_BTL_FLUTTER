@@ -17,9 +17,9 @@ class _MonKhaiViState extends State<MonKhaiVi> {
         itemCount: 8,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 10.0,
-            childAspectRatio: 0.8),
+            crossAxisSpacing: 5.0,
+            mainAxisSpacing: 5.0,
+            childAspectRatio: 0.75),
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
@@ -43,7 +43,7 @@ class _MonKhaiViState extends State<MonKhaiVi> {
                   child: SizedBox.fromSize(
                     child: Image.asset(
                       'assets/MonKhaiVi/Xa_Lach_Ca_Ngu.jpg',
-                    height: 100.sp,),
+                    ),
                   ),
                 ),
                 Container(

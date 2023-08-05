@@ -436,7 +436,7 @@ class LIMO extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "COMBO ĂN BAO HỜI",
                       style: TextStyle(
@@ -461,7 +461,7 @@ class LIMO extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -471,13 +471,13 @@ class LIMO extends StatelessWidget {
                         children: const [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "269,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -532,7 +532,7 @@ class LIMO extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "COMBO VÀO BA LỜI BẢY",
                       style: TextStyle(
@@ -557,7 +557,7 @@ class LIMO extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -567,13 +567,13 @@ class LIMO extends StatelessWidget {
                         children: const [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "379,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -628,7 +628,7 @@ class LIMO extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "COMBO 3",
                       style: TextStyle(
@@ -653,7 +653,7 @@ class LIMO extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -663,13 +663,13 @@ class LIMO extends StatelessWidget {
                         children: const [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "459,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -724,7 +724,7 @@ class LIMO extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "COMBO 4",
                       style: TextStyle(
@@ -749,7 +749,7 @@ class LIMO extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -759,12 +759,12 @@ class LIMO extends StatelessWidget {
                         children: const [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "589,000đ",
                             style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 18,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -820,7 +820,7 @@ class LIMO extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "COMBO ĐI CẢ HỘI, LỜI GẤP BỘI",
                       style: TextStyle(
@@ -845,7 +845,7 @@ class LIMO extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -855,13 +855,13 @@ class LIMO extends StatelessWidget {
                         children: const [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "599,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],

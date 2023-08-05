@@ -20,7 +20,7 @@ class _ThucUongState extends State<ThucUong> {
             crossAxisCount: 2,
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 10.0,
-            childAspectRatio: 0.8),
+            childAspectRatio: 0.75),
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
@@ -44,7 +44,7 @@ class _ThucUongState extends State<ThucUong> {
                   child: SizedBox.fromSize(
                     child: Image.asset(
                       'assets/ThucUong/Mirinda_Soda_Can.jpg',
-                    height: 80.sp,),
+                  ),
                   ),
                 ),
                 Container(

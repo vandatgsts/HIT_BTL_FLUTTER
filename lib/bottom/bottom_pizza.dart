@@ -27,7 +27,7 @@ class _BottomPizzaState extends State<BottomPizza> {
                               crossAxisCount: 2,
                               crossAxisSpacing: 5.0,
                               mainAxisSpacing: 5.0,
-                              childAspectRatio: 0.9),
+                              childAspectRatio: 0.7),
                       itemBuilder: (context, index) {
                         return Container(
                           margin: EdgeInsets.fromLTRB(15, 20, 15, 10),
@@ -175,7 +175,7 @@ class _BottomPizzaState extends State<BottomPizza> {
                                                                           Container(),
                                                                       items:
                                                                           <String>[
-                                                                        'Đế Giòn Xốp',
+                                                                        'Đế Giòn Xốp hhik',
                                                                         'Đế Kéo Tay Truyền Thống',
                                                                         'Đế Mỏng Giòn',
                                                                       ].map<DropdownMenuItem<String>>((String
