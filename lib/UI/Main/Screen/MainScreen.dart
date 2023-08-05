@@ -20,39 +20,51 @@ class MainScreen extends GetView<MainScreenController> {
         child: Column(
           children: [
             SizedBox(
-              height: Get.height/16,
+              height: Get.height / 16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 const Expanded(child: Logo()),
                 IconButton(
-                      onPressed:(){},
-                  icon:const Icon(Icons.notifications),),
+                  onPressed: () {},
+                  icon: const Icon(Icons.notifications),
+                ),
               ],
             ),
             Image.network(
               'https://khoinguonsangtao.vn/wp-content/uploads/2022/08/hinh-anh-anime-ngau-chat-va-nghe-thuat.jpg',
             ),
-            SizedBox(height: 10.sp,),
+            SizedBox(
+              height: 10.sp,
+            ),
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Chào mừng trở lai',
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 16),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
                 ),
-                Text('Vui lòng chon Giao Hàng tận nơi hoăc Mua Mang Về',style: TextStyle(fontSize: 16),),
+                Text(
+                  'Vui lòng chon Giao Hàng tận nơi hoăc Mua Mang Về',
+                  style: TextStyle(fontSize: 16),
+                ),
               ],
             ),
-            SizedBox(height: 10.sp,),
+            SizedBox(
+              height: 10.sp,
+            ),
             const BtnShip(),
             const Btn2(),
-            SizedBox(height: 10.sp,),
+            SizedBox(
+              height: 10.sp,
+            ),
             Container(
               margin: const EdgeInsets.only(left: 10, right: 10),
-              child:  Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
@@ -63,12 +75,13 @@ class MainScreen extends GetView<MainScreenController> {
                         fontSize: 20),
                   ),
                   TextButton(
-                    onPressed:(){
-                     controller.onPressSeeMenu();
+                    onPressed: () {
+                      controller.onPressSeeMenu();
                     },
-                    child: const Text('Xem thưc đơn',
-                    style: TextStyle(color: Colors.black, fontSize: 12),
-                  ),
+                    child: const Text(
+                      'Xem thưc đơn',
+                      style: TextStyle(color: Colors.black, fontSize: 12),
+                    ),
                   ),
                 ],
               ),
@@ -80,10 +93,16 @@ class MainScreen extends GetView<MainScreenController> {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Container(
+                    return InkWell(
+                      child: Container(
                         margin: const EdgeInsets.all(8),
                         child: Image.network(
-                            'https://thuthuatnhanh.com/wp-content/uploads/2019/12/anh-anime-dep-de-thuong.jpg'));
+                            'https://thuthuatnhanh.com/wp-content/uploads/2019/12/anh-anime-dep-de-thuong.jpg'),
+                      ),
+                      onTap: (){
+                        controller.onPressCombo(index);
+                      },
+                    );
                   }),
             )
           ],

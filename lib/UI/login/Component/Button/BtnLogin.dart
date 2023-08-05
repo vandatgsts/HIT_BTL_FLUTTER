@@ -31,7 +31,7 @@ class BtnLogin extends GetView<LoginScreenController> {
           ),
           TextButton(
              onPressed: () {
-               controller.postLoginApi();
+               controller.postLoginAPI();
              }, child:
             const Text('LOGIN',
               textAlign: TextAlign.center,

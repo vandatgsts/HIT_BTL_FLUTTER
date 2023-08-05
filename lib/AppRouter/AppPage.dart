@@ -10,6 +10,7 @@ import 'package:btl_flutter/UI/login/Screen/LoginScreen.dart';
 import 'package:btl_flutter/binding/MainBinding.dart';
 import 'package:btl_flutter/UI/Main/Screen/MainScreen.dart';
 import 'package:btl_flutter/binding/account_binding.dart';
+import 'package:btl_flutter/binding/change_pass_binding.dart';
 import 'package:btl_flutter/binding/forgot_pass_word_binding.dart';
 import 'package:btl_flutter/binding/map_binding.dart';
 import 'package:btl_flutter/binding/setting_binding.dart';
@@ -17,6 +18,7 @@ import 'package:btl_flutter/binding/state_main_binding.dart';
 import 'package:btl_flutter/controller/account_controller.dart';
 import 'package:get/get.dart';
 
+import '../UI/change_password/change_pass_screen.dart';
 import '../UI/setting/setting_screen.dart';
 import '../binding/register_bingdin.dart';
 
@@ -55,8 +57,9 @@ class AppPage {
         name: AppRouter.accountScreen,
         page: () => AccountScreen(),
         binding: AccountBinding()),
-
-
-
+    GetPage(
+        name: AppRouter.changePassScreen,
+        page: () => ChangePassScreen(),
+        binding:ChangePassBinding()),
   ];
 }

@@ -8,7 +8,8 @@ class MainScreenController extends GetxController{
     }
     Get.find<StateMainController>().selectedIndex.value=1;
   }
-  onPressCombo(){
 
+  onPressCombo(int index){
+    /// chuyen den màn combo dc click
   }
 }
