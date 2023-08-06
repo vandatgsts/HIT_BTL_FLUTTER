@@ -16,8 +16,8 @@ import '../widgets/thucuong.dart';
 import 'package:get/get.dart';
 
 
-class HomePage extends GetView<HomePageController>{
-  const HomePage({super.key});
+class MenuScreen extends GetView<HomePageController>{
+  const MenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +42,15 @@ class HomePage extends GetView<HomePageController>{
               ],
             ),
             actions: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  CupertinoIcons.cart,
-                  size: 32,
-                  color: Colors.black,
+              Padding(
+                padding:  EdgeInsets.only(right: 20),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    CupertinoIcons.cart,
+                    size: 32,
+                    color: Colors.black,
+                  ),
                 ),
               )
             ],
@@ -81,7 +84,7 @@ class HomePage extends GetView<HomePageController>{
             backgroundColor: Colors.white,
           ),
           backgroundColor: const Color.fromARGB(255, 245, 242, 242),
-          body: const SafeArea(
+          body:  SafeArea(
             child: Padding(
               padding: EdgeInsets.only(top: 10),
               child: Column(

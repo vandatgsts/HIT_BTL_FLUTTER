@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../detail/vihe_detail_screen.dart';
 
@@ -8,8 +7,7 @@ class ViHe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SingleChildScrollView(
+    return SingleChildScrollView(
           child: Column(
         children: [
           TiecBanBeVuiHoiHe(context),
@@ -17,9 +15,10 @@ class ViHe extends StatelessWidget {
           ThemNhietMuaHe(),
           HeNgonBatTan(),
         ],
-      )),
-    );
+      ));
+  
   }
+
 
   Container HeNgonBatTan() {
     return Container(
@@ -172,7 +171,7 @@ class ViHe extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -182,13 +181,13 @@ class ViHe extends StatelessWidget {
                         children: const [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "369,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -243,7 +242,7 @@ class ViHe extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "NHÂN ĐÔI VỊ HÈ",
                       style: TextStyle(
@@ -268,7 +267,7 @@ class ViHe extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -278,13 +277,13 @@ class ViHe extends StatelessWidget {
                         children: const [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "289,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -339,9 +338,9 @@ class ViHe extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
-                      "TIỆC BẠN BÈ VUI HỘI HÈ",
+                     'TIỆC BẠN BÈ VUI HỘI HÈ',
                       style: TextStyle(
                           fontSize: 20,
                           color: Colors.black,
@@ -369,7 +368,7 @@ class ViHe extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -379,13 +378,13 @@ class ViHe extends StatelessWidget {
                         children: [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "269,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],

@@ -51,7 +51,7 @@ class MyBox extends StatelessWidget {
                   Row(
                     children: [
                       const Expanded(
-                        flex: 6,
+                        flex: 4,
                         child: Text(
                           "COMBO MY BOX 6",
                           style: TextStyle(
@@ -77,7 +77,7 @@ class MyBox extends StatelessWidget {
                     ],
                   ),
                   const Divider(
-                    color: Colors.grey,
+                    color: Colors.black,
                   ),
                   Row(
                     children: [
@@ -88,13 +88,13 @@ class MyBox extends StatelessWidget {
                               Text(
                                 "Từ: ",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.black),
+                                    fontSize: 18, color: Colors.black),
                               ),
                               Text(
                                 "269,000đ",
                                 style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
+                                    fontSize: 18,
+                                    color: Colors.red,
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -152,7 +152,7 @@ class MyBox extends StatelessWidget {
                   Row(
                     children: [
                       const Expanded(
-                        flex: 6,
+                        flex: 4,
                         child: Text(
                           "COMBO MY BOX 4",
                           style: TextStyle(
@@ -178,7 +178,7 @@ class MyBox extends StatelessWidget {
                     ],
                   ),
                   const Divider(
-                    color: Colors.grey,
+                    color: Colors.black,
                   ),
                   Row(
                     children: [
@@ -189,13 +189,13 @@ class MyBox extends StatelessWidget {
                               Text(
                                 "Từ: ",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.black),
+                                    fontSize: 18, color: Colors.black),
                               ),
                               Text(
                                 "249,000đ",
                                 style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
+                                    fontSize: 18,
+                                    color: Colors.red,
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -253,7 +253,7 @@ class MyBox extends StatelessWidget {
                   Row(
                     children: [
                       const Expanded(
-                        flex: 6,
+                        flex: 4,
                         child: Text(
                           "COMBO MY BOX 4",
                           style: TextStyle(
@@ -279,7 +279,7 @@ class MyBox extends StatelessWidget {
                     ],
                   ),
                   const Divider(
-                    color: Colors.grey,
+                    color: Colors.black,
                   ),
                   Row(
                     children: [
@@ -290,13 +290,13 @@ class MyBox extends StatelessWidget {
                               Text(
                                 "Từ: ",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.black),
+                                    fontSize: 18, color: Colors.black),
                               ),
                               Text(
                                 "179,000đ",
                                 style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
+                                    fontSize: 18,
+                                    color: Colors.red,
                                     fontWeight: FontWeight.bold),
                               ),
                             ],
@@ -352,7 +352,7 @@ class MyBox extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "COMBO MY BOX 3",
                       style: TextStyle(
@@ -377,7 +377,7 @@ class MyBox extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -387,13 +387,13 @@ class MyBox extends StatelessWidget {
                         children: const [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "159,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -448,7 +448,7 @@ class MyBox extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "COMBO MY BOX 2",
                       style: TextStyle(
@@ -473,7 +473,7 @@ class MyBox extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -483,13 +483,13 @@ class MyBox extends StatelessWidget {
                         children: const [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "139,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -544,7 +544,7 @@ class MyBox extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "COMBO MY BOX 1",
                       style: TextStyle(
@@ -569,7 +569,7 @@ class MyBox extends StatelessWidget {
                 ],
               ),
               const Divider(
-                color: Colors.grey,
+                color: Colors.black,
               ),
               Row(
                 children: [
@@ -579,13 +579,13 @@ class MyBox extends StatelessWidget {
                         children: const [
                           Text(
                             "Từ: ",
-                            style: TextStyle(fontSize: 15, color: Colors.black),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                           Text(
                             "99,000đ",
                             style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
+                                fontSize: 18,
+                                color: Colors.red,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],

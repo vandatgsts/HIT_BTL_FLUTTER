@@ -1,6 +1,5 @@
 import 'package:btl_flutter/UI/Main/Compoment/btn_fomart.dart';
 import 'package:btl_flutter/controller/main_screen_controller.dart';
-import 'package:btl_flutter/controller/state_main_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../login/Component/Logo/Logo.dart';
@@ -20,16 +19,15 @@ class MainScreen extends GetView<MainScreenController> {
         child: Column(
           children: [
             SizedBox(
-              height: Get.height / 16,
+              height: Get.height/16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 const Expanded(child: Logo()),
                 IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.notifications),
-                ),
+                      onPressed:(){},
+                  icon:const Icon(Icons.notifications),),
               ],
             ),
             Image.network(
@@ -52,6 +50,7 @@ class MainScreen extends GetView<MainScreenController> {
                   'Vui lòng chon Giao Hàng tận nơi hoăc Mua Mang Về',
                   style: TextStyle(fontSize: 16),
                 ),
+                Text('Vui lòng chon Giao Hàng tận nơi hoăc Mua Mang Về',style: TextStyle(fontSize: 16),),
               ],
             ),
             SizedBox(

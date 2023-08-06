@@ -16,9 +16,9 @@ class _MyYvaComState extends State<MyYvaCom> {
         itemCount: 8,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 10.0,
-            childAspectRatio: 0.8),
+            crossAxisSpacing: 5.0,
+            mainAxisSpacing: 5.0,
+            childAspectRatio: 0.7),
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
@@ -42,7 +42,7 @@ class _MyYvaComState extends State<MyYvaCom> {
                   child: SizedBox.fromSize(
                     child: Image.asset(
                       'assets/MyYvaCom/Com_Chien_Tom_Vi_Cay.jpg',
-                      height: 80.sp,
+                     // height: 80.sp,
                     ),
                   ),
                 ),

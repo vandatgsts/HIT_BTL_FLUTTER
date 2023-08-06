@@ -1,19 +1,13 @@
+import 'package:btl_flutter/controller/home_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-class SummerMenu extends StatefulWidget {
-  const SummerMenu({super.key});
 
-  @override
-  State<SummerMenu> createState() => _SummerMenuState();
-}
-
-class _SummerMenuState extends State<SummerMenu> {
+class SummerMenu extends GetView<HomePageController> {
   final TextEditingController tex1 = TextEditingController();
   final TextEditingController tex2 = TextEditingController();
 
   String dropdownValue1 = 'Nhỏ';
-
   String dropdownValue2 = 'Đế Giòn Xốp';
   @override
   Widget build(BuildContext context) {
@@ -24,7 +18,7 @@ class _SummerMenuState extends State<SummerMenu> {
             crossAxisCount: 2,
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 10.0,
-            childAspectRatio: 0.57),
+            childAspectRatio: 0.51),
         itemBuilder: (context, index) {
           return Container(
             margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
@@ -33,8 +27,8 @@ class _SummerMenuState extends State<SummerMenu> {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                      color:
-                          const Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
+                      color: const Color.fromARGB(255, 154, 152, 152)
+                          .withOpacity(0.4),
                       spreadRadius: 1,
                       blurRadius: 2)
                 ]),
@@ -46,9 +40,10 @@ class _SummerMenuState extends State<SummerMenu> {
                       topLeft: Radius.circular(6),
                       topRight: Radius.circular(6)),
                   child: SizedBox.fromSize(
-                    child: Image.asset(
-                      'assets/SummerMenu/Pizza_Thit_Bo_va_Hai_San.jpg',height: 80.sp,fit: BoxFit.fitWidth,),
-                  ),
+                      child: Image.asset(
+                    'assets/SummerMenu/Pizza_Thit_Bo_va_Hai_San.jpg',
+                  ) //height: 80.sp,fit: BoxFit.fitWidth,),
+                      ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(
@@ -83,7 +78,7 @@ class _SummerMenuState extends State<SummerMenu> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                       Row(
+                        Row(
                           children: [
                             SizedBox(
                               height: 5.sp,
@@ -107,8 +102,9 @@ class _SummerMenuState extends State<SummerMenu> {
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                    color: const Color.fromARGB(255, 154, 152, 152)
-                                        .withOpacity(0.4),
+                                    color:
+                                        const Color.fromARGB(255, 154, 152, 152)
+                                            .withOpacity(0.4),
                                     spreadRadius: 1,
                                     blurRadius: 2)
                               ]),
@@ -127,9 +123,7 @@ class _SummerMenuState extends State<SummerMenu> {
                               );
                             }).toList(),
                             onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue1 = newValue!;
-                              });
+                              dropdownValue1 = newValue!;
                             },
                           ),
                         ),
@@ -157,8 +151,9 @@ class _SummerMenuState extends State<SummerMenu> {
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                    color: const Color.fromARGB(255, 154, 152, 152)
-                                        .withOpacity(0.4),
+                                    color:
+                                        const Color.fromARGB(255, 154, 152, 152)
+                                            .withOpacity(0.4),
                                     spreadRadius: 1,
                                     blurRadius: 2)
                               ]),
@@ -180,9 +175,7 @@ class _SummerMenuState extends State<SummerMenu> {
                               );
                             }).toList(),
                             onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue2 = newValue!;
-                              });
+                              dropdownValue2 = newValue!;
                             },
                           ),
                         ),

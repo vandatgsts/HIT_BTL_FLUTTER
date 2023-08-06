@@ -19,7 +19,7 @@ class _Menu49KState extends State<Menu49K> {
             crossAxisCount: 2,
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 10.0,
-            childAspectRatio: 0.8),
+            childAspectRatio: 0.7),
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
@@ -43,7 +43,7 @@ class _Menu49KState extends State<Menu49K> {
                   child: SizedBox.fromSize(
                     child: Image.asset(
                       'assets/Menu49K/Mi_Y_Thanh_Cua.jpg',
-                    height: 80.sp,),
+                    ),
                   ),
                 ),
                 Container(
