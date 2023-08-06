@@ -50,7 +50,7 @@ class ViHe extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "HÈ NGON BẤT TẬN",
                       style: TextStyle(
@@ -146,7 +146,7 @@ class ViHe extends StatelessWidget {
               Row(
                 children: [
                   const Expanded(
-                    flex: 6,
+                    flex: 4,
                     child: Text(
                       "THÊM NHIỆT MÙA HÈ",
                       style: TextStyle(

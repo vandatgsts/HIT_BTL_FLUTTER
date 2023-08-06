@@ -206,7 +206,7 @@ class KidsBox extends StatelessWidget {
                                  Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => KidsBoxDetaiScreen()));
+                                  builder: (context) => KidsBoxDetailScreen()));
                               },
                               style: ElevatedButton.styleFrom(
                                   primary: Color.fromARGB(255, 43, 132, 45),
