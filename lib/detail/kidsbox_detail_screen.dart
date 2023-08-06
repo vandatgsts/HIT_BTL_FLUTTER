@@ -1,11 +1,21 @@
+import 'package:btl_flutter/detail/choose.dart';
 import 'package:flutter/material.dart';
 
-import '../bottom/bottom_appetizer.dart';
-import '../bottom/bottom_drink_can.dart';
-import '../bottom/bottom_pizza.dart';
+class KidsBoxDetailScreen extends StatefulWidget {
+  const KidsBoxDetailScreen({super.key});
 
-class KidsBoxDetaiScreen extends StatelessWidget {
-  const KidsBoxDetaiScreen({super.key});
+  @override
+  State<KidsBoxDetailScreen> createState() => _KidsBoxDetailScreenState();
+}
+
+class _KidsBoxDetailScreenState extends State<KidsBoxDetailScreen> {
+  List<String> itemList = [
+    'Đế Giòn Xốp',
+    'Đế Kéo Tay Truyền Thống',
+    'Đế Mỏng Giòn'
+  ];
+  String selectedValue = '';
+  bool showGridView = false;
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +42,13 @@ class KidsBoxDetaiScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+              margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
               child: Image.asset("assets/KidsBox/KIDS_BOX_89K.jpg"),
             ),
             const Row(
               children: [
                 Text(
-                  "KIDS MY BOX 1",
+                  "COMBO KIDS BOX 1",
                   style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
@@ -47,10 +57,9 @@ class KidsBoxDetaiScreen extends StatelessWidget {
               ],
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-              child: Column(
+              child: const Column(
                 children: [
-                  const Row(
+                  Row(
                     children: [
                       Text(
                         "Dành cho 1-2 người",
@@ -58,86 +67,23 @@ class KidsBoxDetaiScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Row(
-                    children: [
-                      Text(
-                          "01 Piza Gà Nướng Nấm/Phô Mai Cao Cấp/ Pepperoni(Cỡ nhỏ)",
-                          style: TextStyle(color: Colors.black, fontSize: 16)),
-                    ],
+                  Text(
+                    "-Lựa chọn 1: 01 Piza Gà Nướng Nấm/01 Pizza Peperroni/01 Pizza Phô Mai Cao Cấp",
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  const Row(
-                    children: [
-                      Text(
-                          "01 Bánh Mì Bơ Tỏi/Bánh Cuộn Phô Mai/ Khoai Tây Chiên",
-                          style: TextStyle(color: Colors.black, fontSize: 16))
-                    ],
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    padding: EdgeInsets.fromLTRB(18, 0, 5, 0),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(color: Colors.black, width: 1),
-                        boxShadow: [BoxShadow(color: Colors.grey)]),
-                    child: const Row(
-                      children: [
-                        Expanded(
-                          flex: 6,
-                          child: Text(
-                            "Chọn 1 bánh Piza",
-                            style: TextStyle(color: Colors.black, fontSize: 15),
-                          ),
-                        ),
-                        Expanded(flex: 1, child: BottomPizza())
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    padding: EdgeInsets.fromLTRB(18, 0, 5, 0),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(color: Colors.black, width: 1),
-                        boxShadow: [BoxShadow(color: Colors.grey)]),
-                    child: const Row(
-                      children: [
-                        Expanded(
-                          flex: 6,
-                          child: Text(
-                            "Chọn 1 món ăn kèm",
-                            style: TextStyle(color: Colors.black, fontSize: 15),
-                          ),
-                        ),
-                        Expanded(flex: 1, child: BottomAppetizer())
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    padding: EdgeInsets.fromLTRB(18, 0, 5, 0),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(color: Colors.black, width: 1),
-                        boxShadow: [BoxShadow(color: Colors.grey)]),
-                    child: const Row(
-                      children: [
-                        Expanded(
-                          flex: 6,
-                          child: Text(
-                            "Chọn thức uống",
-                            style: TextStyle(color: Colors.black, fontSize: 15),
-                          ),
-                        ),
-                        Expanded(flex: 1, child: BottomDrinkCan())
-                      ],
-                    ),
+                  Text(
+                    "- Lựa chọn 2: Bánh Cuộn Phô Mai/Khoai Tây Chiên/Súp Gà Kem Nấm",
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
             ),
+            Choose(),
+            Choose()
           ],
         ),
       ),
