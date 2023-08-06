@@ -64,7 +64,7 @@ class _ChooseState extends State<Choose> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 5.0,
                   mainAxisSpacing: 5.0,
-                  childAspectRatio: 0.85),
+                  childAspectRatio: 0.8),
               itemCount: 8,
               itemBuilder: (context, index) {
                 return Container(
