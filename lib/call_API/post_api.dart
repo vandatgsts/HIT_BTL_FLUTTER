@@ -1,14 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:get/get.dart';
-
-import '../AppRouter/AppRouter.dart';
 
 
 class PostAPI{
   static String apiBase='http://207.148.118.106:8080/';
-  static void postLogin(String userName,String password) async {
+  static Future<bool> postLogin(String userName,String password) async {
     String api='${apiBase}api/v1/auth/login';// link api hoan chinh
     final response= await http.post(Uri.parse(api),/// put,get lay du lieu, delele xoa du lieu
         headers: {
@@ -23,16 +20,14 @@ class PostAPI{
 
 
     if (response.statusCode == 200) {
-      // If the server returns a 200 OK response, parse the response body.
-      // Replace 'User' with the actual model class representing the response data.
-      //userLogin = User.fromJson(jsonDecode(response.body));
-      //getCurrentUser();
-      Get.toNamed(AppRouter.stateMainScreen);
+      return true;
 
     } else {
+      return false;
       // If the server did not return a 200 OK response, throw an exception or handle the error.
-      throw Exception('Failed to login: ${response.statusCode}');
+
     }
+
   }
   static Future<void> forgotPassword(String username) async {
     String forgotPasswordUrl=apiBase+'api/v1/forgot-password';

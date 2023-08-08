@@ -2,10 +2,12 @@ import 'package:btl_flutter/controller/state_main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:sn_progress_dialog/sn_progress_dialog.dart';
 
 import '../AppRouter/AppRouter.dart';
 class MainScreenController extends GetxController{
   late BuildContext context;
+  bool isLoadMap=false;
   onPressSeeMenu(){
     if(!Get.isRegistered<StateMainController>()){
       Get.put(StateMainController());
@@ -17,10 +19,21 @@ class MainScreenController extends GetxController{
     /// chuyen den màn combo dc click
   }
   onPressCallGoogleMap() async {
-    Position currentPosition = await getCurrentPosition(context);
-    Get.toNamed(AppRouter.mapScreen,
-        arguments: {'myLocation': currentPosition});
+    ProgressDialog progressDialog = ProgressDialog(context: context);
+
+    Position? currentPosition;
+    progressDialog.show(msg: 'Đang lấy vị trí');
+    Future.delayed(const Duration(seconds: 2), () async {
+      // Sau khi chờ xong, đặt giá trị của statusSendPass thành true
+      currentPosition = await getCurrentPosition(context);
+      progressDialog.close();
+      Get.toNamed(AppRouter.mapScreen,
+          arguments: {'myLocation': currentPosition});
+
+    });
+
   }
+
   Future<Position> getCurrentPosition(BuildContext context) async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -46,3 +59,4 @@ class MainScreenController extends GetxController{
     return await Geolocator.getCurrentPosition();
   }
 }
+

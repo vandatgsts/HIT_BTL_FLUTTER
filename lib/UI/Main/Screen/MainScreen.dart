@@ -37,7 +37,7 @@ class MainScreen extends GetView<MainScreenController> {
             SizedBox(
               height: 10.sp,
             ),
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -45,13 +45,12 @@ class MainScreen extends GetView<MainScreenController> {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                      fontSize: 20.sp),
                 ),
                 Text(
                   'Vui lòng chon Giao Hàng tận nơi hoăc Mua Mang Về',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 13.sp),
                 ),
-                Text('Vui lòng chon Giao Hàng tận nơi hoăc Mua Mang Về',style: TextStyle(fontSize: 16),),
               ],
             ),
             SizedBox(
