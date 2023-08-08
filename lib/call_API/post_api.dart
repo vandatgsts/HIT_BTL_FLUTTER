@@ -20,17 +20,7 @@ class PostAPI{
           'password':password,
         })
     );
-    // final response = await http.post(
-    //   Uri.parse(api),
-    //   headers: <String, String>{
-    //     'Content-Type': 'application/json; charset=UTF-8',
-    //   },
-    //   body: jsonEncode(<String, String>{
-    //     // Add any necessary parameters for the login request, e.g., username and password.
-    //     'username': emailController.text,
-    //     'password': passwordController.text,
-    //   }),
-    print('dadfsdf'+response.statusCode.toString());
+
 
     if (response.statusCode == 200) {
       // If the server returns a 200 OK response, parse the response body.
@@ -42,6 +32,32 @@ class PostAPI{
     } else {
       // If the server did not return a 200 OK response, throw an exception or handle the error.
       throw Exception('Failed to login: ${response.statusCode}');
+    }
+  }
+  static Future<void> forgotPassword(String username) async {
+    String forgotPasswordUrl=apiBase+'api/v1/forgot-password';
+    try {
+      // Tạo yêu cầu POST gửi thông tin email cần khôi phục mật khẩu
+      var response = await http.post(
+        Uri.parse(forgotPasswordUrl),
+        body: {
+          'userName': username,
+        },
+      );
+      var data = json.decode(response.body);
+      var password = data['data']['body']['password'];
+      print(password);
+      // Kiểm tra phản hồi từ máy chủ
+      if (response.statusCode == 200) {
+        // Xử lý phản hồi thành công từ máy chủ (thông báo, điều hướng...)
+        print('Yêu cầu khôi phục mật khẩu thành công!');
+      } else {
+        // Xử lý phản hồi lỗi từ máy chủ
+        print('Yêu cầu khôi phục mật khẩu thất bại: ${response.statusCode}');
+      }
+    } catch (e) {
+      // Xử lý lỗi nếu có
+      print('Lỗi khi gọi API: $e');
     }
   }
 }

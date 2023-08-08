@@ -115,11 +115,11 @@ class ForgotPassWordScreen1 extends GetView<ForgotPassWordController> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Email không được trống';
+                      return 'User không được trống';
                     }
-                    if (!controller.isValidEmail(value)) {
-                      return 'Email không đúng quy cách';
-                    }
+                    // if (!controller.isValidEmail(value)) {
+                    //   return 'Email không đúng quy cách';
+                    // }
                     return null;
                   },
                 ),

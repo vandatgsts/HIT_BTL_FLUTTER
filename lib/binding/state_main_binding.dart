@@ -1,8 +1,10 @@
+import 'package:btl_flutter/controller/menu_controller.dart';
 import 'package:btl_flutter/controller/state_main_controller.dart';
-import 'package:btl_flutter/pages/home_page.dart';
 import 'package:get/get.dart';
 
+import '../controller/main_screen_controller.dart';
 import '../controller/setting_controller.dart';
+import '../pages/menu_screen.dart';
 
 class StateMainBinding extends Bindings{
   @override
@@ -12,7 +14,7 @@ class StateMainBinding extends Bindings{
     Get.lazyPut(() => SettingController());
 
     Get.lazyPut(()=>MainScreenController());
-    Get.lazyPut(() => MenuScreen());
+    Get.lazyPut(() => MenuController());
 
   }
 }

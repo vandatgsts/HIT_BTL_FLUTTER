@@ -13,6 +13,7 @@ class MainScreen extends GetView<MainScreenController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.context=context;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(

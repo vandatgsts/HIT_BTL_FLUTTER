@@ -4,6 +4,7 @@ class AppImage{
 
   /// png
   static const String headerLogo = '${_internalImagePathPng}logopizzahut.jpg';
+  static const String shopIcon = '${_internalImagePathPng}shopicon.png';
 
   ///svg
   static const String icMyLocation = '${_internalImagePathSvg}ic_my_location.svg';

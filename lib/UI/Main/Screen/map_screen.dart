@@ -23,81 +23,96 @@ class MapScreen extends GetView<MapController> {
   Widget _buildSlidingUpPanel(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: Get.height / 9,
+      // height: Get.height / 6,
+      padding: EdgeInsets.all(8.sp),
+      margin: EdgeInsets.only(top: 10.sp),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20.sp),
-              topLeft: Radius.circular(20.sp))),
+              topRight: Radius.circular(25.sp),
+              topLeft: Radius.circular(25.sp))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 10.sp,),
+          SizedBox(
+            height: 20.sp,
+          ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(width: 10.sp,),
               Text(
-                "Khoảng cách của bạn ",
+                "Vị trí của bạn: ",
                 style: TextStyle(
                   color: AppColor.black333,
-                  fontSize: 20.0.sp,
+                  fontSize: 16.0.sp,
                   fontWeight: FontWeight.w500,
                 ),
-              )
+              ),
+              Expanded(
+                child: Obx(() => Text(
+                      controller.address.value,
+                      style: TextStyle(
+                        color: AppColor.black333,
+                        fontSize: 20.0.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )),
+              ),
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(width: 10.sp,),
+              Text(
+                "Khoảng cách của bạn: ",
+                style: TextStyle(
+                  color: AppColor.black333,
+                  fontSize: 16.0.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Obx(() => Text(
+                '${controller.distance} km',
+                style: TextStyle(
+                    fontSize: 20.sp, fontWeight: FontWeight.w500),
+              )),
+            ],
+          ),
+          SizedBox(height:5.sp,),
           Padding(
             padding: EdgeInsets.only(
               left: 16.0.sp,
               right: 8.0.sp,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Text(
-                    controller.currentAddress.value,
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 3,
-                    style: TextStyle(
-                      color: const Color(0xFF3C3C43).withOpacity(0.6),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15.0.sp,
+                Container(
+                  decoration: BoxDecoration(
+                      color: AppColor.red.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(10.sp)),
+                  child: TextButton(
+                    onPressed: () {
+                      controller.onPressNext();
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          'Tiep tuc',
+                          style: TextStyle(
+                            color: AppColor.black,
+                            fontSize: 15.sp,
+                          ),
+                        ),
+                        const Icon(
+                          Icons.navigate_next,
+                          color: Colors.black,
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-
-                    Obx(() => Text('${controller.distance} km',style: TextStyle(
-                      fontSize: 25.sp,
-                      fontWeight: FontWeight.w500
-                    ),)),
-                    SizedBox(width:40.sp),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: AppColor.red.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(10.sp)
-                      ),
-                      child: TextButton(
-                        onPressed: () {
-                          controller.onPressNext();
-                        },
-                        child: Row(
-                          children: [
-                            Text('Tiep tuc',
-                              style: TextStyle(
-                                color: AppColor.black,
-                                fontSize: 15.sp,
-                              ),),
-                            const Icon(Icons.navigate_next,color: Colors.black,),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ],
             ),
@@ -119,33 +134,36 @@ class MapScreen extends GetView<MapController> {
       child: Stack(
         children: [
           Obx(
-            () => GoogleMap(
-              mapType: MapType.normal,
-              padding: controller.isMapLoaded.value
-                  ? EdgeInsets.only(top: 200.0.sp)
-                  : EdgeInsets.zero,
-              initialCameraPosition: CameraPosition(
-                target: LatLng(controller.myLocation.latitude,
-                    controller.myLocation.longitude),
-                zoom: 14.4746,
-              ),
-              myLocationEnabled: true,
-              myLocationButtonEnabled: false,
-              zoomControlsEnabled: false,
-              markers: controller.markerResult.value,
-              onMapCreated: (GoogleMapController googleMapController) {
-                controller.isMapLoaded.value = true;
-                controller.googleMapController.complete(googleMapController);
-                controller.customInfoWindowController.googleMapController =
-                    googleMapController;
-              },
-              onCameraMove: (position) {
-                if (controller.customInfoWindowController.onCameraMove !=
-                    null) {
-                  controller.customInfoWindowController.onCameraMove!();
-                }
-              },
-            ),
+            () => !controller.delayLoadMap.value
+                ? const SizedBox.shrink()
+                : GoogleMap(
+                    mapType: MapType.normal,
+                    padding: controller.isMapLoaded.value
+                        ? EdgeInsets.only(top: 200.0.sp)
+                        : EdgeInsets.zero,
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(controller.myLocation.latitude,
+                          controller.myLocation.longitude),
+                      zoom: 14.4746,
+                    ),
+                    myLocationEnabled: true,
+                    myLocationButtonEnabled: false,
+                    zoomControlsEnabled: false,
+                    markers: controller.markerResult.value,
+                    onMapCreated: (GoogleMapController googleMapController) {
+                      controller.isMapLoaded.value = true;
+                      controller.googleMapController
+                          .complete(googleMapController);
+                      controller.customInfoWindowController
+                          .googleMapController = googleMapController;
+                    },
+                    onCameraMove: (position) {
+                      if (controller.customInfoWindowController.onCameraMove !=
+                          null) {
+                        controller.customInfoWindowController.onCameraMove!();
+                      }
+                    },
+                  ),
           ),
           CustomInfoWindow(
             controller: controller.customInfoWindowController,
@@ -184,13 +202,13 @@ class MapScreen extends GetView<MapController> {
                         path: AppImage.icSearch,
                         color: Colors.black,
                       ),
-                      onTap: (){
+                      onTap: () {
                         controller.onPressSearch();
                       },
                     ),
-
-                    SizedBox(width: 10.sp,),
-
+                    SizedBox(
+                      width: 10.sp,
+                    ),
                   ],
                 ),
               ),
@@ -223,7 +241,8 @@ class MapScreen extends GetView<MapController> {
                                 ),
                               ],
                             ),
-                            child:AppImageWidget.asset(path: AppImage.icMyLocation),
+                            child: AppImageWidget.asset(
+                                path: AppImage.icMyLocation),
                           ),
                           _buildSlidingUpPanel(context),
                         ],
