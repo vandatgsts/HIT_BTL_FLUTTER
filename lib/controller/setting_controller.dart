@@ -2,7 +2,7 @@ import 'package:btl_flutter/AppRouter/AppRouter.dart';
 import 'package:get/get.dart';
 class SettingController extends GetxController{
   void onPressAccount(){
-
+    Get.toNamed(AppRouter.accountScreen);
   }
   void onPressNoti(){
 
@@ -11,6 +11,7 @@ class SettingController extends GetxController{
 
   }
   void onPressLogout(){
-    Get.offAndToNamed(AppRouter.accountScreen);
+    print('check out');
+    Get.offAndToNamed(AppRouter.login);
   }
 }

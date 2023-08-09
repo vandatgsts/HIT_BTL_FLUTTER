@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:btl_flutter/AppRouter/AppRouter.dart';
+import 'package:btl_flutter/controller/state_main_controller.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -7,9 +8,9 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:custom_info_window/custom_info_window.dart';
-import 'package:easy_debounce/easy_debounce.dart';
-import 'package:google_maps_webservice/places.dart';
-import 'package:html/html_escape.dart';
+import 'package:geocoding/geocoding.dart';
+import '../res/AppImage.dart';
+import 'package:btl_flutter/controller/menu_controller.dart' as menu;
 
 class MapController extends GetxController {
   late BuildContext context;
@@ -18,17 +19,12 @@ class MapController extends GetxController {
   RxBool isMapLoaded = false.obs;
   Completer<GoogleMapController> googleMapController =
       Completer<GoogleMapController>();
-  RxBool haveWeatherData = false.obs;
-  RxBool showWeatherTypeList = false.obs;
-  RxBool isLoadingWeather = false.obs;
 
   RxSet<Marker> markerResult = RxSet();
   MarkerId markerId = const MarkerId('Marker_id_location_pick');
   BitmapDescriptor? _markerBitmapFrom;
   final CustomInfoWindowController customInfoWindowController =
       CustomInfoWindowController();
-  LatLng? currentLatLng;
-  int? currentDateTime;
   RxMap selectedData = RxMap();
 
   //RxList<Prediction> listPredictionSuggestSearch = RxList();
@@ -42,6 +38,9 @@ class MapController extends GetxController {
 
   RxDouble distance=0.0.obs;
 
+  RxBool delayLoadMap=false.obs;
+
+  RxString address=''.obs;
   final Position shopLocation = Position(
     latitude: 21.0367,
     longitude: 105.7750,
@@ -54,31 +53,41 @@ class MapController extends GetxController {
     floor: 0,
   );
   @override
-  void onReady() {
+  Future<void> onReady() async {
     // TODO: implement onReady
+    myLocation=await getCurrentPosition(context);
     distance.value=calculateDistance(myLocation);
+    Future.delayed(
+        const Duration(milliseconds: 400), () => delayLoadMap.value = true);
+
+    address.value=await getAddressFromLocation(myLocation.latitude,myLocation.longitude);
     super.onReady();
   }
   @override
-  void onInit() {
-    // TODO: implement onInit
+  Future<void> onInit() async {
+
+
+    // Tạo marker với biểu tượng tùy chỉnh
+    final Marker customMarker = Marker(
+      markerId: const MarkerId('custom_marker_id'),
+      position: const LatLng(21.0367, 105.7750),
+      icon: BitmapDescriptor.defaultMarkerWithHue(210.0),// Icon tùy chỉnh
+      infoWindow: const InfoWindow(title: 'Custom Marker'), // Thông tin cửa sổ info của marker
+    );
+
+    // Danh sách marker để hiển thị trên bản đồ
+
+
 
     myLocation=Get.arguments['myLocation'];
     onPressMap(LatLng(myLocation.latitude, myLocation.longitude));
+    markerResult.value.add(customMarker);
     distance.value=calculateDistance(myLocation);
+
     super.onInit();
 
-    getLocation();
   }
   onPressMap(LatLng latLng) async {
-    if (isLoadingWeather.value) return;
-        if (customInfoWindowController.addInfoWindow != null) {
-      customInfoWindowController.addInfoWindow!(
-        const SizedBox.shrink(),
-        latLng,
-      );
-    }
-
     markerResult.clear();
     markerResult.add(
       Marker(
@@ -88,37 +97,51 @@ class MapController extends GetxController {
       ),
     );
   }
-  getLocation() async {
+  Future<Position> getCurrentPosition(BuildContext context) async {
     bool serviceEnabled;
     LocationPermission permission;
+
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      await Geolocator.openLocationSettings();
-      return Future.error("location service is not enabled");
+      // showErrorDialog(context, StringConstants.errorLocation01.tr);
+      return Future.error({'code': 1, 'message': 'lõi'});
     }
+
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
-      //do stuff here
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        //stuff
-        return Future.error("location permissions denied");
+        // showErrorDialog(context, StringConstants.errorLocation02.tr);
+        return Future.error({'code': 2, 'message': 'Loi'});
       }
     }
+
     if (permission == LocationPermission.deniedForever) {
-      return Future.error("location permissions permanently denied");
+      return Future.error({'code': 2, 'message': 'Loi'});
     }
-    myLocation = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    //position stream?
+    return await Geolocator.getCurrentPosition();
   }
 
   onPressSearch() {
     print('object');
   }
   onPressNext(){
-    Get.toNamed(AppRouter.forgotPassWord);
+    Get.back();
+    Get.find<StateMainController>().selectedIndex.value=1;
   }
-
+  Future<String> getAddressFromLocation(double latitude, double longitude) async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(latitude, longitude);
+      if (placemarks.isNotEmpty) {
+        Placemark placemark = placemarks.first;
+        String address = "${placemark.street}, ${placemark.subAdministrativeArea}, ${placemark.administrativeArea}, ${placemark.country}";
+        return address;
+      }
+    } catch (e) {
+      print("Error: $e");
+    }
+    return "";
+  }
   // onChangedSearch(String text) {
   //   listPredictionSuggestSearch.value = [];
   //
@@ -168,32 +191,7 @@ class MapController extends GetxController {
       }
     } catch (e) {}
   }
-  Future<Position> getCurrentPosition(BuildContext context) async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // showErrorDialog(context, StringConstants.errorLocation01.tr);
-      return Future.error({'code': 1, 'message':'lõi'});
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // showErrorDialog(context, StringConstants.errorLocation02.tr);
-        return Future.error({'code': 2, 'message': 'Loi'});
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-
-      return Future.error({'code': 2, 'message': 'Loi'});
-    }
-    return await Geolocator.getCurrentPosition();
-  }/// khoang cách tu vi tri hien tai den shop
-  double calculateDistance(Position startLocation) {
+    double calculateDistance(Position startLocation) {
     double distanceInMeters = Geolocator.distanceBetween(
       shopLocation.latitude,
       shopLocation.longitude,

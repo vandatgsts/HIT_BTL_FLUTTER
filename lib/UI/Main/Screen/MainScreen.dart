@@ -13,6 +13,7 @@ class MainScreen extends GetView<MainScreenController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.context=context;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -30,38 +31,56 @@ class MainScreen extends GetView<MainScreenController> {
                   icon:const Icon(Icons.notifications),),
               ],
             ),
-            Image.asset("assets/ViHe/Banner.jpg",fit: BoxFit.fill,height: 150.sp,),
-            SizedBox(height: 10.sp,),
-            const Column(
+            Image.network(
+              'https://khoinguonsangtao.vn/wp-content/uploads/2022/08/hinh-anh-anime-ngau-chat-va-nghe-thuat.jpg',
+            ),
+            SizedBox(
+              height: 10.sp,
+            ),
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Chào mừng trở lai',
                   style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold,fontSize: 16),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.sp),
                 ),
-                Text('Vui lòng chon Giao Hàng tận nơi hoăc Mua Mang Về',style: TextStyle(fontSize: 16),),
+                Text(
+                  'Vui lòng chon Giao Hàng tận nơi hoăc Mua Mang Về',
+                  style: TextStyle(fontSize: 13.sp),
+                ),
               ],
             ),
-            SizedBox(height: 10.sp,),
+            SizedBox(
+              height: 10.sp,
+            ),
             const BtnShip(),
-            Btn2(),
-            SizedBox(height: 10.sp,),
+            const Btn2(),
+            SizedBox(
+              height: 10.sp,
+            ),
             Container(
               margin: const EdgeInsets.only(left: 10, right: 10),
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Ưu đãi khủng',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 20),
                   ),
-                  Text(
-                    'Xem thưc đơn',
-                    style: TextStyle(color: Colors.black, fontSize: 12),
+                  TextButton(
+                    onPressed: () {
+                      controller.onPressSeeMenu();
+                    },
+                    child: const Text(
+                      'Xem thưc đơn',
+                      style: TextStyle(color: Colors.black, fontSize: 12),
+                    ),
                   ),
                 ],
               ),
@@ -73,9 +92,16 @@ class MainScreen extends GetView<MainScreenController> {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Container(
+                    return InkWell(
+                      child: Container(
                         margin: const EdgeInsets.all(8),
-                        child: Image.asset("assets/Pizza/Pizza_Gap_Doi_Nhan_Phu_Hai_San_Xot_Pesto.jpg"));
+                        child: Image.network(
+                            'https://thuthuatnhanh.com/wp-content/uploads/2019/12/anh-anime-dep-de-thuong.jpg'),
+                      ),
+                      onTap: (){
+                        controller.onPressCombo(index);
+                      },
+                    );
                   }),
             )
           ],

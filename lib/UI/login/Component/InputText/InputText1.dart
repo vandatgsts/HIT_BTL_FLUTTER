@@ -1,7 +1,8 @@
+import 'package:btl_flutter/controller/login_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-class InputText1 extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController();
+import 'package:get/get.dart';
+class InputText1 extends GetView<LoginScreenController> {
 
   InputText1({super.key});
 
@@ -11,7 +12,7 @@ class InputText1 extends StatelessWidget {
       width: 300.sp,
       height: 40.sp,
       child: TextField(
-        controller: emailController,
+        controller: controller.emailController,
         textAlign: TextAlign.left,
         style: const TextStyle(
           color: Color(0x891c1a1a),

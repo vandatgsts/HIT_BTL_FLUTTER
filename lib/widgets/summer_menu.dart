@@ -1,9 +1,9 @@
-import 'package:btl_flutter/controller/home_page_controller.dart';
+import 'package:btl_flutter/controller/menu_controller.dart' as menu;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class SummerMenu extends GetView<HomePageController> {
+class SummerMenu extends GetView<menu.MenuController> {
   final TextEditingController tex1 = TextEditingController();
   final TextEditingController tex2 = TextEditingController();
 

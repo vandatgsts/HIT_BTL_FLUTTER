@@ -1,4 +1,5 @@
-import 'package:btl_flutter/controller/home_page_controller.dart';
+import 'package:btl_flutter/AppRouter/AppRouter.dart';
+import 'package:btl_flutter/controller/menu_controller.dart' as menu;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ import '../widgets/thucuong.dart';
 import 'package:get/get.dart';
 
 
-class MenuScreen extends GetView<HomePageController>{
+class MenuScreen extends GetView<menu.MenuController>{
   const MenuScreen({super.key});
 
   @override
@@ -25,10 +26,7 @@ class MenuScreen extends GetView<HomePageController>{
       length: 11,
       child: Scaffold(
           appBar: AppBar(
-            leading: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-            ),
+            leading: const SizedBox(),
             centerTitle: true,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,

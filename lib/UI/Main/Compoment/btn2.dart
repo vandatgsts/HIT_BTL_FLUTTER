@@ -14,9 +14,7 @@ class Btn2 extends GetView<MainScreenController> {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () async {
-        Position currentPosition = await getCurrentPosition(context);
-        Get.toNamed(AppRouter.mapScreen,
-            arguments: {'myLocation': currentPosition});
+       controller.onPressCallGoogleMap();
       },
       child: Container(
         width: Get.width,
@@ -48,28 +46,4 @@ class Btn2 extends GetView<MainScreenController> {
     );
   }
 
-  Future<Position> getCurrentPosition(BuildContext context) async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // showErrorDialog(context, StringConstants.errorLocation01.tr);
-      return Future.error({'code': 1, 'message': 'lõi'});
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // showErrorDialog(context, StringConstants.errorLocation02.tr);
-        return Future.error({'code': 2, 'message': 'Loi'});
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error({'code': 2, 'message': 'Loi'});
-    }
-    return await Geolocator.getCurrentPosition();
-  }
 }

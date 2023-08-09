@@ -1,3 +1,4 @@
+import 'package:btl_flutter/call_API/post_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,10 +17,10 @@ class ForgotPassWordController extends GetxController{
 
   void statusConfirmEmail(){
     isLoading.value=true;
+    PostAPI.forgotPassword(inputEmailControler.text);
     Future.delayed(Duration(seconds: 3), () {
       // Sau khi chờ xong, đặt giá trị của statusSendPass thành true
       statusSendPass.value = true;
-
       // Đồng thời, tắt trạng thái "loading"
       isLoading.value = false;
     });
