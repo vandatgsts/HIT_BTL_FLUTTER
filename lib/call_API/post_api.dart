@@ -1,7 +1,11 @@
 import 'dart:convert';
 
+import 'package:btl_flutter/call_API/get_api.dart';
+import 'package:btl_flutter/controller/AppControler.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../Data/Userlogin.dart';
 
 class PostAPI{
   static String apiBase='http://207.148.118.106:8080/';
@@ -20,6 +24,12 @@ class PostAPI{
 
 
     if (response.statusCode == 200) {
+      final responseData = json.decode(response.body)["data"];
+      // print(responseData);
+      final accessToken = AccessToken.fromJson(responseData);
+      print(accessToken.accessToken);
+      Get.find<AppControleer>().currentUser =await GetApi.getCurrentUser(accessToken.accessToken);
+      print(Get.find<AppControleer>().currentUser?.userName);
       return true;
 
     } else {

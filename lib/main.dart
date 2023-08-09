@@ -14,7 +14,7 @@ void main(){
       builder: (context, widget) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         initialBinding: AppBinding(),
-        initialRoute: AppRouter.stateMainScreen,
+        initialRoute: AppRouter.login,
         defaultTransition: Transition.fade,
         getPages: AppPage.pages,
         // supportedLocales: AppConstant.availableLocales,

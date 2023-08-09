@@ -59,7 +59,7 @@ class DiscoutScreen extends GetView<DiscountController> {
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(5.sp)),
                   child: Text(
-                    '3000',
+                    controller.user.point.toString(),
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 16.sp,
@@ -69,16 +69,20 @@ class DiscoutScreen extends GetView<DiscountController> {
               )
             ],
           ),
+          Obx(() =>
           Expanded(
             child: ListView.builder(
-              shrinkWrap: true,
+                shrinkWrap: true,
                 itemCount: controller.listProduct.length,
                 itemBuilder: (context, index) {
                   return Container(
+                      height: 70.sp,
+                      width: Get.width,
                       margin: EdgeInsets.all(5.sp),
                       child: ItemList(controller.listProduct.value[index]));
                 }),
-          )
+          ),
+          ),
         ],
       ),
     );
@@ -93,30 +97,39 @@ class ItemList extends GetView<DiscountController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return ListTile(
-      leading: Expanded(child: AppImageWidget.network(path: product.image,fit: BoxFit.fitHeight,)),
-      title: Text(
-        'Đổi 1 ${product.productName}',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
+    return Row(
+      children: [
+        AppImageWidget.network(
+          path: product.image,
+          height: 50.sp,
         ),
-      ),
-      trailing: Container(
-        color: Colors.green,
-        child: TextButton(
-          onPressed: () {},
-          child: Text(
-            product.point.toString(),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
+        SizedBox(
+          width: 10.sp,
+        ),
+        Text(
+          'Đổi 1 ${product.productName}',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Spacer(),
+        Container(
+          color: Colors.green,
+          child: TextButton(
+            onPressed: () {},
+            child: Text(
+              product.point.toString(),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

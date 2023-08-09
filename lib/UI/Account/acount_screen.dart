@@ -106,7 +106,7 @@ class AccountScreen extends GetView<AccountController> {
                     ),
                   ),
                   Text(
-                    'Xin chao ${controller.user.userName}',
+                    'Xin chao ${controller.user?.userName}',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.black,
@@ -130,12 +130,12 @@ class AccountScreen extends GetView<AccountController> {
                 children: [
                   Row(
                     children: [
-                      Text('name: ${controller.user.fullName}'),
+                      Text('name: ${controller.user?.fullName}'),
                     ],
                   ),
                   Row(
                     children: [
-                      Text('sdt: ${controller.user.phoneNumber}'),
+                      Text('sdt: ${controller.user?.phoneNumber}'),
                     ],
                   ),
                 ],

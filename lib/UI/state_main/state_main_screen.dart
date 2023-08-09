@@ -2,8 +2,6 @@ import 'package:btl_flutter/controller/state_main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../login/Component/Logo/Logo.dart';
-
 class StateMainScreen extends GetView<StateMainController>{
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,7 @@ class StateMainScreen extends GetView<StateMainController>{
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school, color: Colors.grey),
-            label: 'Giảm giá',
+            label: 'Đổi điểm',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings, color: Colors.grey),
