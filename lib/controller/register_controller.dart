@@ -2,21 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:email_validator/email_validator.dart';
 
-class RegisterController extends GetxController{
+class RegisterController extends GetxController {
   final formKey = GlobalKey<FormState>();
   final TextEditingController name = TextEditingController();
   final TextEditingController userName = TextEditingController();
   final TextEditingController dateController = TextEditingController();
   final TextEditingController passWordcontroller = TextEditingController();
   final TextEditingController confirmPassWordController =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController phoneNumber = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController addressController= TextEditingController();
+  final TextEditingController addressController = TextEditingController();
 
   String dropdownValue = "Khác";
   RxBool isVisible = false.obs;
-  bool isVisibleConfirm = false;
+  RxBool isVisibleConfirm = false.obs;
   RxBool isSuccess = false.obs;
   RxBool firsValue = false.obs;
 
@@ -24,6 +24,7 @@ class RegisterController extends GetxController{
   bool hasPasswordOneNumber = false;
   bool hasUpperCase = false;
   bool hasSpecialCharacters = false;
+
   /// init, khi khoi ta
   /// ready dang chay
   /// close
@@ -51,6 +52,7 @@ class RegisterController extends GetxController{
       }
     }
   }
+
   void validateEmail() {
     final bool isValid = EmailValidator.validate(emailController.text.trim());
     // if (!isValid) {

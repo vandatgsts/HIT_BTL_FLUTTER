@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/combo_kidsbox.dart';
 import '../widgets/combo_limo_combo.dart';
-import '../widgets/combo_mua1duoc3.dart';
+import '../widgets/combo_bogo.dart';
 import '../widgets/combo_mybox.dart';
 import '../widgets/combo_vihe.dart';
 import '../widgets/menu49k.dart';
@@ -95,10 +95,10 @@ class MenuScreen extends GetView<menu.MenuController>{
                             SummerMenu(),
                             ViHe(),
                             KidsBox(),
-                            Mua1Duoc3(),
-                            MyBox(),
-                            LIMO(),
-                            Pizza(),
+                            BoGoScreen(),
+                            MyBoxScreen(),
+                            ComboAndLiMoScreen(),
+                            PizzaScreen(),
                             MyYvaCom(),
                             MonKhaiVi(),
                             ThucUong(),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Pizza extends StatefulWidget {
-  const Pizza({super.key});
+class PizzaScreen extends StatefulWidget {
+  const PizzaScreen({super.key});
 
   @override
-  State<Pizza> createState() => _PizzaState();
+  State<PizzaScreen> createState() => _PizzaScreenState();
 }
 
-class _PizzaState extends State<Pizza> {
+class _PizzaScreenState extends State<PizzaScreen> {
   String dropdownValue1 = 'Nhỏ';
   String dropdownValue2 = 'Đế Giòn Xốp(Nhỏ)';
   @override

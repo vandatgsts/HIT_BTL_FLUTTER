@@ -1,24 +1,23 @@
-
-import 'package:btl_flutter/CallAPI/Network/newcombo_network.dart';
 import 'package:flutter/material.dart';
-import '../CallAPI/Contructor/newcombo.dart';
+import '../CallAPI/Contructor/bogo.dart';
+import '../CallAPI/Network/bogo_network.dart';
 import '../detail/vihe_detail_screen.dart';
 
-class ComboAndLiMoScreen extends StatefulWidget {
-  const ComboAndLiMoScreen({super.key});
+class BoGoScreen extends StatefulWidget {
+  const BoGoScreen({super.key});
 
   @override
-  State<ComboAndLiMoScreen> createState() => _ComboAndLiMoScreenState();
+  State<BoGoScreen> createState() => _BoGoScreenState();
 }
 
-class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
-  var limoData = <NewCB>[];
+class _BoGoScreenState extends State<BoGoScreen> {
+  var bogoData = <BOGO>[];
   @override
   void initState() {
     super.initState();
-    NetworkRequestNewComBo.fetchNewCB().then((dataFromServer) {
+    NetworkRequestBogo.fetchBogo().then((dataFromServer) {
       setState(() {
-        limoData = dataFromServer;
+        bogoData = dataFromServer;
       });
     });
   }
@@ -28,7 +27,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
       children: [
         Expanded(
             child: ListView.builder(
-                itemCount: limoData.length,
+                itemCount: bogoData.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
@@ -49,7 +48,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
                               topLeft: Radius.circular(6),
                               topRight: Radius.circular(6)),
                           child: SizedBox.fromSize(
-                              child: Image.network('${limoData[index].image}')),
+                              child: Image.network('${bogoData[index].image}')),
                         ),
                         Container(
                           padding: const EdgeInsets.only(
@@ -60,7 +59,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
                                 Expanded(
                                   flex: 4,
                                   child: Text(
-                                    "${limoData[index].name}",
+                                    "${bogoData[index].name}",
                                     style: const TextStyle(
                                         fontSize: 20,
                                         color: Colors.black,
@@ -91,7 +90,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
                               ],
                             ),
                             // Text(
-                            //   "${limoData[index].description}",
+                            //   "${bogoData[index].description}",
                             //   style:
                             //       TextStyle(color: Colors.black, fontSize: 12),
                             // ),
@@ -111,7 +110,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                          "${limoData[index].price} VND",
+                                          "${bogoData[index].price} VND",
                                           style: const TextStyle(
                                               fontSize: 18,
                                               color: Colors.red,

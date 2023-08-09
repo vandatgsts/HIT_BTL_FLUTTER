@@ -359,41 +359,43 @@ class RegisterScreen extends GetView<RegisterController> {
                   )
                 ],
               ),
-              TextFormField(
-                controller: controller.confirmPassWordController,
-                obscureText: controller.isVisibleConfirm,
-                decoration: InputDecoration(
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        {
-                          controller.isVisibleConfirm =
-                              !controller.isVisibleConfirm;
-                        }
-                      },
-                      icon: controller.isVisibleConfirm
-                          ? const Icon(
-                              Icons.visibility,
-                              color: Colors.black,
-                            )
-                          : const Icon(
-                              Icons.visibility_off,
-                              color: Colors.grey,
-                            ),
-                    ),
-                    hintText: "Xác nhận mật khẩu",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide())),
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return "Xác nhận mật khẩu của bạn";
-                  }
-                  if (controller.passWordcontroller.text !=
-                      controller.confirmPassWordController.text) {
-                    return "Mật khẩu không khớp";
-                  }
-                  return null;
-                },
+              Obx(()=>
+                 TextFormField(
+                  controller: controller.confirmPassWordController,
+                  obscureText: controller.isVisibleConfirm.value,
+                  decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          {
+                            controller.isVisibleConfirm.value =
+                                !controller.isVisibleConfirm.value;
+                          }
+                        },
+                        icon: controller.isVisibleConfirm.value
+                            ? const Icon(
+                                Icons.visibility,
+                                color: Colors.black,
+                              )
+                            : const Icon(
+                                Icons.visibility_off,
+                                color: Colors.grey,
+                              ),
+                      ),
+                      hintText: "Xác nhận mật khẩu",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide())),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Xác nhận mật khẩu của bạn";
+                    }
+                    if (controller.passWordcontroller.text !=
+                        controller.confirmPassWordController.text) {
+                      return "Mật khẩu không khớp";
+                    }
+                    return null;
+                  },
+                ),
               ),
             ]),
           )
