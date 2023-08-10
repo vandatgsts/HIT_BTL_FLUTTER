@@ -1,6 +1,7 @@
 import 'package:btl_flutter/AppRouter/AppRouter.dart';
 import 'package:btl_flutter/UI/Main/Screen/map_screen.dart';
 import 'package:btl_flutter/controller/main_screen_controller.dart';
+import 'package:btl_flutter/controller/state_main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:geolocator/geolocator.dart';
@@ -14,7 +15,7 @@ class Btn2 extends GetView<MainScreenController> {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () async {
-       controller.onPressCallGoogleMap();
+      Get.find<StateMainController>().selectedIndex.value=1;
       },
       child: Container(
         width: Get.width,
