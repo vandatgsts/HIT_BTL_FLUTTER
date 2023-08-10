@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../CallAPI/Contructor/bogo.dart';
-import '../CallAPI/Network/bogo_network.dart';
+import '../CallAPI/Model/bogo.dart';
+import '../CallAPI/Network/network.dart';
 import '../detail/vihe_detail_screen.dart';
 
 class BoGoScreen extends StatefulWidget {
@@ -11,13 +11,13 @@ class BoGoScreen extends StatefulWidget {
 }
 
 class _BoGoScreenState extends State<BoGoScreen> {
-  var bogoData = <BOGO>[];
+  var getData = <BOGO>[];
   @override
   void initState() {
     super.initState();
-    NetworkRequestBogo.fetchBogo().then((dataFromServer) {
+    NetworkRequest.fetchBogo().then((dataFromServer) {
       setState(() {
-        bogoData = dataFromServer;
+        getData = dataFromServer;
       });
     });
   }
@@ -27,7 +27,7 @@ class _BoGoScreenState extends State<BoGoScreen> {
       children: [
         Expanded(
             child: ListView.builder(
-                itemCount: bogoData.length,
+                itemCount: getData.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
@@ -48,7 +48,7 @@ class _BoGoScreenState extends State<BoGoScreen> {
                               topLeft: Radius.circular(6),
                               topRight: Radius.circular(6)),
                           child: SizedBox.fromSize(
-                              child: Image.network('${bogoData[index].image}')),
+                              child: Image.network('${getData[index].image}')),
                         ),
                         Container(
                           padding: const EdgeInsets.only(
@@ -59,7 +59,7 @@ class _BoGoScreenState extends State<BoGoScreen> {
                                 Expanded(
                                   flex: 4,
                                   child: Text(
-                                    "${bogoData[index].name}",
+                                    "${getData[index].name}",
                                     style: const TextStyle(
                                         fontSize: 20,
                                         color: Colors.black,
@@ -110,7 +110,7 @@ class _BoGoScreenState extends State<BoGoScreen> {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                          "${bogoData[index].price} VND",
+                                          "${getData[index].price} VND",
                                           style: const TextStyle(
                                               fontSize: 18,
                                               color: Colors.red,

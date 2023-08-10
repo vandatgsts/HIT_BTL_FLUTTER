@@ -5,10 +5,10 @@ class Pizza {
   String? image;
   String? description;
   String? price;
-  Null cakeBase;
-  Null cakeSize;
-  Null cakeBaseId;
-  Null cakeSizeId;
+  Null? cakeBase;
+  Null? cakeSize;
+  Null? cakeBaseId;
+  Null? cakeSizeId;
   int? point;
 
   Pizza(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../CallAPI/Contructor/post.dart';
-import '../CallAPI/Network/vihe_network.dart';
+import '../CallAPI/Model/bogo.dart';
+import '../CallAPI/Network/network.dart';
 import '../detail/vihe_detail_screen.dart';
 
 class ViHe extends StatefulWidget {
@@ -12,13 +11,13 @@ class ViHe extends StatefulWidget {
 }
 
 class _ViHeState extends State<ViHe> {
-  var postData = <Post>[];
+  var getData = <BOGO>[];
   @override
   void initState() {
     super.initState();
-    NetworkRequestViHe.fetchPost().then((dataFromServer) {
+    NetworkRequest.fetchViHe().then((dataFromServer) {
       setState(() {
-        postData = dataFromServer;
+        getData = dataFromServer;
       });
     });
   }
@@ -28,7 +27,7 @@ class _ViHeState extends State<ViHe> {
       children: [
         Expanded(
             child: ListView.builder(
-                itemCount: postData.length,
+                itemCount: getData.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
@@ -49,7 +48,7 @@ class _ViHeState extends State<ViHe> {
                               topLeft: Radius.circular(6),
                               topRight: Radius.circular(6)),
                           child: SizedBox.fromSize(
-                              child: Image.network('${postData[index].image}')),
+                              child: Image.network('${getData[index].image}')),
                         ),
                         Container(
                           padding: const EdgeInsets.only(
@@ -60,7 +59,7 @@ class _ViHeState extends State<ViHe> {
                                 Expanded(
                                   flex: 4,
                                   child: Text(
-                                    "${postData[index].name}",
+                                    "${getData[index].name}",
                                     style: const TextStyle(
                                         fontSize: 20,
                                         color: Colors.black,
@@ -111,7 +110,7 @@ class _ViHeState extends State<ViHe> {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                          "${postData[index].price} VND",
+                                          "${getData[index].price} VND",
                                           style: const TextStyle(
                                               fontSize: 18,
                                               color: Colors.red,
