@@ -15,7 +15,7 @@ class _KidsBoxState extends State<KidsBox> {
   @override
   void initState() {
     super.initState();
-    NetworkRequest.fetchKids().then((dataFromServer) {
+    NetworkRequest.fetchBogo(7).then((dataFromServer) {
       setState(() {
         getData = dataFromServer;
       });

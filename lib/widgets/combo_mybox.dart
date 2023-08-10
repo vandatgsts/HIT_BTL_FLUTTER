@@ -31,13 +31,13 @@ class _MyBoxScreenState extends State<MyBoxScreen> {
                 itemCount: getData.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+                    margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6),
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                              color: Color.fromARGB(255, 159, 159, 159)
+                              color: const Color.fromARGB(255, 159, 159, 159)
                                   .withOpacity(0.8),
                               spreadRadius: 1,
                               blurRadius: 4)
@@ -75,11 +75,11 @@ class _MyBoxScreenState extends State<MyBoxScreen> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    ViHeDetailScreen()));
+                                                    const ViHeDetailScreen()));
                                       },
                                       style: ElevatedButton.styleFrom(
                                         primary:
-                                            Color.fromARGB(255, 249, 190, 12),
+                                            const Color.fromARGB(255, 249, 190, 12),
                                       ),
                                       child: const Text(
                                         "NEW",
@@ -127,12 +127,12 @@ class _MyBoxScreenState extends State<MyBoxScreen> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      ViHeDetailScreen()));
+                                                      const ViHeDetailScreen()));
                                         },
                                         style: ElevatedButton.styleFrom(
                                             primary: const Color.fromARGB(
                                                 255, 41, 128, 42),
-                                            minimumSize: Size(45, 40)),
+                                            minimumSize: const Size(45, 40)),
                                         child: const Text(
                                           "Chọn",
                                           style: TextStyle(

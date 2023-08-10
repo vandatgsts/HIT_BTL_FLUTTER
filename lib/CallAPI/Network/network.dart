@@ -5,9 +5,10 @@ import '../Model/bogo.dart';
 
 
 class NetworkRequest {
+  static const String url = 'http://207.148.118.106:8080/combo/category/';
   static const String urlnewcb = 'http://207.148.118.106:8080/combo/category/10';
   static const String urlmybox = 'http://207.148.118.106:8080/combo/category/9';
-  static const String url = 'http://207.148.118.106:8080/combo/category/8';
+//  static const String url = 'http://207.148.118.106:8080/combo/category/8';
   static const String urlkids = 'http://207.148.118.106:8080/combo/category/7';
   static const String urlvihe = 'http://207.148.118.106:8080/combo/category/6';
   static const String urlsubpizza='http://207.148.118.106:8080/combo/products?comboId=11&categoryId=2';
@@ -17,16 +18,17 @@ class NetworkRequest {
     return bogo;
   }
 
-  static Future<List<BOGO>> fetchBogo() async {
+  static Future<List<BOGO>> fetchBogo(int id) async {
+    String linkAPI=url+id.toString();
     try {
       final header = {
         'Content-type': 'application/json',
         'Accept': 'application/json',
       };
-      final res = await http.get(Uri.parse(url), headers: header);
+      final res = await http.get(Uri.parse(linkAPI), headers: header);
       final response = jsonDecode(utf8.decode(res.bodyBytes))["data"];
 
-      print("hehi" + res.statusCode.toString());
+      print("hehi${res.statusCode}");
       
       if (res.statusCode == 200) {
         
@@ -49,7 +51,7 @@ class NetworkRequest {
       final res = await http.get(Uri.parse(urlkids), headers: header);
       final response = jsonDecode(utf8.decode(res.bodyBytes))["data"];
 
-      print("hehi" + res.statusCode.toString());
+      print("hehi${res.statusCode}");
       
       if (res.statusCode == 200) {
         
@@ -63,6 +65,7 @@ class NetworkRequest {
       throw Exception("Error:$e");
     }
   }
+
   static Future<List<BOGO>> fetchMyBox() async {
     try {
       final header = {
@@ -72,7 +75,7 @@ class NetworkRequest {
       final res = await http.get(Uri.parse(urlmybox), headers: header);
       final response = jsonDecode(utf8.decode(res.bodyBytes))["data"];
 
-      print("hehi" + res.statusCode.toString());
+      print("hehi${res.statusCode}");
       
       if (res.statusCode == 200) {
         
@@ -95,7 +98,7 @@ class NetworkRequest {
       final res = await http.get(Uri.parse(urlnewcb), headers: header);
       final response = jsonDecode(utf8.decode(res.bodyBytes))["data"];
 
-      print("hehi" + res.statusCode.toString());
+      print("hehi${res.statusCode}");
       
       if (res.statusCode == 200) {
         
@@ -119,7 +122,7 @@ class NetworkRequest {
       final res = await http.get(Uri.parse(urlvihe), headers: header);
       final response = jsonDecode(utf8.decode(res.bodyBytes))["data"];
 
-      print("hehi" + res.statusCode.toString());
+      print("hehi${res.statusCode}");
       
       if (res.statusCode == 200) {
         
@@ -143,7 +146,7 @@ class NetworkRequest {
       final res = await http.get(Uri.parse(urlsubpizza), headers: header);
       final response = jsonDecode(utf8.decode(res.bodyBytes))["data"];
 
-      print("hehi" + res.statusCode.toString());
+      print("hehi${res.statusCode}");
       
       if (res.statusCode == 200) {
         

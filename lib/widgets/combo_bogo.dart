@@ -15,7 +15,7 @@ class _BoGoScreenState extends State<BoGoScreen> {
   @override
   void initState() {
     super.initState();
-    NetworkRequest.fetchBogo().then((dataFromServer) {
+    NetworkRequest.fetchBogo(6).then((dataFromServer) {
       setState(() {
         getData = dataFromServer;
       });

@@ -12,7 +12,7 @@ class Choose extends StatefulWidget {
 
 class _ChooseState extends State<Choose> {
 
-  var getData = <BOGO>[];
+  var getData = [];
   List<String> itemList = [
     'Đế Giòn Xốp',
     'Đế Kéo Tay Truyền Thống',

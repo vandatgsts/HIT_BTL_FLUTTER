@@ -8,7 +8,7 @@ import '../Model/pizza.dart';
 
 
 class NetworkRequestPizza {
-  static const String url = 'http://207.148.118.106:8080/combo/products?comboId=6&categoryId=2';
+  static const String baseAPI='http://207.148.118.106:8080/';
   static const String urlpizza='http://207.148.118.106:8080/combo/products?comboId=11&categoryId=2';
   static List<Pizza> parsePizza(String responseBody) {
     var list = json.decode(responseBody)["data"] as List<dynamic>;
@@ -16,7 +16,8 @@ class NetworkRequestPizza {
     return piza;
   }
 
-  static Future<List<Pizza>> fetchPizza() async {
+  static Future<List<Pizza>> fetchPizza(int id1,int id2) async {
+    String url = '${baseAPI}combo/products?comboId=$id1&categoryId=$id2';
     try {
       final header = {
         'Content-type': 'application/json',
@@ -25,7 +26,6 @@ class NetworkRequestPizza {
       final res = await http.get(Uri.parse(url), headers: header);
       final response = jsonDecode(utf8.decode(res.bodyBytes))["data"];
 
-      print("hehi" + res.statusCode.toString());
       
       if (res.statusCode == 200) {
         
