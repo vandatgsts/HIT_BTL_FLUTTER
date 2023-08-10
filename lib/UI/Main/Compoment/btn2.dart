@@ -1,11 +1,8 @@
-import 'package:btl_flutter/AppRouter/AppRouter.dart';
-import 'package:btl_flutter/UI/Main/Screen/map_screen.dart';
 import 'package:btl_flutter/controller/main_screen_controller.dart';
 import 'package:btl_flutter/controller/state_main_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class Btn2 extends GetView<MainScreenController> {
   const Btn2({super.key});
