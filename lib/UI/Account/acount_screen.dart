@@ -138,6 +138,11 @@ class AccountScreen extends GetView<AccountController> {
                       Text('Sdt: ${controller.user?.phoneNumber}'),
                     ],
                   ),
+                  Row(
+                    children: [
+                      Text('Email: ${controller.user?.email}'),
+                    ],
+                  ),
                 ],
               ),
             ),

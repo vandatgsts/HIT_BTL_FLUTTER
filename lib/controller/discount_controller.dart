@@ -12,7 +12,6 @@ class DiscountController extends GetxController{
     // TODO: implement onInit
     user=Get.find<AppControleer>().currentUser;
     listProduct.value= await GetApi.getProducts();
-
     super.onInit();
   }
 }

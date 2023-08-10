@@ -7,8 +7,6 @@ class SummerMenu extends GetView<menu.MenuController> {
   final TextEditingController tex1 = TextEditingController();
   final TextEditingController tex2 = TextEditingController();
 
-  String dropdownValue1 = 'Nhỏ';
-  String dropdownValue2 = 'Đế Giòn Xốp';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,23 +106,28 @@ class SummerMenu extends GetView<menu.MenuController> {
                                     spreadRadius: 1,
                                     blurRadius: 2)
                               ]),
-                          child: DropdownButton<String>(
-                            value: dropdownValue1,
-                            isExpanded: true,
-                            underline: Container(),
-                            items: <String>['Nhỏ', 'Vừa', 'Lớn']
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                  style: const TextStyle(fontSize: 15),
-                                ),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              dropdownValue1 = newValue!;
-                            },
+                          child: Obx(
+                            () => DropdownButton<String>(
+                              value: controller.dropdownValue1.value,
+                              isExpanded: true,
+                              underline: Container(),
+                              items: <String>[
+                                'Nhỏ',
+                                'Vừa',
+                                'Lớn'
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: const TextStyle(fontSize: 15),
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                controller.dropdownValue1.value = newValue!;
+                              },
+                            ),
                           ),
                         ),
                         Row(
@@ -157,26 +160,28 @@ class SummerMenu extends GetView<menu.MenuController> {
                                     spreadRadius: 1,
                                     blurRadius: 2)
                               ]),
-                          child: DropdownButton<String>(
-                            value: dropdownValue2,
-                            isExpanded: true,
-                            underline: Container(),
-                            items: <String>[
-                              'Đế Giòn Xốp',
-                              'Đế Kéo Tay Truyền Thống',
-                              'Đế Mỏng Giòn'
-                            ].map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                  style: TextStyle(fontSize: 15.sp),
-                                ),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              dropdownValue2 = newValue!;
-                            },
+                          child: Obx(
+                            () => DropdownButton<String>(
+                              value: controller.dropdownValue2.value,
+                              isExpanded: true,
+                              underline: Container(),
+                              items: <String>[
+                                'Đế Giòn Xốp',
+                                'Đế Kéo Tay Truyền Thống',
+                                'Đế Mỏng Giòn'
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: TextStyle(fontSize: 15.sp),
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                controller.dropdownValue2.value = newValue!;
+                              },
+                            ),
                           ),
                         ),
                         Row(
