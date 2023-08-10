@@ -50,7 +50,7 @@ class AccountScreen extends GetView<AccountController> {
           color: Colors.black,
           onPressed: () => Get.back(),
         ),
-        title: Logo(),
+        title: const Logo(),
       ),
       body: Column(
         children: [
@@ -68,7 +68,7 @@ class AccountScreen extends GetView<AccountController> {
           ),
       Obx(
             () => AnimatedSwitcher(
-          duration: Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 500),
           switchInCurve: Curves.easeInOut,
           transitionBuilder: (child, animation) {
             final rotateTween = Tween<double>(begin: 1, end: 0);
@@ -81,7 +81,7 @@ class AccountScreen extends GetView<AccountController> {
                 return Transform(
                   alignment: Alignment.center,
                   transform: Matrix4.rotationY(radians),
-                  origin: Offset(0.0, 0.0),
+                  origin: const Offset(0.0, 0.0),
                   child: child,
                 );
               },
@@ -90,7 +90,7 @@ class AccountScreen extends GetView<AccountController> {
           },
           child: !controller.viewInfor.value
               ? InkWell(
-            key: ValueKey('inkWell1'),
+            key: const ValueKey('inkWell1'),
             child: Container(
               height: 100.sp,
               margin: EdgeInsets.all(10.sp),
@@ -100,7 +100,7 @@ class AccountScreen extends GetView<AccountController> {
                     height: 70.sp,
                     width: 70.sp,
                     margin: EdgeInsets.all(15.sp),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.red,
                     ),
@@ -121,7 +121,7 @@ class AccountScreen extends GetView<AccountController> {
             },
           )
               : InkWell(
-            key: ValueKey('inkWell2'),
+            key: const ValueKey('inkWell2'),
             child: Container(
               height: 100.sp,
               padding: EdgeInsets.all(20.sp),
@@ -130,12 +130,12 @@ class AccountScreen extends GetView<AccountController> {
                 children: [
                   Row(
                     children: [
-                      Text('name: ${controller.user?.fullName}'),
+                      Text('Name: ${controller.user?.fullName}'),
                     ],
                   ),
                   Row(
                     children: [
-                      Text('sdt: ${controller.user?.phoneNumber}'),
+                      Text('Sdt: ${controller.user?.phoneNumber}'),
                     ],
                   ),
                 ],
