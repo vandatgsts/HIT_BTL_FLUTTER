@@ -7,6 +7,7 @@ class User {
   String gender;
   String address;
   String birthday;
+  int point;
 
   User({
     required this.fullName,
@@ -17,12 +18,13 @@ class User {
     required this.gender,
     required this.address,
     required this.birthday,
+    required this.point,
   });
 
   Map<String, dynamic> toJson() {
     return {
       'fullName': fullName,
-      'userName': userName,
+      'username': userName,
       'password': password,
       'email': email,
       'phoneNumber': phoneNumber,
@@ -34,13 +36,14 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       fullName: json['fullName'],
-      userName: json['userName'],
+      userName: json['username'],
       password: json['password'],
       email: json['email'],
       phoneNumber: json['phoneNumber'],
       gender: json['gender'],
       address: json['address'],
       birthday: json['birthday'],
+      point: json['point']
     );
   }
 }

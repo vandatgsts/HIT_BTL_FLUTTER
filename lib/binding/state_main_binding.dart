@@ -12,7 +12,6 @@ class StateMainBinding extends Bindings{
     // TODO: implement dependencies
     Get.put(StateMainController());
     Get.lazyPut(() => SettingController());
-
     Get.lazyPut(()=>MainScreenController());
     Get.lazyPut(() => MenuController());
     Get.lazyPut(() => DiscountController());
