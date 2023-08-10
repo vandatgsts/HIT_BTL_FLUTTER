@@ -1,6 +1,11 @@
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
+import 'package:btl_flutter/AppRouter/AppRouter.dart';
+import 'package:btl_flutter/call_API/post_api.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../Data/User.dart';
 
 class RegisterController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -14,7 +19,7 @@ class RegisterController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
 
-  String dropdownValue = "Khác";
+  RxString gennerValue = "Khác".obs;
   RxBool isVisible = false.obs;
   RxBool isVisibleConfirm = false.obs;
   RxBool isSuccess = false.obs;
@@ -25,6 +30,7 @@ class RegisterController extends GetxController {
   bool hasUpperCase = false;
   bool hasSpecialCharacters = false;
 
+  String message='';
   /// init, khi khoi ta
   /// ready dang chay
   /// close
@@ -59,5 +65,50 @@ class RegisterController extends GetxController {
     //     ScaffoldMessenger.of(context).showSnackBar(
     //       const SnackBar(content: Text("Email không đúng định dạng")));
     // }
+  }
+
+  void onPressRegister() async {
+    if(!isPasswordEightCharacters.value || !hasPasswordOneNumber ||!hasUpperCase || !hasSpecialCharacters){
+      message="Vui lòng kiểm tra lại thông tin đăng nhập";
+      return;
+    }
+    User user = User(
+      fullName: name.text,
+      userName: userName.text,
+      password: passWordcontroller.text,
+      gender: gennerValue.value,
+      address: addressController.text,
+      birthday: dateController.text,
+      point: 0,
+      phoneNumber: phoneNumber.text,
+      email: emailController.text,
+    );
+    showUserInfo(user);
+    message = await PostAPI.registerUser(user);
+    if (message.compareTo('Đăng ký thành công') == 0) {
+      clearText();
+      Get.toNamed(AppRouter.login);
+    }
+  }
+
+  void showUserInfo(User user) {
+    print('Full Name: ${user.fullName}');
+    print('Username: ${user.userName}');
+    print('Email: ${user.email}');
+    print('Phone Number: ${user.phoneNumber}');
+    print('Gender: ${user.gender}');
+    print('Address: ${user.address}');
+    print('Birthday: ${user.birthday}');
+  }
+
+  void clearText(){
+    name.clear();
+    userName.clear();
+    phoneNumber.clear();
+    addressController.clear();
+    emailController.clear();
+    dateController.clear();
+    gennerValue.value='khác';
+    passWordcontroller.clear();
   }
 }

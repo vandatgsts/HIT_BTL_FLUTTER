@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:btl_flutter/call_API/get_api.dart';
 import 'package:btl_flutter/controller/AppControler.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../Data/User.dart';
 import '../Data/Userlogin.dart';
 
 class PostAPI{
@@ -40,7 +42,7 @@ class PostAPI{
 
   }
   static Future<void> forgotPassword(String username) async {
-    String forgotPasswordUrl=apiBase+'api/v1/forgot-password';
+    String forgotPasswordUrl='${apiBase}api/v1/forgot-password';
     try {
       // Tạo yêu cầu POST gửi thông tin email cần khôi phục mật khẩu
       var response = await http.post(
@@ -65,4 +67,34 @@ class PostAPI{
       print('Lỗi khi gọi API: $e');
     }
   }
+
+  static Future<String> registerUser(User user) async {
+    final apiUrl = '${apiBase}api/v1/new-user'; // Thay thế bằng URL của API đăng ký
+
+    final userData = {
+      "fullName": user.fullName,
+      "username": user.userName,
+      "password": user.password,
+      "phoneNumber": user.phoneNumber,
+      "email": user.email,
+      "gender": user.gender,
+      "address": user.address,
+      "birthday": user.birthday,
+    };
+
+    final response = await http.post(Uri.parse(apiUrl),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(userData));
+    debugPrint(jsonDecode(response.body)['message']);
+    if (response.statusCode == 200) {
+      return 'Đăng ký thành công';
+      // Xử lý các logic sau khi đăng ký thành công
+    } else {
+      return 'Đăng ký thất bại. Mã trạng thái: ${jsonDecode(response.body)['message']}';
+      // Xử lý các logic sau khi đăng ký thất bại
+    }
+  }
+
 }

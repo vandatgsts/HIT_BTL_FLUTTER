@@ -1,12 +1,12 @@
 import 'package:btl_flutter/AppRouter/AppRouter.dart';
 import 'package:btl_flutter/UI/Widget/app_image_widget.dart';
 import 'package:btl_flutter/res/AppImage.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:intl/intl.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
 import '../../../controller/register_controller.dart';
 
 class RegisterScreen extends GetView<RegisterController> {
@@ -36,7 +36,7 @@ class RegisterScreen extends GetView<RegisterController> {
                   children: [
                     Column(children: [
                       Container(
-                        padding: EdgeInsets.all(6),
+                        padding: const EdgeInsets.all(6),
                         child: const Column(
                           children: [
                             Text(
@@ -83,10 +83,12 @@ class RegisterScreen extends GetView<RegisterController> {
                         onPressed: () {
                           if (controller.formKey.currentState!.validate()) {
                             print("da nhap");
+                            controller.onPressRegister();
+                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(controller.message)));
                           } else {
                             print("Chua nhap");
                           }
-                          controller.validateEmail();
+
                         },
                         child: const Text("Tiếp theo"))
                   ],
@@ -161,13 +163,12 @@ class RegisterScreen extends GetView<RegisterController> {
   Container CheckPassword() {
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(
-            child: Text(
-              "Mật khẩu bao gồm:",
-              style: TextStyle(
-                  fontSize: 15, color: Colors.red, fontWeight: FontWeight.w100),
-            ),
+          const Text(
+            "Mật khẩu bao gồm:",
+            style: TextStyle(
+                fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),
           ),
           Row(
             children: [
@@ -359,8 +360,8 @@ class RegisterScreen extends GetView<RegisterController> {
                   )
                 ],
               ),
-              Obx(()=>
-                 TextFormField(
+              Obx(
+                () => TextFormField(
                   controller: controller.confirmPassWordController,
                   obscureText: controller.isVisibleConfirm.value,
                   decoration: InputDecoration(
@@ -491,7 +492,6 @@ class RegisterScreen extends GetView<RegisterController> {
   }
 
   Container DateAndGender(BuildContext context) {
-    String dropdownValue = "Khác";
     return Container(
       padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
       child: SizedBox(
@@ -529,11 +529,9 @@ class RegisterScreen extends GetView<RegisterController> {
                         lastDate: DateTime(2101));
                     if (pickedDate != null) {
                       String formattedDate =
-                          DateFormat("dd-MM-yyyy").format(pickedDate);
-                      {
-                        controller.dateController.text =
-                            formattedDate.toString();
-                      }
+                          DateFormat("yyyy-dd-MM").format(pickedDate);
+
+                      controller.dateController.text = formattedDate.toString();
                     } else {
                       print("Not select");
                     }
@@ -567,15 +565,14 @@ class RegisterScreen extends GetView<RegisterController> {
                 ],
               ),
               Container(
-                decoration:
-                    BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey,width: 1)),
-                      
-                child: DropdownButton<String>(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey, width: 1)),
+                child: Obx(
+                  () => DropdownButton<String>(
                     isExpanded: true,
                     underline: Container(),
-                    value: controller.dropdownValue,
+                    value: controller.gennerValue.value,
                     items: <String>['Khác', 'Nam', 'Nữ']
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
@@ -587,8 +584,10 @@ class RegisterScreen extends GetView<RegisterController> {
                       );
                     }).toList(),
                     onChanged: (String? newValue) {
-                      dropdownValue = newValue!;
-                    }),
+                      controller.gennerValue.value = newValue!;
+                    },
+                  ),
+                ),
               ),
             ]),
           )
@@ -620,6 +619,7 @@ class RegisterScreen extends GetView<RegisterController> {
             height: 5,
           ),
           TextFormField(
+            controller: controller.userName,
             decoration: InputDecoration(
                 hintText: "amen123",
                 border: OutlineInputBorder(
