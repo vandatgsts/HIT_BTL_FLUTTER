@@ -1,7 +1,7 @@
 
-import 'package:btl_flutter/CallAPI/Network/newcombo_network.dart';
 import 'package:flutter/material.dart';
-import '../CallAPI/Contructor/newcombo.dart';
+import '../CallAPI/Model/bogo.dart';
+import '../CallAPI/Network/network.dart';
 import '../detail/vihe_detail_screen.dart';
 
 class ComboAndLiMoScreen extends StatefulWidget {
@@ -12,13 +12,13 @@ class ComboAndLiMoScreen extends StatefulWidget {
 }
 
 class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
-  var limoData = <NewCB>[];
+    var getData = <BOGO>[];
   @override
   void initState() {
     super.initState();
-    NetworkRequestNewComBo.fetchNewCB().then((dataFromServer) {
+    NetworkRequest.fetchNewCB().then((dataFromServer) {
       setState(() {
-        limoData = dataFromServer;
+        getData= dataFromServer;
       });
     });
   }
@@ -28,7 +28,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
       children: [
         Expanded(
             child: ListView.builder(
-                itemCount: limoData.length,
+                itemCount: getData.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
@@ -49,7 +49,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
                               topLeft: Radius.circular(6),
                               topRight: Radius.circular(6)),
                           child: SizedBox.fromSize(
-                              child: Image.network('${limoData[index].image}')),
+                              child: Image.network('${getData[index].image}')),
                         ),
                         Container(
                           padding: const EdgeInsets.only(
@@ -60,7 +60,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
                                 Expanded(
                                   flex: 4,
                                   child: Text(
-                                    "${limoData[index].name}",
+                                    "${getData[index].name}",
                                     style: const TextStyle(
                                         fontSize: 20,
                                         color: Colors.black,
@@ -111,7 +111,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                          "${limoData[index].price} VND",
+                                          "${getData[index].price} VND",
                                           style: const TextStyle(
                                               fontSize: 18,
                                               color: Colors.red,

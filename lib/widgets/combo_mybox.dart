@@ -1,8 +1,7 @@
 
-import 'package:btl_flutter/CallAPI/Network/mybox_nework.dart';
+import 'package:btl_flutter/CallAPI/Model/bogo.dart';
 import 'package:flutter/material.dart';
-import '../CallAPI/Contructor/mybox.dart';
-import '../CallAPI/Network/vihe_network.dart';
+import '../CallAPI/Network/network.dart';
 import '../detail/vihe_detail_screen.dart';
 
 class MyBoxScreen extends StatefulWidget {
@@ -13,13 +12,13 @@ class MyBoxScreen extends StatefulWidget {
 }
 
 class _MyBoxScreenState extends State<MyBoxScreen> {
-  var myboxData = <MyBox>[];
+  var getData= <BOGO>[];
   @override
   void initState() {
     super.initState();
-    NetworkRequestMyBox.fetchMyBox().then((dataFromServer) {
+    NetworkRequest.fetchMyBox().then((dataFromServer) {
       setState(() {
-        myboxData= dataFromServer;
+        getData= dataFromServer;
       });
     });
   }
@@ -29,7 +28,7 @@ class _MyBoxScreenState extends State<MyBoxScreen> {
       children: [
         Expanded(
             child: ListView.builder(
-                itemCount: myboxData.length,
+                itemCount: getData.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
@@ -50,7 +49,7 @@ class _MyBoxScreenState extends State<MyBoxScreen> {
                               topLeft: Radius.circular(6),
                               topRight: Radius.circular(6)),
                           child: SizedBox.fromSize(
-                              child: Image.network('${myboxData[index].image}')),
+                              child: Image.network('${getData[index].image}')),
                         ),
                         Container(
                           padding: const EdgeInsets.only(
@@ -61,7 +60,7 @@ class _MyBoxScreenState extends State<MyBoxScreen> {
                                 Expanded(
                                   flex: 4,
                                   child: Text(
-                                    "${myboxData[index].name}",
+                                    "${getData[index].name}",
                                     style: const TextStyle(
                                         fontSize: 20,
                                         color: Colors.black,
@@ -112,7 +111,7 @@ class _MyBoxScreenState extends State<MyBoxScreen> {
                                               color: Colors.black),
                                         ),
                                         Text(
-                                          "${myboxData[index].price} VND",
+                                          "${getData[index].price} VND",
                                           style: const TextStyle(
                                               fontSize: 18,
                                               color: Colors.red,

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../CallAPI/Model/bogo.dart';
+import '../CallAPI/Network/network.dart';
+
 class Choose extends StatefulWidget {
   const Choose({super.key});
 
@@ -8,6 +11,8 @@ class Choose extends StatefulWidget {
 }
 
 class _ChooseState extends State<Choose> {
+
+  var getData = <BOGO>[];
   List<String> itemList = [
     'Đế Giòn Xốp',
     'Đế Kéo Tay Truyền Thống',
@@ -16,6 +21,15 @@ class _ChooseState extends State<Choose> {
   String selectedValue = '';
   bool showGridView = false;
   @override
+
+  void initState() {
+    super.initState();
+    NetworkRequest.fetchSubMenu().then((dataFromServer) {
+      setState(() {
+        getData = dataFromServer;
+      });
+    });
+  }
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
@@ -65,7 +79,7 @@ class _ChooseState extends State<Choose> {
                   crossAxisSpacing: 5.0,
                   mainAxisSpacing: 5.0,
                   childAspectRatio: 0.75),
-              itemCount: 8,
+              itemCount: getData.length,
               itemBuilder: (context, index) {
                 return Container(
                   margin: const EdgeInsets.fromLTRB(15, 20, 15, 10),
@@ -87,20 +101,18 @@ class _ChooseState extends State<Choose> {
                               topLeft: Radius.circular(6),
                               topRight: Radius.circular(6)),
                           child: SizedBox.fromSize(
-                            child: Image.asset(
-                              'assets/Pizza/Pizza_Hai_San_Xot_Tieu_Den.jpg',
-                            ),
+                            child: Image.network("${getData[index].image}")
                           ),
                         ),
                         Container(
                           padding: EdgeInsets.fromLTRB(6, 8, 5, 8),
                           child: Column(
                             children: [
-                              const Row(
+                              Row(
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      "Piza Hải Sản Xốt Tiêu Đen",
+                                      "${getData[index].name}",
                                       style: TextStyle(
                                           fontSize: 14,
                                           color: Colors.black,
