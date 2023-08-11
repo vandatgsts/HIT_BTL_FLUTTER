@@ -1,9 +1,11 @@
 import 'package:btl_flutter/CallAPI/Model/bogo.dart';
+import 'package:btl_flutter/controller/cart_controller.dart';
 import 'package:btl_flutter/detail/choose.dart';
 import 'package:btl_flutter/dialog/choose_appetizer.dart';
 import 'package:btl_flutter/dialog/select.dart';
 import 'package:btl_flutter/dialog/select_drink.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ViHeDetailScreen extends StatefulWidget {
   final BOGO bogoItem;
@@ -82,7 +84,14 @@ class _ViHeDetailScreenState extends State<ViHeDetailScreen> {
           
             SizedBox(height: 10,),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  if(!Get.isRegistered<CartController>()){
+                      Get.put(CartController());
+                  }
+                  Get.find<CartController>().listItem.add(
+                   "jkljjj"
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   primary: const Color.fromARGB(255, 41, 128, 42),
                   padding: EdgeInsets.symmetric(

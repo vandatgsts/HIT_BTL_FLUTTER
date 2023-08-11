@@ -1,9 +1,11 @@
 import 'package:btl_flutter/AppRouter/AppRouter.dart';
 import 'package:btl_flutter/cart/cart_screen.dart';
+import 'package:btl_flutter/controller/cart_controller.dart';
 import 'package:btl_flutter/controller/menu_controller.dart' as menu;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../cart/cart.dart';
 import '../widgets/combo_kidsbox.dart';
 import '../widgets/combo_limo_combo.dart';
 import '../widgets/combo_bogo.dart';
@@ -17,8 +19,7 @@ import '../widgets/summer_menu.dart';
 import '../widgets/thucuong.dart';
 import 'package:get/get.dart';
 
-
-class MenuScreen extends GetView<menu.MenuController>{
+class MenuScreen extends GetView<menu.MenuController> {
   const MenuScreen({super.key});
 
   @override
@@ -42,10 +43,15 @@ class MenuScreen extends GetView<menu.MenuController>{
             ),
             actions: [
               Padding(
-                padding:  EdgeInsets.only(right: 20),
+                padding: EdgeInsets.only(right: 20),
                 child: IconButton(
+                  
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ShoppingCartScreen()));
+                  if(!Get.isRegistered<CartController>()){
+                    Get.put(CartController());
+                  }
+                   Get.toNamed(AppRouter.menu);
+
                   },
                   icon: const Icon(
                     CupertinoIcons.cart,
@@ -85,7 +91,7 @@ class MenuScreen extends GetView<menu.MenuController>{
             backgroundColor: Colors.white,
           ),
           backgroundColor: const Color.fromARGB(255, 245, 242, 242),
-          body:  SafeArea(
+          body: SafeArea(
             child: Padding(
               padding: EdgeInsets.only(top: 10),
               child: Column(

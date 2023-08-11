@@ -37,7 +37,7 @@ class _SelectState extends State<Select> {
   @override
   Widget build(BuildContext context) {
     String displayText = selectedProductName.isNotEmpty
-        ? '$selectedProductName - $selectedValue'
+        ? '$selectedProductName +$selectedValue'
         : selectedValue;
 
     return Container(

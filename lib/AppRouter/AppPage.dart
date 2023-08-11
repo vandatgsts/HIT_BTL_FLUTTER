@@ -20,7 +20,9 @@ import 'package:get/get.dart';
 
 import '../UI/change_password/change_pass_screen.dart';
 import '../UI/setting/setting_screen.dart';
+import '../binding/cart_binding.dart';
 import '../binding/register_bingdin.dart';
+import '../cart/cart.dart';
 
 
 class AppPage {
@@ -61,5 +63,9 @@ class AppPage {
         name: AppRouter.changePassScreen,
         page: () => ChangePassScreen(),
         binding:ChangePassBinding()),
+     GetPage(
+        name: AppRouter.menu,
+        page: () => ShoppingCartScreen(),
+        binding:CartBinding()),
   ];
 }

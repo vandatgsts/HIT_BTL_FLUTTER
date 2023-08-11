@@ -1,45 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CartScreen extends StatelessWidget {
-  final String comboName;
-  final double comboPrice;
+import '../controller/cart_controller.dart';
 
-  const CartScreen({
-    required this.comboName,
-    required this.comboPrice,
-  });
-
+class ShoppingCartScreen extends GetView<CartController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Giỏ hàng"),
+        title: Text('Shopping Cart'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Sản phẩm đã chọn:",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Text(
-              "Tên combo: $comboName",
-              style: TextStyle(fontSize: 18),
-            ),
-            Text(
-              "Giá combo: ${comboPrice.toStringAsFixed(2)} VND",
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Thực hiện thêm logic xử lý đặt hàng, thanh toán, ...
-              },
-              child: const Text("Đặt hàng"),
-            ),
-          ],
+      body: Obx(
+        () => ListView.builder(
+          itemCount: controller.listItem.length,
+          itemBuilder: (context, index) => Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Product Name: ${controller.listItem.value[index]}'),
+              // Text('Product Price: ${controller.productPrice}'),
+              // Add other shopping cart components here
+            ],
+          ),
         ),
       ),
     );

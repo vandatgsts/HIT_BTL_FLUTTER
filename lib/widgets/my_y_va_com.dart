@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../Data/Product.dart';
+import '../cart/cart.dart';
+
 class MyYvaCom extends StatefulWidget {
   const MyYvaCom({super.key});
 
@@ -11,17 +13,18 @@ class MyYvaCom extends StatefulWidget {
 }
 
 class _MyYvaComState extends State<MyYvaCom> {
-  var getData=<Product>[];
-  
+  var getData = <Product>[];
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     NetworkRequestProduct.fetchProduct(3).then((datafromServer) {
       setState(() {
-        getData=datafromServer;
+        getData = datafromServer;
       });
     });
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: GridView.builder(
@@ -52,8 +55,7 @@ class _MyYvaComState extends State<MyYvaCom> {
                       topLeft: Radius.circular(6),
                       topRight: Radius.circular(6)),
                   child: SizedBox.fromSize(
-                    child:Image.network("${getData[index].image}")
-                  ),
+                      child: Image.network("${getData[index].image}")),
                 ),
                 Container(
                   padding: const EdgeInsets.only(
@@ -63,12 +65,12 @@ class _MyYvaComState extends State<MyYvaCom> {
                       children: [
                         Row(
                           children: [
-                             Expanded(
+                            Expanded(
                               flex: 6,
                               child: Text(
                                 getData[index].productName,
                                 style: const TextStyle(
-                                    fontSize:16,
+                                    fontSize: 16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -88,13 +90,16 @@ class _MyYvaComState extends State<MyYvaCom> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Row(
-                          
                           children: [
                             Expanded(
                                 child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                     
+                                    },
                                     style: ButtonStyle(
                                       minimumSize:
                                           MaterialStateProperty.all<Size>(
@@ -110,7 +115,7 @@ class _MyYvaComState extends State<MyYvaCom> {
                                               Color.fromARGB(
                                                   255, 246, 205, 205)),
                                     ),
-                                    child:  Text(
+                                    child: Text(
                                       "Thêm ${getData[index].price}",
                                       style: const TextStyle(
                                           fontSize: 16,
