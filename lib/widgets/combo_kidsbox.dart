@@ -70,11 +70,7 @@ class _KidsBoxState extends State<KidsBox> {
                                     flex: 1,
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ViHeDetailScreen()));
+
                                       },
                                       style: ElevatedButton.styleFrom(
                                         primary:
@@ -122,11 +118,7 @@ class _KidsBoxState extends State<KidsBox> {
                                     flex: 1,
                                     child: ElevatedButton(
                                         onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ViHeDetailScreen()));
+                                         
                                         },
                                         style: ElevatedButton.styleFrom(
                                             primary: const Color.fromARGB(

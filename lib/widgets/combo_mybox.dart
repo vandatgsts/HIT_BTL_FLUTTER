@@ -16,7 +16,7 @@ class _MyBoxScreenState extends State<MyBoxScreen> {
   @override
   void initState() {
     super.initState();
-    NetworkRequest.fetchMyBox().then((dataFromServer) {
+    NetworkRequest.fetchBogo(9).then((dataFromServer) {
       setState(() {
         getData= dataFromServer;
       });
@@ -71,11 +71,7 @@ class _MyBoxScreenState extends State<MyBoxScreen> {
                                     flex: 1,
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const ViHeDetailScreen()));
+                                       
                                       },
                                       style: ElevatedButton.styleFrom(
                                         primary:
@@ -123,11 +119,7 @@ class _MyBoxScreenState extends State<MyBoxScreen> {
                                     flex: 1,
                                     child: ElevatedButton(
                                         onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const ViHeDetailScreen()));
+                                         
                                         },
                                         style: ElevatedButton.styleFrom(
                                             primary: const Color.fromARGB(

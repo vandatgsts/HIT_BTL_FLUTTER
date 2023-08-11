@@ -8,17 +8,19 @@ import '../../widgets/pizza.dart';
 import '../Model/pizza.dart';
 
 
-class NetworkRequestSubMenu {
+class NetworkRequestProduct {
   static const String baseAPI='http://207.148.118.106:8080/';
-  static const String urlpizza='http://207.148.118.106:8080/combo/products?comboId=11&categoryId=2';
-  static List<Product> parsePizza(String responseBody) {
+ // static const String urlpizza='http://207.148.118.106:8080/combo/products?comboId=11&categoryId=2';
+ // static const sl="http://207.148.118.106:8080/product?id=0&categoryId=3&cakeBase=string&cakeSize=string&cakeSizeId=0";
+  static List<Product> parse(String responseBody) {
     var list = json.decode(responseBody)["data"] as List<dynamic>;
     List<Product> menu= list.map((model) => Product.fromJson(model)).toList();
     return menu;
   }
 
-  static Future<List<Product>> fetchSub(int id1,int id2) async {
-    String url = '${baseAPI}combo/products?comboId=$id1&categoryId=$id2';
+  static Future<List<Product>> fetchProduct(int id) async {
+    //String url = '${baseAPI}combo/products?comboId=$id1&categoryId=$id2';
+   String url="${baseAPI}product?id=0&categoryId=$id&cakeBase=string&cakeSize=string&cakeSizeId=0";
     try {
       final header = {
         'Content-type': 'application/json',

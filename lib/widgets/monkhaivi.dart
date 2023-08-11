@@ -1,7 +1,8 @@
+import 'package:btl_flutter/CallAPI/Network/product_combo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
+import '../Data/Product.dart';
 class MonKhaiVi extends StatefulWidget {
   const MonKhaiVi({super.key});
 
@@ -10,16 +11,26 @@ class MonKhaiVi extends StatefulWidget {
 }
 
 class _MonKhaiViState extends State<MonKhaiVi> {
+  var getData=<Product>[];
+  
   @override
+  void initState(){
+    super.initState();
+    NetworkRequestProduct.fetchProduct(5).then((datafromServer) {
+      setState(() {
+        getData=datafromServer;
+      });
+    });
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       body: GridView.builder(
-        itemCount: 8,
+        itemCount: getData.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 5.0,
             mainAxisSpacing: 5.0,
-            childAspectRatio: 0.75),
+            childAspectRatio: 0.65),
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
@@ -41,9 +52,7 @@ class _MonKhaiViState extends State<MonKhaiVi> {
                       topLeft: Radius.circular(6),
                       topRight: Radius.circular(6)),
                   child: SizedBox.fromSize(
-                    child: Image.asset(
-                      'assets/MonKhaiVi/Xa_Lach_Ca_Ngu.jpg',
-                    ),
+                    child:Image.network("${getData[index].image}")
                   ),
                 ),
                 Container(
@@ -54,11 +63,11 @@ class _MonKhaiViState extends State<MonKhaiVi> {
                       children: [
                         Row(
                           children: [
-                            const Expanded(
+                             Expanded(
                               flex: 6,
                               child: Text(
-                                "Xà Lách Cá Ngừ",
-                                style: TextStyle(
+                                getData[index].productName,
+                                style: const TextStyle(
                                     fontSize:16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -70,9 +79,9 @@ class _MonKhaiViState extends State<MonKhaiVi> {
                             )
                           ],
                         ),
-                        const Text(
-                          "Cơm chiên tôm vị cay trên nền xốt vơ tỏi độc đáo của Pizza Hut,Cơm chiên tôm vị cay trên nền xốt vơ tỏi độc đáo của Pizza Hut",
-                          style: TextStyle(
+                        Text(
+                          getData[index].description,
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 12,
                           ),
@@ -81,7 +90,7 @@ class _MonKhaiViState extends State<MonKhaiVi> {
                         ),
                         SizedBox(height: 10,),
                         Row(
-
+                          
                           children: [
                             Expanded(
                                 child: ElevatedButton(
@@ -101,9 +110,9 @@ class _MonKhaiViState extends State<MonKhaiVi> {
                                               Color.fromARGB(
                                                   255, 246, 205, 205)),
                                     ),
-                                    child: const Text(
-                                      "Thêm 129,000đ",
-                                      style: TextStyle(
+                                    child:  Text(
+                                      "Thêm ${getData[index].price}",
+                                      style: const TextStyle(
                                           fontSize: 16,
                                           color: Colors.white,
                                           fontWeight: FontWeight.w300),

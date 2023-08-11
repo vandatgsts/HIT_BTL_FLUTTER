@@ -1,7 +1,9 @@
+import 'package:btl_flutter/CallAPI/Network/pizza_network.dart';
 import 'package:flutter/material.dart';
 
 import '../CallAPI/Model/bogo.dart';
 import '../CallAPI/Network/network.dart';
+import '../Data/Product.dart';
 
 class Choose extends StatefulWidget {
   const Choose({super.key});
@@ -12,7 +14,7 @@ class Choose extends StatefulWidget {
 
 class _ChooseState extends State<Choose> {
 
-  var getData = [];
+  var getData = <Product>[];
   List<String> itemList = [
     'Đế Giòn Xốp',
     'Đế Kéo Tay Truyền Thống',
@@ -24,7 +26,7 @@ class _ChooseState extends State<Choose> {
 
   void initState() {
     super.initState();
-    NetworkRequest.fetchSubMenu().then((dataFromServer) {
+    NetworkRequestSubMenu.fetchSub(11,2).then((dataFromServer) {
       setState(() {
         getData = dataFromServer;
       });
@@ -112,7 +114,7 @@ class _ChooseState extends State<Choose> {
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      "${getData[index].name}",
+                                      "${getData[index].productName}",
                                       style: TextStyle(
                                           fontSize: 14,
                                           color: Colors.black,

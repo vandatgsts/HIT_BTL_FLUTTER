@@ -15,7 +15,7 @@ class _BoGoScreenState extends State<BoGoScreen> {
   @override
   void initState() {
     super.initState();
-    NetworkRequest.fetchBogo(6).then((dataFromServer) {
+    NetworkRequest.fetchBogo(8).then((dataFromServer) {
       setState(() {
         getData = dataFromServer;
       });
@@ -70,11 +70,11 @@ class _BoGoScreenState extends State<BoGoScreen> {
                                     flex: 1,
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ViHeDetailScreen()));
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             ViHeDetailScreen()));
                                       },
                                       style: ElevatedButton.styleFrom(
                                         primary:
@@ -122,11 +122,7 @@ class _BoGoScreenState extends State<BoGoScreen> {
                                     flex: 1,
                                     child: ElevatedButton(
                                         onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ViHeDetailScreen()));
+                                        
                                         },
                                         style: ElevatedButton.styleFrom(
                                             primary: const Color.fromARGB(

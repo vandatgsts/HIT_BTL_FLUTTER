@@ -1,8 +1,13 @@
+import 'package:btl_flutter/CallAPI/Model/bogo.dart';
 import 'package:btl_flutter/detail/choose.dart';
+import 'package:btl_flutter/dialog/choose_appetizer.dart';
+import 'package:btl_flutter/dialog/select.dart';
+import 'package:btl_flutter/dialog/select_drink.dart';
 import 'package:flutter/material.dart';
 
 class ViHeDetailScreen extends StatefulWidget {
-  const ViHeDetailScreen({super.key});
+  final BOGO bogoItem;
+  const ViHeDetailScreen({super.key, required this.bogoItem});
 
   @override
   State<ViHeDetailScreen> createState() => _ViHeDetailScreenState();
@@ -43,47 +48,53 @@ class _ViHeDetailScreenState extends State<ViHeDetailScreen> {
           children: [
             Container(
               margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-              child: Image.asset("assets/ViHe/1.jpg"),
-            ),
-            const Row(
-              children: [
-                Text(
-                  "COMBO MY BOX 1",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                )
-              ],
+              child: Image.network(widget.bogoItem.image ?? ''),
             ),
             Container(
-              child: const Column(
+              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              child: Row(
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        "Dành cho 1-2 người",
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                    ],
-                  ),
                   Text(
-                    "-Lựa chọn 1: 01 Piza Gà Nướng Nấm/01 Pizza Peperroni/01 Pizza Phô Mai Cao Cấp",
-                    style: TextStyle(color: Colors.black, fontSize: 16),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                    widget.bogoItem.name ?? ' ',
+                    style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    "- Lựa chọn 2: Bánh Cuộn Phô Mai/Khoai Tây Chiên/Súp Gà Kem Nấm",
-                    style: TextStyle(color: Colors.black, fontSize: 16),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                 
                 ],
               ),
             ),
-            Choose(),
-            Choose()
+            Container(
+              padding: EdgeInsets.fromLTRB(15, 0, 10, 0),
+              child: Column(
+                children: [
+                  Text(
+                    widget.bogoItem.description ?? '',
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                  )
+                ],
+              ),
+            ),
+            Select(),
+            Choose_Appetizer(),
+            Select_drink(),
+          
+            SizedBox(height: 10,),
+            ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  primary: const Color.fromARGB(255, 41, 128, 42),
+                  padding: EdgeInsets.symmetric(
+                      horizontal:
+                          16.0), // Tăng padding ngang để tạo khoảng cách với lề màn hình
+                  minimumSize: Size(250,
+                      60), // Sử dụng minimumSize để làm nút button chiếm hết chiều ngang
+                ),
+                child: Text(
+                  "Thêm vào giỏ hàng",
+                  style: TextStyle(fontSize: 20),
+                ))
           ],
         ),
       ),

@@ -1,7 +1,8 @@
+import 'package:btl_flutter/CallAPI/Network/product_combo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
+import '../Data/Product.dart';
 class ThucUong extends StatefulWidget {
   const ThucUong({super.key});
 
@@ -10,17 +11,26 @@ class ThucUong extends StatefulWidget {
 }
 
 class _ThucUongState extends State<ThucUong> {
+  var getData=<Product>[];
   
   @override
+  void initState(){
+    super.initState();
+    NetworkRequestProduct.fetchProduct(4).then((datafromServer) {
+      setState(() {
+        getData=datafromServer;
+      });
+    });
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       body: GridView.builder(
-        itemCount: 8,
+        itemCount: getData.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 10.0,
-            childAspectRatio: 0.75),
+            crossAxisSpacing: 5.0,
+            mainAxisSpacing: 5.0,
+            childAspectRatio: 0.7),
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
@@ -42,9 +52,7 @@ class _ThucUongState extends State<ThucUong> {
                       topLeft: Radius.circular(6),
                       topRight: Radius.circular(6)),
                   child: SizedBox.fromSize(
-                    child: Image.asset(
-                      'assets/ThucUong/Mirinda_Soda_Can.jpg',
-                  ),
+                    child:Image.network("${getData[index].image}")
                   ),
                 ),
                 Container(
@@ -55,12 +63,12 @@ class _ThucUongState extends State<ThucUong> {
                       children: [
                         Row(
                           children: [
-                            const Expanded(
+                             Expanded(
                               flex: 6,
                               child: Text(
-                                "Mirinda Soda Lon 320ml",
-                                style: TextStyle(
-                                    fontSize: 16,
+                                getData[index].productName,
+                                style: const TextStyle(
+                                    fontSize:16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -71,16 +79,18 @@ class _ThucUongState extends State<ThucUong> {
                             )
                           ],
                         ),
-                        const Text(
-                          "Mirinda Soda Lon 320ml",
-                          style: TextStyle(
+                        Text(
+                          getData[index].description,
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 12,
                           ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
+                        SizedBox(height: 10,),
                         Row(
+                          
                           children: [
                             Expanded(
                                 child: ElevatedButton(
@@ -100,9 +110,9 @@ class _ThucUongState extends State<ThucUong> {
                                               Color.fromARGB(
                                                   255, 246, 205, 205)),
                                     ),
-                                    child: const Text(
-                                      "Thêm 129,000đ",
-                                      style: TextStyle(
+                                    child:  Text(
+                                      "Thêm ${getData[index].price}",
+                                      style: const TextStyle(
                                           fontSize: 16,
                                           color: Colors.white,
                                           fontWeight: FontWeight.w300),

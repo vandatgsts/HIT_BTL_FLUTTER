@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../CallAPI/Network/product_combo.dart';
+import '../Data/Product.dart';
+
 class PizzaScreen extends StatefulWidget {
   const PizzaScreen({super.key});
 
@@ -9,13 +12,24 @@ class PizzaScreen extends StatefulWidget {
 }
 
 class _PizzaScreenState extends State<PizzaScreen> {
+
+  var getData=<Product>[];
+
   String dropdownValue1 = 'Nhỏ';
   String dropdownValue2 = 'Đế Giòn Xốp(Nhỏ)';
   @override
+   void initState(){
+    super.initState();
+    NetworkRequestProduct.fetchProduct(2).then((datafromServer) {
+      setState(() {
+        getData = datafromServer;
+      });
+    });
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       body: GridView.builder(
-        itemCount: 8,
+        itemCount: getData.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 10.0,
@@ -42,10 +56,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
                       topLeft: Radius.circular(6),
                       topRight: Radius.circular(6)),
                   child: SizedBox.fromSize(
-                    child: Image.asset(
-                      'assets/Pizza/Pizza_Gap_Doi_Nhan_Phu_Hai_San_Xot_Tieu_Den.jpg',
-                    
-                    ),
+                    child:Image.network('${getData[index].image}')
                   ),
                 ),
                 Container(
@@ -56,11 +67,11 @@ class _PizzaScreenState extends State<PizzaScreen> {
                       children: [
                         Row(
                           children: [
-                            const Expanded(
+                             Expanded(
                               flex: 6,
                               child: Text(
-                                "Piza Hải Sản Thịt Bò",
-                                style: TextStyle(
+                                getData[index].productName,
+                                style: const TextStyle(
                                     fontSize: 16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -72,17 +83,17 @@ class _PizzaScreenState extends State<PizzaScreen> {
                             )
                           ],
                         ),
-                        const Text(
-                          "Cơm chiên tôm vị cay trên nền xốt vơ tỏi độc đáo của Pizza Hut,Cơm chiên tôm vị cay trên nền xốt vơ tỏi độc đáo của Pizza Hut",
-                          style: TextStyle(
+                         Text(
+                          getData[index].description,
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 12,
                           ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        Row(
-                          children: const [
+                        const Row(
+                          children: [
                             SizedBox(
                               height: 5,
                             ),
@@ -131,8 +142,8 @@ class _PizzaScreenState extends State<PizzaScreen> {
                             },
                           ),
                         ),
-                        Row(
-                          children: const [
+                        const Row(
+                          children: [
                             SizedBox(
                               height: 5,
                             ),
@@ -203,8 +214,8 @@ class _PizzaScreenState extends State<PizzaScreen> {
                                           MaterialStateProperty.all<Color>(
                                               Color.fromARGB(255, 246, 205, 205)),
                                     ),
-                                    child: const Text(
-                                      "Thêm 129,000đ",
+                                    child: Text(
+                                      "Thêm ${getData[index].price}",
                                       style: TextStyle(
                                           fontSize: 16,
                                           color: Colors.white,

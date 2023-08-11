@@ -16,7 +16,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
   @override
   void initState() {
     super.initState();
-    NetworkRequest.fetchNewCB().then((dataFromServer) {
+    NetworkRequest.fetchBogo(8).then((dataFromServer) {
       setState(() {
         getData= dataFromServer;
       });
@@ -71,11 +71,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
                                     flex: 1,
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ViHeDetailScreen()));
+                                       
                                       },
                                       style: ElevatedButton.styleFrom(
                                         primary:
@@ -123,11 +119,7 @@ class _ComboAndLiMoScreenState extends State<ComboAndLiMoScreen> {
                                     flex: 1,
                                     child: ElevatedButton(
                                         onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ViHeDetailScreen()));
+                                          
                                         },
                                         style: ElevatedButton.styleFrom(
                                             primary: const Color.fromARGB(

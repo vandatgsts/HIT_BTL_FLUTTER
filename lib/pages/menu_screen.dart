@@ -1,4 +1,5 @@
 import 'package:btl_flutter/AppRouter/AppRouter.dart';
+import 'package:btl_flutter/cart/cart_screen.dart';
 import 'package:btl_flutter/controller/menu_controller.dart' as menu;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,9 @@ class MenuScreen extends GetView<menu.MenuController>{
               Padding(
                 padding:  EdgeInsets.only(right: 20),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ShoppingCartScreen()));
+                  },
                   icon: const Icon(
                     CupertinoIcons.cart,
                     size: 32,
