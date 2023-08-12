@@ -49,9 +49,9 @@ class LoginScreen extends GetView<LoginScreenController> {
                       child: Container(
                         width: 200.0.sp,
                         height: 200.0,
-                        decoration: const ShapeDecoration(
+                        decoration: const BoxDecoration(
                           color: Color(0x7CF31132),
-                          shape: OvalBorder(),
+                          shape: BoxShape.circle,
                         ),
                       ),
                     ),

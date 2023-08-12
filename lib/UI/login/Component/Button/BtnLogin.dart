@@ -24,7 +24,7 @@ class BtnLogin extends GetView<LoginScreenController> {
                 controller.postLoginAPI();
               },
               child: const Text(
-                'LOGIN',
+                'Đăng nhập',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,

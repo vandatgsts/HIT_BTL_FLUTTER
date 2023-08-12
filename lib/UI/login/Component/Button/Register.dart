@@ -13,7 +13,7 @@ class Register extends StatelessWidget {
           Get.toNamed(AppRouter.register);
         },
         child: const Text(
-          'Sign Up',
+          'Đăng ký',
           style: TextStyle(
             fontSize: 15,
           ),

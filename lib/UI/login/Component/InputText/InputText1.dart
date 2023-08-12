@@ -18,7 +18,7 @@ class InputText1 extends GetView<LoginScreenController> {
           color: Color(0x891c1a1a),
         ),
         decoration: const InputDecoration(
-          hintText: 'Email',
+          hintText: 'Tên đăng nhập',
           hintStyle: TextStyle(
             color: Color(0xFFD0D0D0),
             fontSize: 20,

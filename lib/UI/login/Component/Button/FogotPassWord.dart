@@ -14,7 +14,7 @@ class ForgotPassWord extends StatelessWidget {
     return TextButton(
         onPressed: ()=>Get.toNamed(AppRouter.forgotPassWord),
         child: const Text(
-          'Forgot PassWord',
+          'Quên mật khẩu',
           style: TextStyle(
             fontSize: 15,
           ),

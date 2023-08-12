@@ -1,14 +1,11 @@
-import 'package:btl_flutter/UI/ForgotPassWord/Screen/Screen2.dart';
 import 'package:btl_flutter/UI/Widget/app_color.dart';
 import 'package:btl_flutter/UI/Widget/app_image_widget.dart';
-import 'package:btl_flutter/UI/Widget/app_touchable.dart';
 import 'package:btl_flutter/controller/forgot_pass_word_controller.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui';
-import '../../../res/AppImage.dart';
-import '../../../utils.dart';
-import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../../../res/AppImage.dart';
 
 class ForgotPassWordScreen1 extends GetView<ForgotPassWordController> {
   const ForgotPassWordScreen1({super.key});
@@ -68,7 +65,7 @@ class ForgotPassWordScreen1 extends GetView<ForgotPassWordController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Vui lòng nhập lại email của bạn',
+                    'Vui lòng nhập lại username của bạn',
                     style: TextStyle(
                       fontSize: 15.sp,
                       fontWeight: FontWeight.w400,
@@ -86,7 +83,7 @@ class ForgotPassWordScreen1 extends GetView<ForgotPassWordController> {
                     width: 10.sp,
                   ),
                   Text(
-                    'Địa chỉ email',
+                    'Nhập username',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16.sp,
@@ -111,7 +108,7 @@ class ForgotPassWordScreen1 extends GetView<ForgotPassWordController> {
                   obscureText: false,
                   controller: controller.inputEmailControler,
                   decoration: const InputDecoration(
-                    hintText: 'ndatgs@gmail.com',
+                    hintText: 'string',
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {

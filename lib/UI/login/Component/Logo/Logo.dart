@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../res/AppImage.dart';
+
 class Logo extends StatelessWidget {
   const Logo({super.key});
 
@@ -10,7 +12,7 @@ class Logo extends StatelessWidget {
       height: 57,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage("https://www.saokim.com.vn/blog/wp-content/uploads/2020/03/thiet-ke-logo-Pizza-Hut.png"),
+          image: AssetImage(AppImage.icLogo),
         ),
       ),
     );

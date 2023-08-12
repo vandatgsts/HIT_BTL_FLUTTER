@@ -6,7 +6,7 @@ class TextLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Text(
-      'Sign In',
+      'Đăng Nhập',
       style: TextStyle(
         color: Colors.black,
         fontSize: 24,

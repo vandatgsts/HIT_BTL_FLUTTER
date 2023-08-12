@@ -86,17 +86,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - assets/ViHe/
       - assets/KidsBox/
-      - assets/Mua1Duoc3/
-      - assets/MyBox/
-      - assets/LIMOandCOMBO/
-      - assets/SummerMenu/
-      - assets/Pizza/
-      - assets/MyYvaCom/
-      - assets/MonKhaiVi/
-      - assets/ThucUong/
-      - assets/Menu49K/
+
 
 
   #   - images/a_dot_burr.jpeg
