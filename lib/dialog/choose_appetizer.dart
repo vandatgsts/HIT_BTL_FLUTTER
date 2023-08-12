@@ -129,6 +129,38 @@ class Choose_Appetizer extends GetView<DetalController>{
                            ],
                          ),
                        ),
+                       Expanded(
+                         flex: 2,
+                         child: ElevatedButton(
+                           onPressed: () {
+                             controller.textAppertizer.text =
+                                 controller.getDataAppetizer[index].name;
+                             Navigator.pop(
+                                 context); // Close the bottom sheet
+                           },
+                           style: ButtonStyle(
+                             minimumSize: MaterialStateProperty.all<Size>(
+                                 Size(50, 45)),
+                             backgroundColor:
+                             MaterialStateProperty.all<Color>(
+                                 Color.fromARGB(255, 7, 150, 12)),
+                             overlayColor:
+                             MaterialStateProperty.all<Color>(
+                                 Colors.teal),
+                             foregroundColor:
+                             MaterialStateProperty.all<Color>(
+                                 Color.fromARGB(255, 246, 205, 205)),
+                           ),
+                           child: const Text(
+                             "Thêm",
+                             style: TextStyle(
+                               color: Colors.white,
+                               fontWeight: FontWeight.bold,
+                               fontSize: 16,
+                             ),
+                           ),
+                         ),
+                       )
                      ],
                    ),
                  ),

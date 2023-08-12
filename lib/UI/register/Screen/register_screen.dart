@@ -1,4 +1,4 @@
-import 'package:btl_flutter/AppRouter/AppRouter.dart';
+
 import 'package:btl_flutter/UI/Widget/app_image_widget.dart';
 import 'package:btl_flutter/res/AppImage.dart';
 import 'package:email_validator/email_validator.dart';
@@ -18,8 +18,7 @@ class RegisterScreen extends GetView<RegisterController> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              // Get.back();
-              Get.toNamed(AppRouter.login);
+              Get.back();
             },
             icon: const Icon(
               Icons.arrow_back,

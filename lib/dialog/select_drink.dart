@@ -129,7 +129,7 @@ class Select_drink  extends GetView<DetalController> {
                                     child: ElevatedButton(
                                       onPressed: () {
                                          controller.textDrink.text =
-                                             controller.getDataDrink[index].productName;
+                                             controller.getDataDrink[index].name;
                                           Navigator.pop(
                                               context); // Close the bottom sheet
                                       },

@@ -11,7 +11,7 @@ class AccountController extends GetxController{
     Get.toNamed(AppRouter.changePassScreen);
   }
   onPressChangeInfo(){
-
+    Get.toNamed(AppRouter.changeInfScreen);
   }
   @override
   void onInit() {

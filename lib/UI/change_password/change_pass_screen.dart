@@ -8,6 +8,7 @@ import '../login/Component/Logo/Logo.dart';
 class ChangePassScreen extends GetView<ChangePassController>{
   @override
   Widget build(BuildContext context) {
+    controller.context=context;
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -50,23 +51,6 @@ class ChangePassScreen extends GetView<ChangePassController>{
                 ),
               ),
             ],
-          ),
-          Container(
-            margin: EdgeInsets.all(10.sp),
-            child: TextFormField(
-              controller: controller.oldPassWordControler,
-              decoration: InputDecoration(
-                  hintText: "Nhập mật khẩu cũ",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide())),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return "Không được để trống";
-                }
-                return null;
-              },
-            ),
           ),
           const SizedBox(
             height: 10,
@@ -202,6 +186,7 @@ class ChangePassScreen extends GetView<ChangePassController>{
                   fontWeight: FontWeight.w100),
             ),
           ),
+
           Row(
             children: [
               SizedBox(width: 10.sp,),
@@ -319,6 +304,8 @@ class ChangePassScreen extends GetView<ChangePassController>{
             ],
           ),
           SizedBox(height: 10.sp,),
+          Obx(() => controller.isLoading.value?
+              const CircularProgressIndicator():
           Container(
             width: 150.sp,
             height: 50.sp,
@@ -327,14 +314,15 @@ class ChangePassScreen extends GetView<ChangePassController>{
               borderRadius: BorderRadius.circular(10.sp),
             ),
             child: TextButton(
-              onPressed: ()=>controller.onPressChangePass,
+              onPressed: ()=>controller.onPressChangePass(),
               child: Text('Xác nhận',
               style: TextStyle(
                 fontSize: 15.sp,
                 color: Colors.white
               ),),
             ),
-          )
+          ),
+          ),
         ],
       ),
     );
