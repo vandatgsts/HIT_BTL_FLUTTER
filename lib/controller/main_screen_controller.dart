@@ -1,3 +1,4 @@
+import 'package:btl_flutter/Data/Product.dart';
 import 'package:btl_flutter/controller/state_main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class MainScreenController extends GetxController{
   bool isLoadMap=false;
 
   RxList getData=<BOGO>[].obs;
+  RxList get=<Product>[].obs;
 
   @override
   void onInit() async {

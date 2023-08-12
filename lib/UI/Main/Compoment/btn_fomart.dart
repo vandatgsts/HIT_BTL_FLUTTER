@@ -35,10 +35,10 @@ class BtnShip extends GetView<MainScreenController> {
             color: Colors.red,
           ),
           title: Text(
-            'Giao hàng tân nơi',
+            'Giao hàng tận nơi',
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
-          subtitle: Text('Hãy cho chúng tôi biết vi trí của ban'),
+          subtitle: Text('Hãy cho chúng tôi biết vi trí của bạn'),
           trailing: Icon(Icons.navigate_next),
         ),
       ),
