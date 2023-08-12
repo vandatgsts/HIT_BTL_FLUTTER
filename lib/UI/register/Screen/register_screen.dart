@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../controller/register_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterScreen extends GetView<RegisterController> {
   @override
@@ -570,6 +571,7 @@ class RegisterScreen extends GetView<RegisterController> {
                 ],
               ),
               Container(
+                height: 60.sp,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.grey, width: 1)),
