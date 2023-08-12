@@ -1,5 +1,6 @@
 import 'package:btl_flutter/UI/Widget/app_image_widget.dart';
 import 'package:btl_flutter/UI/login/Component/Logo/Logo.dart';
+import 'package:btl_flutter/controller/cart_controller.dart';
 import 'package:btl_flutter/controller/discount_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,6 @@ import '../../Data/Product.dart';
 
 class DiscoutScreen extends GetView<DiscountController> {
   const DiscoutScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     controller.updatePoint();
@@ -114,11 +114,17 @@ class ItemList extends GetView<DiscountController> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        Spacer(),
+        const Spacer(),
         Container(
           color: Colors.green,
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              controller.point.value-=product.point;
+              if(!Get.isRegistered<CartController>()){
+                Get.put(CartController());
+              }
+              Get.find<CartController>().listItem2.add(product);
+            },
             child: Text(
               product.point.toString(),
               style: TextStyle(

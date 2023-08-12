@@ -28,4 +28,5 @@ class DiscountController extends GetxController{
     user=Get.find<AppControleer>().currentUser;
     point.value=user.point;
   }
+
 }
