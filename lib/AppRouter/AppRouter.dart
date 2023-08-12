@@ -9,4 +9,5 @@ class AppRouter{
   static const String accountScreen='/accountScreen';
   static const String changePassScreen='/changePassScreen';
   static const String menu='/meu';
+  static const String detalScreen='/detalScreen';
 }

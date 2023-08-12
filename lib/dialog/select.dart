@@ -122,7 +122,7 @@ class _SelectState extends State<Select> {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    getData[index].productName,
+                                    getData[index].name,
                                     style: const TextStyle(
                                       fontSize: 14,
                                       color: Colors.black,
@@ -189,7 +189,7 @@ class _SelectState extends State<Select> {
                                                       onTap: () {
                                                         setState(() {
                                                           selectedValue = itemList[index];
-                                                          selectedProductName = getData[index].productName;
+                                                          selectedProductName = getData[index].name;
                                                         });
                                                         Navigator.pop(context);
                                                       },

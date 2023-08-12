@@ -1,6 +1,5 @@
 import 'package:btl_flutter/CallAPI/Network/product_combo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../Data/Product.dart';
 class MonKhaiVi extends StatefulWidget {
@@ -66,7 +65,7 @@ class _MonKhaiViState extends State<MonKhaiVi> {
                              Expanded(
                               flex: 6,
                               child: Text(
-                                getData[index].productName,
+                                getData[index].name,
                                 style: const TextStyle(
                                     fontSize:16,
                                     color: Colors.black,

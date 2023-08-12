@@ -6,6 +6,7 @@ class BOGO {
   int? price;
   int? categoryId;
   String? disPlayName;
+  String? appertizer,drink;
 
   BOGO(
       {this.id,

@@ -1,19 +1,13 @@
-import 'dart:ui';
-
 import 'package:btl_flutter/controller/map_controller.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:custom_info_window/custom_info_window.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../res/AppImage.dart';
 import '../../Widget/app_color.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../Widget/app_container.dart';
-import 'package:custom_info_window/custom_info_window.dart';
-
 import '../../Widget/app_image_widget.dart';
 import '../../Widget/app_touchable.dart';
 
@@ -100,7 +94,7 @@ class MapScreen extends GetView<MapController> {
                     child: Row(
                       children: [
                         Text(
-                          'Tiep tuc',
+                          'Tiếp tục',
                           style: TextStyle(
                             color: AppColor.black,
                             fontSize: 15.sp,

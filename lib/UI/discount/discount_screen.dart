@@ -12,6 +12,7 @@ class DiscoutScreen extends GetView<DiscountController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.updatePoint();
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.grey.withOpacity(0.2),
@@ -49,24 +50,23 @@ class DiscoutScreen extends GetView<DiscountController> {
                   )
                 ],
               ),
-              TextButton(
-                onPressed: () {},
-                child: Container(
-                  height: 35.sp,
-                  width: 80.sp,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(5.sp)),
-                  child: Text(
-                    controller.user.point.toString(),
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.sp,
-                    ),
+              Container(
+                height: 35.sp,
+                width: 80.sp,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(5.sp)),
+                child: Obx(()=>Text(
+                  controller.point.value.toString(),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.sp,
                   ),
                 ),
-              )
+              ),
+              ),
+
             ],
           ),
           Obx(() =>
@@ -107,7 +107,7 @@ class ItemList extends GetView<DiscountController> {
           width: 10.sp,
         ),
         Text(
-          'Đổi 1 ${product.productName}',
+          'Đổi 1 ${product.name}',
           style: TextStyle(
             color: Colors.black,
             fontSize: 16.sp,

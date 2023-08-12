@@ -1,38 +1,12 @@
+import 'package:btl_flutter/controller/detal_controller.dart';
 import 'package:flutter/material.dart';
-
-// Replace this with your actual imports
-import '../CallAPI/Model/bogo.dart';
-import '../CallAPI/Network/pizza_network.dart';
-import '../Data/Product.dart';
-import '../CallAPI/Network/network.dart';
-
-class Select_drink extends StatefulWidget {
-  const Select_drink({Key? key}) : super(key: key);
-
-  @override
-  _Select_drinkState createState() => _Select_drinkState();
-}
-
-class _Select_drinkState extends State<Select_drink> {
-  var getData = <Product>[];
-
-  String selectedProductName = '';
-
-  @override
-  void initState() {
-    super.initState();
-    NetworkRequestSubMenu.fetchSub(7, 4).then((dataFromServer) {
-      setState(() {
-        getData = dataFromServer;
-      });
-    });
-  }
+import 'package:get/get.dart';
+class Select_drink  extends GetView<DetalController> {
 
   @override
   Widget build(BuildContext context) {
-    String displayText =
-        selectedProductName.isNotEmpty ? '$selectedProductName' : '';
 
+    controller.context=context;
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       child: Column(
@@ -43,7 +17,7 @@ class _Select_drinkState extends State<Select_drink> {
               children: [
                 TextField(
                   readOnly: true,
-                  controller: TextEditingController(text: displayText),
+                  controller: controller.textDrink,
                   onTap: () {
                     _openGridView();
                   },
@@ -72,7 +46,7 @@ class _Select_drinkState extends State<Select_drink> {
 
   void _openGridView() {
     showModalBottomSheet<void>(
-      context: context,
+      context: controller.context,
       builder: (BuildContext context) {
         return Container(
           color: const Color.fromARGB(255, 248, 222, 222),
@@ -84,7 +58,7 @@ class _Select_drinkState extends State<Select_drink> {
               mainAxisSpacing: 5.0,
               childAspectRatio: 0.76,
             ),
-            itemCount: getData.length,
+            itemCount: controller.getDataDrink.length,
             itemBuilder: (context, index) {
               return Container(
                 margin: const EdgeInsets.fromLTRB(15, 20, 15, 10),
@@ -109,7 +83,7 @@ class _Select_drinkState extends State<Select_drink> {
                           topRight: Radius.circular(6),
                         ),
                         child: SizedBox.fromSize(
-                          child: Image.network("${getData[index].image}"),
+                          child: Image.network("${controller.getDataDrink[index].image}"),
                         ),
                       ),
                       Container(
@@ -120,7 +94,7 @@ class _Select_drinkState extends State<Select_drink> {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    getData[index].productName,
+                                    controller.getDataDrink[index].productName,
                                     style: const TextStyle(
                                       fontSize: 14,
                                       color: Colors.black,
@@ -154,12 +128,10 @@ class _Select_drinkState extends State<Select_drink> {
                                     flex: 2,
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        setState(() {
-                                          selectedProductName =
-                                              getData[index].productName;
+                                         controller.textDrink.text =
+                                             controller.getDataDrink[index].productName;
                                           Navigator.pop(
                                               context); // Close the bottom sheet
-                                        });
                                       },
                                       style: ButtonStyle(
                                         minimumSize: MaterialStateProperty.all<Size>(

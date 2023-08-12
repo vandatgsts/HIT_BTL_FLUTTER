@@ -1,6 +1,5 @@
 import 'package:btl_flutter/CallAPI/Network/product_combo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../Data/Product.dart';
 class ThucUong extends StatefulWidget {
@@ -33,14 +32,14 @@ class _ThucUongState extends State<ThucUong> {
             childAspectRatio: 0.7),
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+            margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
                       color:
-                          Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
+                          const Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
                       spreadRadius: 1,
                       blurRadius: 2)
                 ]),
@@ -66,7 +65,7 @@ class _ThucUongState extends State<ThucUong> {
                              Expanded(
                               flex: 6,
                               child: Text(
-                                getData[index].productName,
+                                getData[index].name,
                                 style: const TextStyle(
                                     fontSize:16,
                                     color: Colors.black,
@@ -88,7 +87,7 @@ class _ThucUongState extends State<ThucUong> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                         Row(
                           
                           children: [
@@ -98,16 +97,16 @@ class _ThucUongState extends State<ThucUong> {
                                     style: ButtonStyle(
                                       minimumSize:
                                           MaterialStateProperty.all<Size>(
-                                              Size(150, 50)),
+                                              const Size(150, 50)),
                                       backgroundColor:
                                           MaterialStateProperty.all<Color>(
                                               Colors.green),
                                       overlayColor:
                                           MaterialStateProperty.all<Color>(
-                                              Color.fromARGB(255, 4, 203, 199)),
+                                              const Color.fromARGB(255, 4, 203, 199)),
                                       foregroundColor:
                                           MaterialStateProperty.all<Color>(
-                                              Color.fromARGB(
+                                              const Color.fromARGB(
                                                   255, 246, 205, 205)),
                                     ),
                                     child:  Text(

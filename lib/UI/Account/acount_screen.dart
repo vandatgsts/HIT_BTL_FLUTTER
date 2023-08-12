@@ -123,14 +123,13 @@ class AccountScreen extends GetView<AccountController> {
               : InkWell(
             key: const ValueKey('inkWell2'),
             child: Container(
-              height: 100.sp,
               padding: EdgeInsets.all(20.sp),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
-                      Text('Name: ${controller.user?.fullName}'),
+                      Text('Tên : ${controller.user?.fullName}'),
                     ],
                   ),
                   Row(
@@ -141,6 +140,11 @@ class AccountScreen extends GetView<AccountController> {
                   Row(
                     children: [
                       Text('Email: ${controller.user?.email}'),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text('Điểm: ${controller.user?.point}'),
                     ],
                   ),
                 ],

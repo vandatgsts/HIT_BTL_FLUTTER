@@ -3,7 +3,7 @@ import 'package:btl_flutter/UI/discount/discount_screen.dart';
 import 'package:btl_flutter/UI/setting/setting_screen.dart';
 import 'package:get/get.dart';
 
-import '../Menu/menu_screen.dart';
+import '../UI/Menu/menu_screen.dart';
 
 class StateMainController extends GetxController{
   final List screens=[

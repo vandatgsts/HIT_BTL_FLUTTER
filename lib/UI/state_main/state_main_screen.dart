@@ -9,24 +9,24 @@ class StateMainScreen extends GetView<StateMainController>{
       backgroundColor: Colors.white,
       body:Obx(() => controller.screens[controller.selectedIndex.value]),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
-              color: Colors.grey,
+              Icons.home_outlined,
+              color: controller.selectedIndex.value!=0?Colors.grey:Colors.blue,
             ),
             label: 'Trang chủ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu, color: Colors.grey),
+            icon: Icon(Icons.local_pizza_outlined, color: controller.selectedIndex.value!=1?Colors.grey:Colors.blue),
             label: 'Thực đơn',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.discount, color: Colors.grey),
+            icon: Icon(Icons.discount_outlined, color:controller.selectedIndex.value!=2?Colors.grey:Colors.blue),
             label: 'Đổi điểm',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings, color: Colors.grey),
+            icon: Icon(Icons.account_circle, color: controller.selectedIndex.value!=3?Colors.grey:Colors.blue),
             label: 'Tài Khoản',
           ),
         ],

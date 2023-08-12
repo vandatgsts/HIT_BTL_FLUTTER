@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:btl_flutter/call_API/get_api.dart';
 import 'package:btl_flutter/controller/AppControler.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -29,7 +28,7 @@ class PostAPI{
       final responseData = json.decode(response.body)["data"];
       // print(responseData);
       final accessToken = AccessToken.fromJson(responseData);
-      print(accessToken.accessToken);
+      Get.find<AppControleer>().accessToken=accessToken;
       Get.find<AppControleer>().currentUser =await GetApi.getCurrentUser(accessToken.accessToken);
       print(Get.find<AppControleer>().currentUser?.userName);
       return true;
@@ -87,13 +86,32 @@ class PostAPI{
           'Content-Type': 'application/json',
         },
         body: jsonEncode(userData));
-    debugPrint(jsonDecode(response.body)['message']);
     if (response.statusCode == 200) {
       return 'Đăng ký thành công';
       // Xử lý các logic sau khi đăng ký thành công
     } else {
       return 'Đăng ký thất bại. Mã trạng thái: ${jsonDecode(response.body)['message']}';
       // Xử lý các logic sau khi đăng ký thất bại
+    }
+  }
+  static Future<String> postCart(String address) async {
+    final apiUrl = '${apiBase}order';
+    final response = await http.post(Uri.parse(apiUrl),
+        headers: {
+          'Authorization': 'Bearer ${Get.find<AppControleer>().accessToken.accessToken}',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(<String,String>{
+          // key: value
+          'delivery_address':address,//
+        })
+    );
+    print('status Code ${Get.find<AppControleer>().accessToken.accessToken}');
+    if(response.statusCode==200){
+      return 'Đặt hàng thành công';
+    }
+    else{
+      return 'Hệ thống đang lỗi, vui lòng thử lại sau';
     }
   }
 

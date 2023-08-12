@@ -1,32 +1,12 @@
 
+import 'package:btl_flutter/controller/detal_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../CallAPI/Network/pizza_network.dart';
-import '../Data/Product.dart';
+class Choose_Appetizer extends GetView<DetalController>{
 
-class Choose_Appetizer extends StatefulWidget {
-  const Choose_Appetizer({super.key});
-
-  @override
-  State<Choose_Appetizer> createState() => _Choose_AppetizerState();
-}
-
-class _Choose_AppetizerState extends State<Choose_Appetizer> {
-
- TextEditingController _textEditingController = TextEditingController();
-  String _displayText = '';
- var getData = <Product>[];
-  @override
-  void initState() {
-    // TODO: implement initState
-    NetworkRequestSubMenu.fetchSub(6, 5).then((dataFromServer) {
-      setState(() {
-        getData = dataFromServer;
-      });
-    });
-    super.initState();
-  }
   Widget build(BuildContext context) {
+    controller.context=context;
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       child: Column(
@@ -37,14 +17,14 @@ class _Choose_AppetizerState extends State<Choose_Appetizer> {
               children: [
                 TextField(
                   readOnly: true,
-                  controller: _textEditingController,
+                  controller: controller.textAppertizer,
                   onTap: () {
                     _openGridView();
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Chọn món khai vị',
-                    border: const OutlineInputBorder(),
-                    suffixIcon: const Icon(
+                    border: OutlineInputBorder(),
+                    suffixIcon: Icon(
                       Icons.add,
                       size: 30,
                       color: Color.fromARGB(255, 50, 132, 53),
@@ -58,15 +38,10 @@ class _Choose_AppetizerState extends State<Choose_Appetizer> {
       ),
     );
   }
-  void _addText() {
-    setState(() {
-      _displayText = "Xà Lách Cá Ngừ Và Thịt Xông Khói";
-      _textEditingController.text = _displayText;
-    });
-  }
+
  void _openGridView() {
    showModalBottomSheet<void>(
-     context: context,
+     context: controller.context,
      builder: (BuildContext context) {
        return Container(
          color: const Color.fromARGB(255, 248, 222, 222),
@@ -78,11 +53,11 @@ class _Choose_AppetizerState extends State<Choose_Appetizer> {
              mainAxisSpacing: 5.0,
              childAspectRatio: 0.75,
            ),
-           itemCount: getData.length,
+           itemCount: controller.getDataAppetizer.length,
            itemBuilder: (context, index) {
              return InkWell(
                onTap: (){
-                 _textEditingController.text=getData[index].productName;
+                controller.textAppertizer.text=controller.getDataAppetizer.value[index].productName;
                },
                child: Container(
                  margin: const EdgeInsets.fromLTRB(15, 20, 15, 10),
@@ -106,7 +81,7 @@ class _Choose_AppetizerState extends State<Choose_Appetizer> {
                            topRight: Radius.circular(6),
                          ),
                          child: SizedBox.fromSize(
-                           child: Image.network("${getData[index].image}"),
+                           child: Image.network("${controller.getDataAppetizer.value[index].image}"),
                          ),
                        ),
                        Container(
@@ -117,7 +92,7 @@ class _Choose_AppetizerState extends State<Choose_Appetizer> {
                                children: [
                                  Expanded(
                                    child: Text(
-                                     getData[index].productName,
+                                     controller.getDataAppetizer.value[index].productName,
                                      style: const TextStyle(
                                        fontSize: 14,
                                        color: Colors.black,

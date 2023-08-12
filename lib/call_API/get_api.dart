@@ -1,10 +1,11 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../Data/Product.dart';
 import '../Data/User.dart';
-
+import '../controller/AppControler.dart';
 class GetApi {
   static String api = 'http://207.148.118.106:8080/';
 
@@ -38,13 +39,34 @@ class GetApi {
   }
 
   static Future<List<Product>> getProducts() async {
-    final response = await http.get(Uri.parse('${api}product/point'));
+    Map<String, String> headers = {
+      'Authorization': 'Bearer ${Get.find<AppControleer>().accessToken.accessToken}', // Replace with your access token
+      'Content-Type': 'application/json',
+    };
+    final response = await http.get(Uri.parse('${api}product/point'),
+      headers: headers
+    );
 
     if (response.statusCode == 200) {
       final List<dynamic> jsonData =
           json.decode(utf8.decode(response.body.codeUnits))["data"];
       final List<Product> products =
           jsonData.map((item) => Product.fromJson(item)).toList();
+      return products;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
+  static Future<List<Product>> getAllCart() async{
+    final response = await http.get(Uri.parse('${api}cart'));
+
+    if (response.statusCode == 200) {
+      final List<dynamic> jsonData =
+      json.decode(utf8.decode(response.body.codeUnits))["data"]["productDetailResponseDTOS"];
+      final List<Product> products =
+      jsonData.map((item) => Product.fromJson(item)).toList();
+      print('cart $products');
       return products;
     } else {
       throw Exception('Failed to load data');

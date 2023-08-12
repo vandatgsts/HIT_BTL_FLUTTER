@@ -1,16 +1,13 @@
 import 'dart:async';
-import 'package:btl_flutter/AppRouter/AppRouter.dart';
-import 'package:btl_flutter/controller/state_main_controller.dart';
-import 'package:flutter/cupertino.dart';
 
+import 'package:btl_flutter/controller/state_main_controller.dart';
+import 'package:custom_info_window/custom_info_window.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:custom_info_window/custom_info_window.dart';
-import 'package:geocoding/geocoding.dart';
-import '../res/AppImage.dart';
-import 'package:btl_flutter/controller/menu_controller.dart' as menu;
 
 class MapController extends GetxController {
   late BuildContext context;
@@ -42,8 +39,8 @@ class MapController extends GetxController {
 
   RxString address=''.obs;
   final Position shopLocation = Position(
-    latitude: 21.0367,
-    longitude: 105.7750,
+    latitude: 21.0403,
+    longitude: 105.7663,
     timestamp: DateTime.now(),
     accuracy: 0.0,
     altitude: 0.0,
@@ -76,8 +73,6 @@ class MapController extends GetxController {
     );
 
     // Danh sách marker để hiển thị trên bản đồ
-
-
 
     myLocation=Get.arguments['myLocation'];
     onPressMap(LatLng(myLocation.latitude, myLocation.longitude));

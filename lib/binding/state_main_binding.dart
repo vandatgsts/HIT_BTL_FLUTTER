@@ -1,3 +1,4 @@
+import 'package:btl_flutter/controller/bogo_controller.dart';
 import 'package:btl_flutter/controller/discount_controller.dart';
 import 'package:btl_flutter/controller/menu_controller.dart';
 import 'package:btl_flutter/controller/state_main_controller.dart';
@@ -15,6 +16,9 @@ class StateMainBinding extends Bindings{
     Get.lazyPut(()=>MainScreenController());
     Get.lazyPut(() => MenuController());
     Get.lazyPut(() => DiscountController());
+
+    /// Menu
+    Get.lazyPut(() => BogoController());
 
   }
 }

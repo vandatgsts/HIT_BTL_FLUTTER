@@ -1,11 +1,9 @@
 
-import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 import '../../Data/Product.dart';
-import '../../widgets/pizza.dart';
-import '../Model/pizza.dart';
 
 
 class NetworkRequestProduct {

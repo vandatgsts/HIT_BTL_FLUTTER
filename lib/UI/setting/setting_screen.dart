@@ -1,11 +1,8 @@
 import 'package:btl_flutter/UI/login/Component/Logo/Logo.dart';
 import 'package:btl_flutter/controller/setting_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../Widget/app_color.dart';
+import 'package:get/get.dart';
 
 class SettingScreen extends GetView<SettingController> {
   Widget buildButton(String text, Function() onPressed) {
@@ -74,10 +71,6 @@ class SettingScreen extends GetView<SettingController> {
               ),
               SizedBox(
                 width: 10.sp,
-              ),
-              const Icon(
-                Icons.handyman,
-                color: Colors.grey,
               ),
             ],
           ),
