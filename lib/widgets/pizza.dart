@@ -34,7 +34,7 @@ class _PizzaScreenState extends State<PizzaScreen> {
             crossAxisCount: 2,
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 10.0,
-            childAspectRatio: 0.5),
+            childAspectRatio: 0.45),
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),

@@ -26,6 +26,8 @@ class _ViHeDetailScreenState extends State<ViHeDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Select.id = widget.bogoItem.id!;
+    Select.cataloryId =6;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -53,7 +55,7 @@ class _ViHeDetailScreenState extends State<ViHeDetailScreen> {
               child: Image.network(widget.bogoItem.image ?? ''),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
               child: Row(
                 children: [
                   Text(
@@ -68,39 +70,40 @@ class _ViHeDetailScreenState extends State<ViHeDetailScreen> {
               ),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(15, 0, 10, 0),
+              padding: const EdgeInsets.fromLTRB(15, 0, 10, 0),
               child: Column(
                 children: [
                   Text(
                     widget.bogoItem.description ?? '',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    style: const TextStyle(color: Colors.black, fontSize: 18),
                   )
                 ],
               ),
             ),
             Select(),
             Choose_Appetizer(),
-            Select_drink(),
+            const Select_drink(),
           
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             ElevatedButton(
                 onPressed: () {
                   if(!Get.isRegistered<CartController>()){
                       Get.put(CartController());
                   }
+                  widget.bogoItem.disPlayName=Select.displayText;
                   Get.find<CartController>().listItem.add(
-                   "jkljjj"
+                   widget.bogoItem,
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   primary: const Color.fromARGB(255, 41, 128, 42),
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                       horizontal:
                           16.0), // Tăng padding ngang để tạo khoảng cách với lề màn hình
-                  minimumSize: Size(250,
+                  minimumSize: const Size(250,
                       60), // Sử dụng minimumSize để làm nút button chiếm hết chiều ngang
                 ),
-                child: Text(
+                child: const Text(
                   "Thêm vào giỏ hàng",
                   style: TextStyle(fontSize: 20),
                 ))

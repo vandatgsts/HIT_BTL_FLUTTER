@@ -110,6 +110,7 @@ class SummerMenu extends GetView<menu.MenuController> {
                             () => DropdownButton<String>(
                               value: controller.dropdownValue1.value,
                               isExpanded: true,
+                              onTap: () => controller.cacuPrice(),
                               underline: Container(),
                               items: <String>[
                                 'Nhỏ',
@@ -187,30 +188,32 @@ class SummerMenu extends GetView<menu.MenuController> {
                         Row(
                           children: [
                             Expanded(
-                                child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ButtonStyle(
-                                      minimumSize:
-                                          MaterialStateProperty.all<Size>(
-                                              Size(150.sp, 50.sp)),
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.green),
-                                      overlayColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.teal),
-                                      foregroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              const Color.fromARGB(
-                                                  255, 246, 205, 205)),
-                                    ),
-                                    child: Text(
-                                      "Thêm 129,000đ",
-                                      style: TextStyle(
-                                          fontSize: 16.sp,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w300),
-                                    ))),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ButtonStyle(
+                                  minimumSize: MaterialStateProperty.all<Size>(
+                                      Size(150.sp, 50.sp)),
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.green),
+                                  overlayColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.teal),
+                                  foregroundColor: MaterialStateProperty.all<
+                                          Color>(
+                                      const Color.fromARGB(255, 246, 205, 205)),
+                                ),
+                                child: Obx(
+                                  () => Text(
+                                    "Thêm ${controller.price}đ",
+                                    style: TextStyle(
+                                        fontSize: 16.sp,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w300),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ]),

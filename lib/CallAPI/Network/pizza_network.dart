@@ -27,7 +27,7 @@ class NetworkRequestSubMenu {
       final res = await http.get(Uri.parse(url), headers: header);
       final response = jsonDecode(utf8.decode(res.bodyBytes))["data"];
 
-      
+      print(response);
       if (res.statusCode == 200) {
         
         return List.from(response.map((e) => Product.fromJson(e)));

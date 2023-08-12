@@ -13,26 +13,29 @@ class MainScreen extends GetView<MainScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.context=context;
+    controller.context = context;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height: Get.height/16,
+              height: Get.height / 16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 const Expanded(child: Logo()),
                 IconButton(
-                      onPressed:(){},
-                  icon:const Icon(Icons.notifications),),
+                  onPressed: () {},
+                  icon: const Icon(Icons.notifications),
+                ),
               ],
             ),
             Image.network(
-              'https://khoinguonsangtao.vn/wp-content/uploads/2022/08/hinh-anh-anime-ngau-chat-va-nghe-thuat.jpg',
+              'https://cdn.pizzahut.vn/images/Web_V3/Homepage/HOME%20TOP%20BANNER%20PC_COMBO%20VI%CC%A3%20HE%CC%80_4S5UV_200620231000.jpg',
+              height: Get.height / 5,
+              fit: BoxFit.fitHeight,
             ),
             SizedBox(
               height: 10.sp,
@@ -87,23 +90,25 @@ class MainScreen extends GetView<MainScreenController> {
             ),
             SizedBox(
               height: 150,
-              child: ListView.builder(
-                  itemCount: 15,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      child: Container(
-                        margin: const EdgeInsets.all(8),
-                        child: Image.network(
-                            'https://thuthuatnhanh.com/wp-content/uploads/2019/12/anh-anime-dep-de-thuong.jpg'),
-                      ),
-                      onTap: (){
-                        controller.onPressCombo(index);
-                      },
-                    );
-                  }),
-            )
+              child: Obx(
+                () => ListView.builder(
+                    itemCount: controller.getData.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        child: Container(
+                          margin: const EdgeInsets.all(8),
+                          child:
+                              Image.network(controller.getData.value[index].image!),
+                        ),
+                        onTap: () {
+                          controller.onPressCombo(index);
+                        },
+                      );
+                    }),
+              ),
+            ),
           ],
         ),
       ),

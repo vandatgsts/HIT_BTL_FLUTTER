@@ -18,11 +18,11 @@ class StateMainScreen extends GetView<StateMainController>{
             label: 'Trang chủ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business, color: Colors.grey),
+            icon: Icon(Icons.menu, color: Colors.grey),
             label: 'Thực đơn',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school, color: Colors.grey),
+            icon: Icon(Icons.discount, color: Colors.grey),
             label: 'Đổi điểm',
           ),
           BottomNavigationBarItem(

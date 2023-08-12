@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-// Replace this with your actual imports
-import '../CallAPI/Model/bogo.dart';
 import '../CallAPI/Network/pizza_network.dart';
 import '../Data/Product.dart';
-import '../CallAPI/Network/network.dart';
 
 class Select extends StatefulWidget {
-  const Select({Key? key}) : super(key: key);
 
+  static String displayText='';
+  static int id=0,cataloryId=0;
   @override
   _SelectState createState() => _SelectState();
+
+
 }
 
 class _SelectState extends State<Select> {
@@ -27,16 +27,17 @@ class _SelectState extends State<Select> {
   @override
   void initState() {
     super.initState();
-    NetworkRequestSubMenu.fetchSub(11, 2).then((dataFromServer) {
+    NetworkRequestSubMenu.fetchSub(Select.id+1, (Select.cataloryId-5)).then((dataFromServer) {
       setState(() {
         getData = dataFromServer;
       });
     });
+    print('getData: $getData');
   }
 
   @override
   Widget build(BuildContext context) {
-    String displayText = selectedProductName.isNotEmpty
+    Select.displayText = selectedProductName.isNotEmpty
         ? '$selectedProductName +$selectedValue'
         : selectedValue;
 
@@ -50,25 +51,20 @@ class _SelectState extends State<Select> {
               children: [
                 TextField(
                   readOnly: true,
-                  controller: TextEditingController(text: displayText),
+                  controller: TextEditingController(text: Select.displayText),
                   onTap: () {
                     _openGridView();
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Chọn 1 bánh Pizza',
-                    border: const OutlineInputBorder(),
-                    suffixIcon: InkWell(
-                      onTap: () {
-                        _openGridView();
-                      },
-                      child: const Icon(
+                    border: OutlineInputBorder(),
+                    suffixIcon:  Icon(
                         Icons.add,
                         size: 30,
                         color: Color.fromARGB(255, 50, 132, 53),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           ),
@@ -101,7 +97,7 @@ class _SelectState extends State<Select> {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
+                        color: const Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
                         spreadRadius: 1,
                         blurRadius: 2,
                       ),
@@ -119,7 +115,7 @@ class _SelectState extends State<Select> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.fromLTRB(6, 8, 5, 8),
+                        padding: const EdgeInsets.fromLTRB(6, 8, 5, 8),
                         child: Column(
                           children: [
                             Row(
@@ -140,13 +136,13 @@ class _SelectState extends State<Select> {
                               color: Colors.black,
                             ),
                             Container(
-                              padding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+                              padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
                               child: Row(
                                 children: [
                                   Expanded(
                                     flex: 2,
                                     child: Container(
-                                      padding: EdgeInsets.all(8),
+                                      padding: const EdgeInsets.all(8),
                                       child: const Text(
                                         "0đ",
                                         style: TextStyle(
@@ -176,7 +172,7 @@ class _SelectState extends State<Select> {
                                               content: Container(
                                                 width: 400,
                                                 height: 180,
-                                                color: Color.fromARGB(255, 31, 134, 43),
+                                                color: const Color.fromARGB(255, 31, 134, 43),
                                                 child: ListView.builder(
                                                   shrinkWrap: true,
                                                   itemCount: itemList.length,
@@ -206,10 +202,10 @@ class _SelectState extends State<Select> {
                                         );
                                       },
                                       style: ButtonStyle(
-                                        minimumSize: MaterialStateProperty.all<Size>(Size(50, 45)),
-                                        backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 7, 150, 12)),
+                                        minimumSize: MaterialStateProperty.all<Size>(const Size(50, 45)),
+                                        backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 7, 150, 12)),
                                         overlayColor: MaterialStateProperty.all<Color>(Colors.teal),
-                                        foregroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 246, 205, 205)),
+                                        foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 246, 205, 205)),
                                       ),
                                       child: const Text(
                                         "Thêm",

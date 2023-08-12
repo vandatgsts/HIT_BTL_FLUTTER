@@ -16,7 +16,8 @@ class ShoppingCartScreen extends GetView<CartController> {
           itemBuilder: (context, index) => Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Product Name: ${controller.listItem.value[index]}'),
+              Text('Product Name: ${controller.listItem.value[index].disPlayName}'),
+              Text('Price: ${controller.listItem.value[index].price}'),
               // Text('Product Price: ${controller.productPrice}'),
               // Add other shopping cart components here
             ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../CallAPI/Model/bogo.dart';
 import '../CallAPI/Network/network.dart';
 import '../detail/vihe_detail_screen.dart';
+import '../dialog/select.dart';
 
 class ViHe extends StatefulWidget {
   const ViHe({super.key});
@@ -12,7 +13,8 @@ class ViHe extends StatefulWidget {
 
 class _ViHeState extends State<ViHe> {
   var getData = <BOGO>[];
-   BOGO? selectedBOGO;
+  BOGO? selectedBOGO;
+
   @override
   void initState() {
     super.initState();
@@ -71,15 +73,15 @@ class _ViHeState extends State<ViHe> {
                                     flex: 1,
                                     child: ElevatedButton(
                                       onPressed: () {
-                                       setState(() {
-                                         selectedBOGO= getData[index];
-                                       });
+                                        setState(() {
+                                          selectedBOGO = getData[index];
+                                        });
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     ViHeDetailScreen(
-                                                      bogoItem:selectedBOGO!,
+                                                      bogoItem: selectedBOGO!,
                                                     )));
                                       },
                                       style: ElevatedButton.styleFrom(
@@ -95,11 +97,6 @@ class _ViHeState extends State<ViHe> {
                                     ))
                               ],
                             ),
-                            // Text(
-                            //   "${postData[index].description}",
-                            //   style:
-                            //       TextStyle(color: Colors.black, fontSize: 12),
-                            // ),
                             const Divider(
                               color: Colors.black,
                             ),
@@ -128,17 +125,20 @@ class _ViHeState extends State<ViHe> {
                                     flex: 1,
                                     child: ElevatedButton(
                                         onPressed: () {
-                                       setState(() {
-                                         selectedBOGO= getData[index];
-                                       });
-                                        Navigator.push(
+                                          setState(() {
+                                            selectedBOGO = getData[index];
+                                          });
+
+                                          Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ViHeDetailScreen(
-                                                      bogoItem:selectedBOGO!,
-                                                    )));
-                                      },
+                                              builder: (context) =>
+                                                  ViHeDetailScreen(
+                                                bogoItem: selectedBOGO!,
+                                              ),
+                                            ),
+                                          );
+                                        },
                                         style: ElevatedButton.styleFrom(
                                             primary: const Color.fromARGB(
                                                 255, 41, 128, 42),

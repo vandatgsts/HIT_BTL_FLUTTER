@@ -5,9 +5,21 @@ import 'package:geolocator/geolocator.dart';
 import 'package:sn_progress_dialog/sn_progress_dialog.dart';
 
 import '../AppRouter/AppRouter.dart';
+import '../CallAPI/Model/bogo.dart';
+import '../CallAPI/Network/network.dart';
 class MainScreenController extends GetxController{
   late BuildContext context;
   bool isLoadMap=false;
+
+  RxList getData=<BOGO>[].obs;
+
+  @override
+  void onInit() async {
+    // TODO: implement onInit
+    getData.value= await NetworkRequest.fetchBogo(6);
+    super.onInit();
+  }
+
   onPressSeeMenu(){
     if(!Get.isRegistered<StateMainController>()){
       Get.put(StateMainController());
@@ -58,5 +70,6 @@ class MainScreenController extends GetxController{
     }
     return await Geolocator.getCurrentPosition();
   }
+
 }
 

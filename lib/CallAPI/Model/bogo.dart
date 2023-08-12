@@ -5,7 +5,7 @@ class BOGO {
   String? description;
   int? price;
   int? categoryId;
-  String? cakeBase, caseSize, cakeSizeId;
+  String? disPlayName;
 
   BOGO(
       {this.id,
