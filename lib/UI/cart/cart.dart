@@ -25,14 +25,14 @@ class ShoppingCartScreen extends GetView<CartController> {
                       shrinkWrap: true,
                       itemCount: controller.listItem.length,
                       itemBuilder: (context, index) =>
-                          ItemCart(controller.listItem.value[index])),
+                          ItemCart(controller.listItem.value[index],1)),
                 ),
                 Obx(
                   () => ListView.builder(
                       shrinkWrap: true,
                       itemCount: controller.listItem2.length,
                       itemBuilder: (context, index) =>
-                          ItemCart(controller.listItem2.value[index])),
+                          ItemCart(controller.listItem2.value[index],2)),
                 ),
               ],
             ),
@@ -122,8 +122,10 @@ class ShoppingCartScreen extends GetView<CartController> {
 
 class ItemCart extends GetView<CartController> {
   var item;
+  int listNumber;
 
-  ItemCart(this.item, {super.key});
+
+  ItemCart(this.item, this.listNumber);
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +152,7 @@ class ItemCart extends GetView<CartController> {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
                   ' ${item.name}',
@@ -159,9 +161,13 @@ class ItemCart extends GetView<CartController> {
                     fontSize: 18.sp,
                   ),
                 ),
+                SizedBox(height: 5.sp,),
                 Text('       ${item.name}'),
+                SizedBox(height: 5.sp,),
                 Text('       ${item.appertizer ?? ''}'),
+                SizedBox(height: 5.sp,),
                 Text('       ${item.drink ?? ''}'),
+                SizedBox(height: 5.sp,),
                 Text('       Giá tiền: ${item.price} VND'),
                 // Text('Product Price: ${controller.productPrice}'),
                 // Add other shopping cart components here
@@ -170,7 +176,13 @@ class ItemCart extends GetView<CartController> {
           ),
           IconButton(
               onPressed: () {
-                controller.listItem.remove(item);
+                if(listNumber==1) {
+                  controller.listItem.remove(item);
+                }
+                else {
+                  controller.listItem2.remove(item);
+                }
+                controller.cacuTotalPrice();
               },
               icon: Text(
                 'X',

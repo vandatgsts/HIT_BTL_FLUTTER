@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import '../Data/User.dart';
 
 class RegisterController extends GetxController {
+  late BuildContext context;
   final formKey = GlobalKey<FormState>();
   final TextEditingController name = TextEditingController();
   final TextEditingController userName = TextEditingController();
@@ -29,6 +30,8 @@ class RegisterController extends GetxController {
   bool hasPasswordOneNumber = false;
   bool hasUpperCase = false;
   bool hasSpecialCharacters = false;
+
+  RxBool isLoading = false.obs;
 
   String message='';
   /// init, khi khoi ta
@@ -70,6 +73,12 @@ class RegisterController extends GetxController {
   void onPressRegister() async {
     if(!isPasswordEightCharacters.value || !hasPasswordOneNumber ||!hasUpperCase || !hasSpecialCharacters){
       message="Vui lòng kiểm tra lại thông tin đăng nhập";
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+      return;
+    }
+    if(!firsValue.value){
+      message='Bạn chưa đồng ý với các điều khoản';
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
       return;
     }
     User user = User(
@@ -83,11 +92,21 @@ class RegisterController extends GetxController {
       phoneNumber: phoneNumber.text,
       email: emailController.text,
     );
-    showUserInfo(user);
+    // showUserInfo(user);
+
+    isLoading.value = true;
+    Future.delayed(Duration(seconds: 3), () {
+      // Sau khi chờ xong,
+      // Đồng thời, tắt trạng thái "loading"
+      isLoading.value = false;
+    });
     message = await PostAPI.registerUser(user);
     if (message.compareTo('Đăng ký thành công') == 0) {
       clearText();
-      Get.toNamed(AppRouter.login);
+      Get.offAndToNamed(AppRouter.login);
+    }
+   else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
     }
   }
 

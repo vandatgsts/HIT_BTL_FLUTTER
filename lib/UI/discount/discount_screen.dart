@@ -1,5 +1,6 @@
 import 'package:btl_flutter/UI/Widget/app_image_widget.dart';
 import 'package:btl_flutter/UI/login/Component/Logo/Logo.dart';
+import 'package:btl_flutter/controller/AppControler.dart';
 import 'package:btl_flutter/controller/cart_controller.dart';
 import 'package:btl_flutter/controller/discount_controller.dart';
 import 'package:flutter/material.dart';
@@ -119,11 +120,25 @@ class ItemList extends GetView<DiscountController> {
           color: Colors.green,
           child: TextButton(
             onPressed: () {
-              controller.point.value-=product.point;
-              if(!Get.isRegistered<CartController>()){
-                Get.put(CartController());
+              if(product.point<controller.point.value) {
+                controller.point.value -= product.point;
+
+                Get.find<AppControleer>().currentUser.point=controller.point.value;
+                controller.updatePoint();
+
+                if (!Get.isRegistered<CartController>()) {
+                  Get.put(CartController());
+                }
+                product.price=0.toString();
+                Get
+                    .find<CartController>()
+                    .listItem2
+                    .add(product);
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text( "Đổi thành công")));
               }
-              Get.find<CartController>().listItem2.add(product);
+              else {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text( "Không đủ điểm")));
+              }
             },
             child: Text(
               product.point.toString(),

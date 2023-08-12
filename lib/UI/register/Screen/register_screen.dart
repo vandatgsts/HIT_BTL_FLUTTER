@@ -12,6 +12,7 @@ import '../../../controller/register_controller.dart';
 class RegisterScreen extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
+    controller.context = context;
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -76,21 +77,25 @@ class RegisterScreen extends GetView<RegisterController> {
                       height: 10,
                     ),
                     CheckBox(),
-                    ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 60, 186, 64)),
-                        onPressed: () {
-                          if (controller.formKey.currentState!.validate()) {
-                            print("da nhap");
-                            controller.onPressRegister();
-                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(controller.message)));
-                          } else {
-                            print("Chua nhap");
-                          }
-
-                        },
-                        child: const Text("Tiếp theo"))
+                    Obx(
+                      () => controller.isLoading.value
+                          ? const CircularProgressIndicator()
+                          : ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    const Color.fromARGB(255, 60, 186, 64)),
+                            onPressed: () {
+                              if (controller.formKey.currentState!
+                                  .validate()) {
+                                print("da nhap");
+                                controller.onPressRegister();
+                              } else {
+                                print("Chua nhap");
+                              }
+                            },
+                            child: const Text("Tiếp theo"),
+                          ),
+                    ),
                   ],
                 )),
           ),
@@ -318,7 +323,7 @@ class RegisterScreen extends GetView<RegisterController> {
                             controller.isVisible.value =
                                 !controller.isVisible.value;
                           },
-                          icon: controller.isVisible.value
+                          icon: !controller.isVisible.value
                               ? const Icon(
                                   Icons.visibility,
                                   color: Colors.black,

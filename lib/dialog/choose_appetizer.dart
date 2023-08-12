@@ -57,7 +57,7 @@ class Choose_Appetizer extends GetView<DetalController>{
            itemBuilder: (context, index) {
              return InkWell(
                onTap: (){
-                controller.textAppertizer.text=controller.getDataAppetizer.value[index].productName;
+                controller.textAppertizer.text=controller.getDataAppetizer.value[index].name;
                },
                child: Container(
                  margin: const EdgeInsets.fromLTRB(15, 20, 15, 10),
@@ -92,7 +92,7 @@ class Choose_Appetizer extends GetView<DetalController>{
                                children: [
                                  Expanded(
                                    child: Text(
-                                     controller.getDataAppetizer.value[index].productName,
+                                     controller.getDataAppetizer.value[index].name,
                                      style: const TextStyle(
                                        fontSize: 14,
                                        color: Colors.black,

@@ -94,7 +94,7 @@ class Select_drink  extends GetView<DetalController> {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    controller.getDataDrink[index].productName,
+                                    controller.getDataDrink[index].name,
                                     style: const TextStyle(
                                       fontSize: 14,
                                       color: Colors.black,

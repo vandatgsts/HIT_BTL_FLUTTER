@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class AccountScreen extends GetView<AccountController> {
   @override
@@ -145,6 +146,11 @@ class AccountScreen extends GetView<AccountController> {
                   Row(
                     children: [
                       Text('Điểm: ${controller.user?.point}'),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text('Ngày sinh: ${controller.formatBirthday(controller.user!.birthday)}'),
                     ],
                   ),
                 ],
