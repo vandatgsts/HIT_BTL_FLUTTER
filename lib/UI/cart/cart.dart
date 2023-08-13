@@ -13,7 +13,7 @@ class ShoppingCartScreen extends GetView<CartController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: const Text('Shopping Cart'),
+        title: const Text('Giỏ Hàng'),
       ),
       body: Stack(
         children: [
@@ -111,6 +111,7 @@ class ShoppingCartScreen extends GetView<CartController> {
                   child: Icon(
                     Icons.shopping_cart,
                     size: 40.sp,
+                    color: Colors.white,
                   )),
             ],
           ),

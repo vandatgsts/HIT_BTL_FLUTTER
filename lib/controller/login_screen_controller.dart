@@ -26,6 +26,8 @@ class LoginScreenController extends GetxController {
     isLogin.value =
         await PostAPI.postLogin(emailController.text, passwordController.text);
     if (isLogin.value) {
+      emailController.clear();
+      passwordController.clear();
       Get.toNamed(AppRouter.stateMainScreen);
     }
   }

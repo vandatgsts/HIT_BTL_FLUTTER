@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../CallAPI/Model/bogo.dart';
@@ -39,5 +40,6 @@ class DetalController extends GetxController {
     Get.find<CartController>().listItem.add(
       bogoItem,
     );
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Them thanh cong')));
   }
 }

@@ -18,6 +18,7 @@ class ViHeDetailScreen extends GetView<DetalController> {
   Widget build(BuildContext context) {
     Select.id = controller.bogoItem.id!;
     Select.cataloryId =controller.bogoItem.categoryId!;
+    controller.context=context;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

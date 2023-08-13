@@ -55,6 +55,7 @@ class CartController extends GetxController{
       for(var i in listItem2){
         totalPrice.value+=int.parse(i.price!);
       }
+      totalPrice.value+=20000;
     }
     else {
       for(var i in listItem){
@@ -63,7 +64,7 @@ class CartController extends GetxController{
       for(var i in listItem2){
         totalPrice.value+=int.parse(i.price!);
       }
-      totalPrice.value+=20000;
+
     }
   }
 }

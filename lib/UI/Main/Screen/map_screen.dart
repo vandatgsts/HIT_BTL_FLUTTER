@@ -182,7 +182,7 @@ class MapScreen extends GetView<MapController> {
                     ),
                     Expanded(
                       child: Text(
-                        "Your Location",
+                        "Vị trí của bạn",
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 20.0.sp,

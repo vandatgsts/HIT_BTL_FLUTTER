@@ -13,6 +13,7 @@ class InputText1 extends GetView<LoginScreenController> {
       height: 40.sp,
       child: TextField(
         controller: controller.emailController,
+        textInputAction: TextInputAction.next,
         textAlign: TextAlign.left,
         style: const TextStyle(
           color: Color(0x891c1a1a),

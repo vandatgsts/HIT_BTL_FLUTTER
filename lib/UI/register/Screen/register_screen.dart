@@ -14,92 +14,97 @@ class RegisterScreen extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     controller.context = context;
-    return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.grey,
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.grey,
+              ),
             ),
+            title: AppImageWidget.asset(path: AppImage.headerLogo),
+            backgroundColor: Colors.white,
           ),
-          title: AppImageWidget.asset(path: AppImage.headerLogo),
-          backgroundColor: Colors.white,
-        ),
-        body: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Form(
-                key: controller.formKey,
-                child: ListView(
-                  children: [
-                    Column(children: [
-                      Container(
-                        padding: const EdgeInsets.all(6),
-                        child: const Column(
-                          children: [
-                            Text(
-                              "Đăng ký",
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
-                            ),
-                            Text(
-                              "Vui lòng điền mẫu đơn đăng ký bên dưới",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w100),
-                            )
-                          ],
-                        ),
-                      )
-                    ]),
-                    // ignore: avoid_unnecessary_containers
-                    Name(),
-                    UserName(),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    DateAndGender(context),
-                    Phone(),
-                    Address(),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    PassWordAndComfirm(context),
-                    CheckPassword(),
-                    Email(),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CheckBox(),
-                    Obx(
-                      () => controller.isLoading.value
-                          ? const CircularProgressIndicator()
-                          : ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 60, 186, 64)),
-                            onPressed: () {
-                              if (controller.formKey.currentState!
-                                  .validate()) {
-                                print("da nhap");
-                                controller.onPressRegister();
-                              } else {
-                                print("Chua nhap");
-                              }
-                            },
-                            child: const Text("Tiếp theo"),
+          body: Container(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Form(
+                  key: controller.formKey,
+                  child: ListView(
+                    children: [
+                      Column(children: [
+                        Container(
+                          padding: const EdgeInsets.all(6),
+                          child: const Column(
+                            children: [
+                              Text(
+                                "Đăng ký",
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                              Text(
+                                "Vui lòng điền mẫu đơn đăng ký bên dưới",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.w100),
+                              )
+                            ],
                           ),
-                    ),
-                  ],
-                )),
-          ),
-        ));
+                        )
+                      ]),
+                      // ignore: avoid_unnecessary_containers
+                      Name(),
+                      UserName(),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      DateAndGender(context),
+                      Phone(),
+                      Address(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      PassWordAndComfirm(context),
+                      CheckPassword(),
+                      Email(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CheckBox(),
+                      Obx(
+                        () => controller.isLoading.value
+                            ? const CircularProgressIndicator()
+                            : ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 60, 186, 64)),
+                              onPressed: () {
+                                if (controller.formKey.currentState!
+                                    .validate()) {
+                                  print("da nhap");
+                                  controller.onPressRegister();
+                                } else {
+                                  print("Chua nhap");
+                                }
+                              },
+                              child: const Text("Tiếp theo"),
+                            ),
+                      ),
+                    ],
+                  )),
+            ),
+          )),
+    );
   }
 
   Container CheckBox() {
@@ -316,6 +321,7 @@ class RegisterScreen extends GetView<RegisterController> {
                     onChanged: (password) =>
                         controller.onPasswordChanged(password),
                     controller: controller.passWordcontroller,
+                    textInputAction: TextInputAction.next,
                     obscureText: !controller.isVisible.value,
                     decoration: InputDecoration(
                         suffixIcon: IconButton(
@@ -368,6 +374,7 @@ class RegisterScreen extends GetView<RegisterController> {
               Obx(
                 () => TextFormField(
                   controller: controller.confirmPassWordController,
+                  textInputAction: TextInputAction.next,
                   obscureText: controller.isVisibleConfirm.value,
                   decoration: InputDecoration(
                       suffixIcon: IconButton(
@@ -434,6 +441,7 @@ class RegisterScreen extends GetView<RegisterController> {
           ),
           TextFormField(
             controller: controller.addressController,
+            textInputAction: TextInputAction.next,
             decoration: InputDecoration(
                 hintText: "Địa chỉ",
                 border: OutlineInputBorder(
@@ -476,6 +484,7 @@ class RegisterScreen extends GetView<RegisterController> {
           TextFormField(
             controller: controller.phoneNumber,
             keyboardType: TextInputType.number,
+            textInputAction: TextInputAction.next,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
               FilteringTextInputFormatter.digitsOnly
@@ -519,6 +528,7 @@ class RegisterScreen extends GetView<RegisterController> {
                 ),
                 TextFormField(
                   controller: controller.dateController,
+                  textInputAction: TextInputAction.next,
                   decoration: InputDecoration(
                     hintText: "Ngày sinh",
                     border: OutlineInputBorder(
@@ -626,6 +636,7 @@ class RegisterScreen extends GetView<RegisterController> {
           ),
           TextFormField(
             controller: controller.userName,
+            textInputAction: TextInputAction.next,
             decoration: InputDecoration(
                 hintText: "amen123",
                 border: OutlineInputBorder(
@@ -664,6 +675,7 @@ class RegisterScreen extends GetView<RegisterController> {
           ),
           TextFormField(
             controller: controller.name,
+            textInputAction: TextInputAction.next,
             decoration: InputDecoration(
                 hintText: "Họ và tên",
                 border: OutlineInputBorder(

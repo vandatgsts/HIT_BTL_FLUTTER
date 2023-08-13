@@ -15,6 +15,7 @@ class InputPassword extends GetView<LoginScreenController> {
       height: 40.sp,
       child: Obx(() => TextField(
         controller: controller.passwordController,
+        textInputAction: TextInputAction.next,
         textAlign: TextAlign.left,
         style: const TextStyle(
           color: Colors.black,

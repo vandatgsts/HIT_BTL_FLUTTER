@@ -6,38 +6,43 @@ import 'package:get/get.dart';
 
 class SettingScreen extends GetView<SettingController> {
   Widget buildButton(String text, Function() onPressed) {
-    return Container(
-      margin: EdgeInsets.only(top:5.sp,bottom: 5.sp,left: 10.sp,right: 10.sp),
-      padding: EdgeInsets.all(16.sp),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow:[
-          BoxShadow(
-            offset: const Offset(0, 0),
-            blurRadius: 5.0.sp,
-            spreadRadius: 1.0.sp,
-            color: Colors.grey.withOpacity(0.5),
-          )
-        ]
-      ),
-      child: Row(
-        children: [
-          Text(
-            text,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18.sp,
+    return TextButton(
+      onPressed: (){
+        onPressed();
+      },
+      child: Container(
+        // margin: EdgeInsets.only(top:5.sp,bottom: 5.sp,left: 10.sp,right: 10.sp),
+        padding: EdgeInsets.all(16.sp),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow:[
+            BoxShadow(
+              offset: const Offset(0, 0),
+              blurRadius: 5.0.sp,
+              spreadRadius: 1.0.sp,
+              color: Colors.grey.withOpacity(0.5),
+            )
+          ]
+        ),
+        child: Row(
+          children: [
+            Text(
+              text,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.sp,
+              ),
             ),
-          ),
-          const Spacer(),
-          IconButton(
-              onPressed: onPressed,
-              icon: const Icon(
-                Icons.navigate_next_outlined,
-                color: Color.fromARGB(255, 66, 154, 69),
-                size: 35,
-              )),
-        ],
+            const Spacer(),
+            IconButton(
+                onPressed: onPressed,
+                icon: const Icon(
+                  Icons.navigate_next_outlined,
+                  color: Color.fromARGB(255, 66, 154, 69),
+                  size: 35,
+                )),
+          ],
+        ),
       ),
     );
   }
