@@ -8,7 +8,7 @@ class SettingScreen extends GetView<SettingController> {
   Widget buildButton(String text, Function() onPressed) {
     return Container(
       margin: EdgeInsets.only(top:5.sp,bottom: 5.sp,left: 10.sp,right: 10.sp),
-      padding: EdgeInsets.all(10.sp),
+      padding: EdgeInsets.all(16.sp),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow:[
@@ -16,7 +16,7 @@ class SettingScreen extends GetView<SettingController> {
             offset: const Offset(0, 0),
             blurRadius: 5.0.sp,
             spreadRadius: 1.0.sp,
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.grey.withOpacity(0.5),
           )
         ]
       ),
@@ -26,7 +26,7 @@ class SettingScreen extends GetView<SettingController> {
             text,
             style: TextStyle(
               color: Colors.black,
-              fontSize: 15.sp,
+              fontSize: 18.sp,
             ),
           ),
           const Spacer(),
@@ -34,7 +34,8 @@ class SettingScreen extends GetView<SettingController> {
               onPressed: onPressed,
               icon: const Icon(
                 Icons.navigate_next_outlined,
-                color: Colors.green,
+                color: Color.fromARGB(255, 66, 154, 69),
+                size: 35,
               )),
         ],
       ),
@@ -75,7 +76,7 @@ class SettingScreen extends GetView<SettingController> {
             ],
           ),
           Container(
-            height: 70.sp,
+            height: 90.sp,
             width: Get.width,
             margin: EdgeInsets.all(10.sp),
             padding: EdgeInsets.all(10.sp),
@@ -90,16 +91,19 @@ class SettingScreen extends GetView<SettingController> {
                   'Theo dõi đơn hàng',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16.sp,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
+                SizedBox(
+                  height: 5,
+                ),
                 Text(
-                  'Kiem tra trang thai don hang cua ban',
+                  'Kiểm tra trạng thái đơn hàng của bạn',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
-                    fontSize: 12.sp,
+                    fontSize: 16.sp,
                   ),
                 ),
               ],
