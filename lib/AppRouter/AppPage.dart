@@ -15,13 +15,16 @@ import 'package:btl_flutter/binding/change_pass_binding.dart';
 import 'package:btl_flutter/binding/detal_biding.dart';
 import 'package:btl_flutter/binding/forgot_pass_word_binding.dart';
 import 'package:btl_flutter/binding/map_binding.dart';
+import 'package:btl_flutter/binding/see_orderbinding.dart';
 import 'package:btl_flutter/binding/setting_binding.dart';
 import 'package:btl_flutter/binding/state_main_binding.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../UI/cart/cart.dart';
 import '../UI/change_password/change_pass_screen.dart';
 import '../UI/detail/vihe_detail_screen.dart';
+import '../UI/see_order/see_order_screen.dart';
 import '../UI/setting/setting_screen.dart';
 import '../binding/cart_binding.dart';
 import '../binding/register_bingdin.dart';
@@ -77,5 +80,9 @@ class AppPage {
         name: AppRouter.changeInfScreen,
         page: () => ChangeInfScreen(),
         binding:ChangeInfBinding()),
+    GetPage(
+        name: AppRouter.seeOder,
+        page: () => SeeOrderScreen(),
+        binding:SeeOrderBinding()),
   ];
 }

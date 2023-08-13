@@ -1,5 +1,8 @@
 import 'package:btl_flutter/CallAPI/Model/bogo.dart';
 import 'package:btl_flutter/Data/Product.dart';
+import 'package:btl_flutter/Data/product_detal.dart';
+import 'package:btl_flutter/call_API/delele_api.dart';
+import 'package:btl_flutter/call_API/get_api.dart';
 import 'package:btl_flutter/call_API/post_api.dart';
 import 'package:btl_flutter/controller/AppControler.dart';
 import 'package:btl_flutter/controller/map_controller.dart';
@@ -9,7 +12,7 @@ class CartController extends GetxController{
   late BuildContext context;
   RxList<BOGO> listItem=<BOGO>[].obs;
   RxInt totalPrice=00.obs;
-  RxList listItem2= <Product>[].obs;
+  RxList listItem2= <ProductDetail>[].obs;
   RxString typeShip='Giao hàng tận nơi'.obs;///true ship, false no ship
 
   String messeger='';
@@ -17,13 +20,30 @@ class CartController extends GetxController{
   void onInit() async {
     // TODO: implement onInit
     //typeShip.text='Giao hàng tận nơi';
+    listItem2.value=await GetApi.getAllCart();
    cacuTotalPrice();
   }
   @override
-  void onReady() {
+  void onReady() async {
     // TODO: implement onReady
+    listItem2.value=await GetApi.getAllCart();
     cacuTotalPrice();
     super.onReady();
+  }
+  void onPressOder()async {
+    messeger=await PostAPI.postCart(Get.find<AppControleer>().address);
+    listItem2.value=await GetApi.getAllCart();
+    if(listItem2.isEmpty){
+      messeger='Đặt hàng thành công';
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(messeger)));
+      Get.back();
+    }
+    cacuTotalPrice();
+  }
+  void onPressDelele(int id) async {
+    messeger=await DeleteApi.deleteProductDetail(id);
+    listItem2.value=await GetApi.getAllCart();
+    cacuTotalPrice();
   }
   void clearCart() async {
 
@@ -48,23 +68,12 @@ class CartController extends GetxController{
   void cacuTotalPrice() {
 
     totalPrice.value=0;
-    if(typeShip.value.compareTo('Giao hàng tận nơi')==0) {
-      for(var i in listItem){
+    for(var i in listItem){
       totalPrice.value+=i.price!;
     }
-      for(var i in listItem2){
-        totalPrice.value+=int.parse(i.price!);
-      }
-      totalPrice.value+=20000;
-    }
-    else {
-      for(var i in listItem){
-        totalPrice.value+=i.price!;
-      }
-      for(var i in listItem2){
-        totalPrice.value+=int.parse(i.price!);
-      }
-
+    for(var i in listItem2.value){
+      int value=i.price*i.quatity;
+      totalPrice.value+=value;
     }
   }
 }

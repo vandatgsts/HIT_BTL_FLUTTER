@@ -1,5 +1,7 @@
 import 'package:btl_flutter/UI/Widget/app_image_widget.dart';
 import 'package:btl_flutter/UI/login/Component/Logo/Logo.dart';
+import 'package:btl_flutter/call_API/get_api.dart';
+import 'package:btl_flutter/call_API/post_api.dart';
 import 'package:btl_flutter/controller/AppControler.dart';
 import 'package:btl_flutter/controller/cart_controller.dart';
 import 'package:btl_flutter/controller/discount_controller.dart';
@@ -11,6 +13,7 @@ import '../../Data/Product.dart';
 
 class DiscoutScreen extends GetView<DiscountController> {
   const DiscoutScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     controller.updatePoint();
@@ -58,31 +61,31 @@ class DiscoutScreen extends GetView<DiscountController> {
                 decoration: BoxDecoration(
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(5.sp)),
-                child: Obx(()=>Text(
-                  controller.point.value.toString(),
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16.sp,
+                child: Obx(
+                  () => Text(
+                    controller.point.value.toString(),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16.sp,
+                    ),
                   ),
                 ),
               ),
-              ),
-
             ],
           ),
-          Obx(() =>
-          Expanded(
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: controller.listProduct.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                      height: 70.sp,
-                      width: Get.width,
-                      margin: EdgeInsets.all(5.sp),
-                      child: ItemList(controller.listProduct.value[index]));
-                }),
-          ),
+          Obx(
+            () => Expanded(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.listProduct.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                        height: 70.sp,
+                        width: Get.width,
+                        margin: EdgeInsets.all(5.sp),
+                        child: ItemList(controller.listProduct.value[index]));
+                  }),
+            ),
           ),
         ],
       ),
@@ -119,26 +122,20 @@ class ItemList extends GetView<DiscountController> {
         Container(
           color: Colors.green,
           child: TextButton(
-            onPressed: () {
-              if(product.point<controller.point.value) {
-                controller.point.value -= product.point;
+            onPressed: () async {
+              String message;
+              message = await PostAPI.postChangePoint(product);
+              Get.find<AppControleer>().currentUser =await GetApi.getCurrentUser( Get.find<AppControleer>().accessToken.accessToken);
+              controller.updatePoint();
 
-                Get.find<AppControleer>().currentUser.point=controller.point.value;
-                controller.updatePoint();
-
-                if (!Get.isRegistered<CartController>()) {
-                  Get.put(CartController());
-                }
-                product.price=0.toString();
-                Get
-                    .find<CartController>()
-                    .listItem2
-                    .add(product);
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text( "Đổi thành công")));
+              if (!Get.isRegistered<CartController>()) {
+                Get.put(CartController());
               }
-              else {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text( "Không đủ điểm")));
-              }
+              product.price = 0.toString();
+              Get.find<CartController>().listItem2.value =
+                  await GetApi.getAllCart();
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(message)));
             },
             child: Text(
               product.point.toString(),

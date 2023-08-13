@@ -7,6 +7,8 @@ import 'package:intl/intl.dart';
 class AccountController extends GetxController{
   late User? user;
   RxBool viewInfor=false.obs;
+
+
   onPressChangePassWord(){
     Get.toNamed(AppRouter.changePassScreen);
   }

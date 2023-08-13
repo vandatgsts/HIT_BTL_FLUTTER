@@ -80,38 +80,43 @@ class SettingScreen extends GetView<SettingController> {
               ),
             ],
           ),
-          Container(
-            height: 90.sp,
-            width: Get.width,
-            margin: EdgeInsets.all(10.sp),
-            padding: EdgeInsets.all(10.sp),
-            decoration: BoxDecoration(
-              color: Colors.green[600],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Theo dõi đơn hàng',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w700,
+          TextButton(
+            onPressed: (){
+              controller.onPressSeeOrder();
+            },
+            child: Container(
+              height: 90.sp,
+              width: Get.width,
+              margin: EdgeInsets.all(10.sp),
+              padding: EdgeInsets.all(10.sp),
+              decoration: BoxDecoration(
+                color: Colors.green[600],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Theo dõi đơn hàng',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  'Kiểm tra trạng thái đơn hàng của bạn',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16.sp,
+                  SizedBox(
+                    height: 5,
                   ),
-                ),
-              ],
+                  Text(
+                    'Kiểm tra trạng thái đơn hàng của bạn',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           buildButton('Tài khoản', () => {

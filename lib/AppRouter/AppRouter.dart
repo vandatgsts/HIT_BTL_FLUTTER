@@ -11,4 +11,5 @@ class AppRouter{
   static const String menu='/meu';
   static const String detalScreen='/detalScreen';
   static const String changeInfScreen='/changeInfScreen';
+  static const String seeOder='/seeOrderScreen';
 }

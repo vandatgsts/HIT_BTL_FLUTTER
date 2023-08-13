@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../CallAPI/Network/pizza_network.dart';
-import '../Data/Product.dart';
+import '../../CallAPI/Network/pizza_network.dart';
+import '../../Data/Product.dart';
 
 class Select extends StatefulWidget {
 

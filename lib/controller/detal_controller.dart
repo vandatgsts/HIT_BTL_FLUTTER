@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../CallAPI/Model/bogo.dart';
 import '../CallAPI/Network/pizza_network.dart';
 import '../Data/Product.dart';
-import '../dialog/select.dart';
+import '../UI/dialog/select.dart';
 import 'cart_controller.dart';
 
 class DetalController extends GetxController {

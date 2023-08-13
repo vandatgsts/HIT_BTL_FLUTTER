@@ -5,8 +5,10 @@ import 'package:btl_flutter/controller/AppControler.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../Data/Product.dart';
 import '../Data/User.dart';
 import '../Data/Userlogin.dart';
+import '../Data/product_detal.dart';
 
 class PostAPI{
   static String apiBase='http://207.148.118.106:8080/';
@@ -94,6 +96,7 @@ class PostAPI{
       // Xử lý các logic sau khi đăng ký thất bại
     }
   }
+
   static Future<String> postCart(String address) async {
     final apiUrl = '${apiBase}order';
     final response = await http.post(Uri.parse(apiUrl),
@@ -113,6 +116,62 @@ class PostAPI{
     else{
       return 'Hệ thống đang lỗi, vui lòng thử lại sau';
     }
+  }
+
+  static Future<ProductDetail> postProDuctDetal(int productId, int sizeId, int caseBaseId) async {
+    String apiUrl='${apiBase}product_detail';
+
+    final reponse=await http.post(Uri.parse(apiUrl),
+      headers: {
+        'Authorization': 'Bearer ${Get.find<AppControleer>().accessToken.accessToken}',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String,int>{
+        'productId':productId,
+        'sizeId':sizeId,
+        'cakeBaseId':caseBaseId,
+      })
+    );
+    print('${reponse.statusCode}');
+    if(reponse.statusCode==200){
+      final productDetail=ProductDetail.fromJson(jsonDecode(utf8.decode(reponse.body.codeUnits))['data']);
+      return productDetail;
+    }
+    throw Exception('khong the tao detail');
+  }
+
+  static Future<ProductDetail> postProDuctCart(ProductDetail productDetail) async {
+    String apiUrl='${apiBase}cart/product/${productDetail.id}';
+
+    final reponse=await http.post(Uri.parse(apiUrl),
+        headers: {
+          'Authorization': 'Bearer ${Get.find<AppControleer>().accessToken.accessToken}',
+          'Content-Type': 'application/json',
+        },
+
+    );
+    if(reponse.statusCode==200){
+      final productDetail=ProductDetail.fromJson(jsonDecode(utf8.decode(reponse.body.codeUnits))['data']);
+      return productDetail;
+    }
+    throw Exception('khong the add detail');
+  }
+  static Future<String> postChangePoint(Product product) async {
+    String apiUrl = '${apiBase}product/point/${product.id}';
+    final reponse = await http.post(Uri.parse(apiUrl),
+      headers: {
+        'Authorization': 'Bearer ${Get
+            .find<AppControleer>()
+            .accessToken
+            .accessToken}',
+        'Content-Type': 'application/json',
+      },
+    );
+    print(reponse.statusCode);
+    if (reponse.statusCode == 200) {
+      return 'ĐỔi điểm thành công';
+    }
+    return 'Đổi điểm không thành công';
   }
 
 }

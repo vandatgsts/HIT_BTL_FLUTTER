@@ -1,9 +1,11 @@
+import 'package:btl_flutter/call_API/get_api.dart';
 import 'package:btl_flutter/controller/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../Data/Product.dart';
+import '../../call_API/post_api.dart';
 import 'app_image_widget.dart';
 
 class ItemGrid02 extends StatefulWidget {
@@ -19,7 +21,7 @@ class ItemGrid02 extends StatefulWidget {
 class _ItemGridState extends State<ItemGrid02> {
   String dropdownValue1 = 'Nhỏ';
 
-  String dropdownValue2 = 'Đế Giòn Xốp(Nhỏ)';
+  String dropdownValue2 = 'Đế Giòn Xốp';
 
   @override
   Widget build(BuildContext context) {
@@ -163,9 +165,9 @@ class _ItemGridState extends State<ItemGrid02> {
                   isExpanded: true,
                   underline: Container(),
                   items: <String>[
-                    'Đế Giòn Xốp(Nhỏ)',
-                    'Đế Kéo Tay Truyền Thống(Nhỏ)',
-                    'Đế Mỏng Giòn(Nhỏ)'
+                    'Đế Giòn Xốp',
+                    'Đế Kéo Tay Truyền Thống',
+                    'Đế Mỏng Giòn'
                   ].map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
@@ -186,13 +188,17 @@ class _ItemGridState extends State<ItemGrid02> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if(!Get.isRegistered<CartController>()){
                           Get.put(CartController());
                         }
                         widget.product.caseSize=dropdownValue1;
                         widget.product.cakeBase=dropdownValue2;
-                        Get.find<CartController>().listItem2.add(widget.product);
+
+                        var productDetal= await PostAPI.postProDuctDetal(widget.product.id, resultSizeId(), resultCaseBaseId());
+                        await PostAPI.postProDuctCart(productDetal);
+
+                        Get.find<CartController>().listItem2.value=await GetApi.getAllCart();
                       },
                       style: ButtonStyle(
                         minimumSize: MaterialStateProperty.all<Size>(
@@ -220,5 +226,15 @@ class _ItemGridState extends State<ItemGrid02> {
         ],
       ),
     );
+  }
+  int resultSizeId(){
+    if(dropdownValue1.compareTo('Nhỏ')==0) return 1;
+    if(dropdownValue1.compareTo('Vừa')==0) return 2;
+    return 3;
+  }
+  int resultCaseBaseId(){
+    if(dropdownValue2.compareTo('Đế Giòn Xốp')==0) return 1;
+    if(dropdownValue2.compareTo('Đế Kéo Tay Truyền Thống')==0) return 2;
+    return 3;
   }
 }

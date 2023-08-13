@@ -119,40 +119,40 @@ class MainScreen extends GetView<MainScreenController> {
                     }),
               ),
             ),
-                Row(
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          controller.onPressSeeMenu();
-                        },
-                        child: const Text(
-                          'Xem thực đơn',
-                          style: TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                  ],
-                ),
-              SizedBox(
-              height: 150,
-              child: Obx(
-                () => ListView.builder(
-                    itemCount: controller.get.length,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        child: Container(
-                          margin: const EdgeInsets.all(8),
-                          child:
-                              Image.network(controller.get.value[index].image!),
-                        ),
-                        onTap: () {
-                          controller.onPressCombo(index);
-                        },
-                      );
-                    }),
-              ),
-            ),
+            //     Row(
+            //       children: [
+            //         TextButton(
+            //             onPressed: () {
+            //               controller.onPressSeeMenu();
+            //             },
+            //             child: const Text(
+            //               'Xem thực đơn',
+            //               style: TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),
+            //             ),
+            //           ),
+            //       ],
+            //     ),
+            //   SizedBox(
+            //   height: 150,
+            //   child: Obx(
+            //     () => ListView.builder(
+            //         itemCount: controller.get.length,
+            //         shrinkWrap: true,
+            //         scrollDirection: Axis.horizontal,
+            //         itemBuilder: (context, index) {
+            //           return InkWell(
+            //             child: Container(
+            //               margin: const EdgeInsets.all(8),
+            //               child:
+            //                   Image.network(controller.get.value[index].image!),
+            //             ),
+            //             onTap: () {
+            //               controller.onPressCombo(index);
+            //             },
+            //           );
+            //         }),
+            //   ),
+            // ),
 
 
           ],

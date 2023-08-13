@@ -18,23 +18,12 @@ class ShoppingCartScreen extends GetView<CartController> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: ListView(
-              children: [
-                Obx(
-                  () => ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: controller.listItem.length,
-                      itemBuilder: (context, index) =>
-                          ItemCart(controller.listItem.value[index],1)),
-                ),
-                Obx(
-                  () => ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: controller.listItem2.length,
-                      itemBuilder: (context, index) =>
-                          ItemCart(controller.listItem2.value[index],2)),
-                ),
-              ],
+            child: Obx(
+              () => ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.listItem2.length,
+                  itemBuilder: (context, index) =>
+                      ItemCart(controller.listItem2.value[index],2)),
             ),
           ),
           Positioned(bottom: 0.sp, child: bottom()),
@@ -46,48 +35,11 @@ class ShoppingCartScreen extends GetView<CartController> {
   Widget bottom() {
     controller.cacuTotalPrice();
     return Container(
-      height: 120.sp,
+      height: 70.sp,
       decoration: const BoxDecoration(color: Colors.green),
       width: Get.width,
       child: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-            child: SizedBox(
-              child: Row(children: [
-                Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.grey, width: 1),
-                        color: Colors.white,
-                      ),
-                      child: Obx(
-                        () => DropdownButton<String>(
-                          value: controller.typeShip.value,
-                          items: <String>['Giao hàng tận nơi', 'Mua tại quán']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                                style: const TextStyle(fontSize: 20),
-                              ),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            controller.typeShip.value = newValue!;
-                            controller.cacuTotalPrice();
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ]),
-            ),
-          ),
           Row(
             children: [
               SizedBox(
@@ -98,7 +50,7 @@ class ShoppingCartScreen extends GetView<CartController> {
                 children: [
                   Obx(
                     () => Text(
-                      'Price: ${controller.totalPrice} Vnd',
+                      'Tổng tiền: ${controller.totalPrice} VND',
                       style: TextStyle(
                           fontSize: 25.sp, fontWeight: FontWeight.w600),
                     ),
@@ -107,7 +59,7 @@ class ShoppingCartScreen extends GetView<CartController> {
               ),
               const Spacer(),
               TextButton(
-                  onPressed: () => {controller.clearCart()},
+                  onPressed: () => {controller.onPressOder()},
                   child: Icon(
                     Icons.shopping_cart,
                     size: 40.sp,
@@ -156,20 +108,22 @@ class ItemCart extends GetView<CartController> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  ' ${item.name}',
+                  ' ${item.productName}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18.sp,
                   ),
                 ),
                 SizedBox(height: 5.sp,),
-                Text('       ${item.name}'),
+                Text('       ${item.productName}'),
                 SizedBox(height: 5.sp,),
-                Text('       ${item.appertizer ?? ''}'),
+                Text('       ${item.sizeName ?? ''}'),
                 SizedBox(height: 5.sp,),
-                Text('       ${item.drink ?? ''}'),
+                Text('       ${item.cakeBaseName ?? ''}'),
                 SizedBox(height: 5.sp,),
                 Text('       Giá tiền: ${item.price} VND'),
+                SizedBox(height: 5.sp,),
+                Text('       Số lượng: ${item.quatity}'),
                 // Text('Product Price: ${controller.productPrice}'),
                 // Add other shopping cart components here
               ],
@@ -181,7 +135,7 @@ class ItemCart extends GetView<CartController> {
                   controller.listItem.remove(item);
                 }
                 else {
-                  controller.listItem2.remove(item);
+                  controller.onPressDelele(item.id);
                 }
                 controller.cacuTotalPrice();
               },

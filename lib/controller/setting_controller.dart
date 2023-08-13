@@ -9,6 +9,9 @@ class SettingController extends GetxController{
   void onPressNoti(){
 
   }
+  onPressSeeOrder(){
+    Get.toNamed(AppRouter.seeOder);
+  }
   void onPressMessage(){
     _makePhoneCall('0333977550');
   }

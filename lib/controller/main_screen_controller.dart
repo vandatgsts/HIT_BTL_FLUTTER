@@ -1,3 +1,4 @@
+import 'package:btl_flutter/CallAPI/Network/product_combo.dart';
 import 'package:btl_flutter/Data/Product.dart';
 import 'package:btl_flutter/controller/state_main_controller.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class MainScreenController extends GetxController{
   void onInit() async {
     // TODO: implement onInit
     getData.value= await NetworkRequest.fetchBogo(6);
+    get.value=await NetworkRequestProduct.fetchProduct(2);
     super.onInit();
   }
 

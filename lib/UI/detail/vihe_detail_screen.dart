@@ -1,9 +1,10 @@
 import 'package:btl_flutter/controller/detal_controller.dart';
-import 'package:btl_flutter/dialog/choose_appetizer.dart';
-import 'package:btl_flutter/dialog/select.dart';
-import 'package:btl_flutter/dialog/select_drink.dart';
+import 'package:btl_flutter/UI/dialog/select_drink.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../dialog/choose_appetizer.dart';
+import '../dialog/select.dart';
 
 class ViHeDetailScreen extends GetView<DetalController> {
   List<String> itemList = [
@@ -13,6 +14,8 @@ class ViHeDetailScreen extends GetView<DetalController> {
   ];
   String selectedValue = '';
   bool showGridView = false;
+
+  ViHeDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

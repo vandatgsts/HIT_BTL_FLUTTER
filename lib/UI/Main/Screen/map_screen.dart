@@ -143,6 +143,7 @@ class MapScreen extends GetView<MapController> {
                     myLocationEnabled: true,
                     myLocationButtonEnabled: false,
                     zoomControlsEnabled: false,
+                    polylines: controller.route.routes,
                     markers: controller.markerResult.value,
                     onMapCreated: (GoogleMapController googleMapController) {
                       controller.isMapLoaded.value = true;
@@ -197,7 +198,7 @@ class MapScreen extends GetView<MapController> {
                         color: Colors.black,
                       ),
                       onTap: () {
-                        controller.onPressSearch();
+                   //     controller.onPressSearch();
                       },
                     ),
                     SizedBox(

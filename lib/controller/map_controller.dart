@@ -1,5 +1,6 @@
-import 'dart:async';
+  import 'dart:async';
 
+import 'package:btl_flutter/controller/AppControler.dart';
 import 'package:btl_flutter/controller/state_main_controller.dart';
 import 'package:custom_info_window/custom_info_window.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,8 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_routes/google_maps_routes.dart';
 
 class MapController extends GetxController {
   late BuildContext context;
@@ -23,6 +26,13 @@ class MapController extends GetxController {
   final CustomInfoWindowController customInfoWindowController =
       CustomInfoWindowController();
   RxMap selectedData = RxMap();
+
+
+
+  MapsRoutes route = new MapsRoutes();
+  DistanceCalculator distanceCalculator = new DistanceCalculator();
+  String googleApiKey = 'AIzaSyCrnEW-f7Lx9PlGw3vzZWgfOiMwbLa37-4';
+  String totalDistance = 'No route';
 
   //RxList<Prediction> listPredictionSuggestSearch = RxList();
   TextEditingController textEditingControllerSearch = TextEditingController();
@@ -49,6 +59,19 @@ class MapController extends GetxController {
     speedAccuracy: 0.0,
     floor: 0,
   );
+
+  List<LatLng> points = [];
+
+
+  void drawRouter() async{
+    await route.drawRoute(points, 'Test routes',
+        const Color.fromRGBO(130, 78, 210, 1.0), googleApiKey,
+        travelMode: TravelModes.walking);
+      totalDistance =
+          distanceCalculator.calculateRouteDistance(points, decimals: 1);
+
+}
+
   @override
   Future<void> onReady() async {
     // TODO: implement onReady
@@ -63,6 +86,14 @@ class MapController extends GetxController {
   @override
   Future<void> onInit() async {
 
+    myLocation=Get.arguments['myLocation'];
+
+    points=[
+      LatLng(myLocation.latitude, myLocation.longitude),
+      const LatLng(21.0402002, 105.7662002),
+      const LatLng(21.0402222, 105.7662222),
+      const LatLng(21.0403, 105.7663),
+    ];
 
     // Tạo marker với biểu tượng tùy chỉnh
     final Marker customMarker = Marker(
@@ -72,13 +103,14 @@ class MapController extends GetxController {
       infoWindow: const InfoWindow(title: 'Custom Marker'), // Thông tin cửa sổ info của marker
     );
 
+    drawRouter();
+
     // Danh sách marker để hiển thị trên bản đồ
 
-    myLocation=Get.arguments['myLocation'];
+
     onPressMap(LatLng(myLocation.latitude, myLocation.longitude));
     markerResult.value.add(customMarker);
     distance.value=calculateDistance(myLocation);
-
     super.onInit();
 
   }
@@ -130,6 +162,7 @@ class MapController extends GetxController {
       if (placemarks.isNotEmpty) {
         Placemark placemark = placemarks.first;
         String address = "${placemark.street}, ${placemark.subAdministrativeArea}, ${placemark.administrativeArea}, ${placemark.country}";
+        Get.find<AppControleer>().address=address;
         return address;
       }
     } catch (e) {
@@ -198,6 +231,9 @@ class MapController extends GetxController {
     double distanceInKilometers = distanceInMeters / 1000;
 
     return double.parse(distanceInKilometers.toStringAsFixed(2));
-  }}
+  }
+
+
+}
 
 
