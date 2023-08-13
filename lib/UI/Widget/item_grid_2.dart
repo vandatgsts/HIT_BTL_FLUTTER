@@ -11,8 +11,7 @@ import 'app_image_widget.dart';
 class ItemGrid02 extends StatefulWidget {
   Product product;
 
-
-    ItemGrid02(this.product);
+  ItemGrid02(this.product);
 
   @override
   State<ItemGrid02> createState() => _ItemGridState();
@@ -33,7 +32,7 @@ class _ItemGridState extends State<ItemGrid02> {
           boxShadow: [
             BoxShadow(
                 color:
-                const Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
+                    const Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
                 spreadRadius: 1,
                 blurRadius: 2)
           ]),
@@ -50,10 +49,10 @@ class _ItemGridState extends State<ItemGrid02> {
             ),
           ),
           Container(
-            padding:
-            EdgeInsets.only(left: 10.sp, right: 8.sp, bottom: 8.sp, top: 8.sp),
+            padding: EdgeInsets.only(
+                left: 10.sp, right: 8.sp, bottom: 8.sp, top: 8.sp),
             child:
-            Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               Row(
                 children: [
                   Expanded(
@@ -96,8 +95,8 @@ class _ItemGridState extends State<ItemGrid02> {
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(top: 6, bottom: 8),
-                padding: EdgeInsets.only(left: 15),
+                margin: const EdgeInsets.only(top: 6, bottom: 8),
+                padding: const EdgeInsets.only(left: 15),
                 //width: 200,
                 height: 30,
                 decoration: BoxDecoration(
@@ -105,7 +104,7 @@ class _ItemGridState extends State<ItemGrid02> {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                          color: Color.fromARGB(255, 154, 152, 152)
+                          color: const Color.fromARGB(255, 154, 152, 152)
                               .withOpacity(0.4),
                           spreadRadius: 1,
                           blurRadius: 2)
@@ -120,20 +119,19 @@ class _ItemGridState extends State<ItemGrid02> {
                       value: value,
                       child: Text(
                         value,
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 15),
                       ),
                     );
                   }).toList(),
                   onChanged: (String? newValue) {
                     setState(() {
                       dropdownValue1 = newValue!;
-                      if(dropdownValue1.compareTo('Lớn')==0){
-                        widget.product.price=299000.toString();
-                      }
-                      else if(dropdownValue1.compareTo('Vừa')==0){
-                        widget.product.price=239000.toString();
+                      if (dropdownValue1.compareTo('Lớn') == 0) {
+                        widget.product.price = 299000.toString();
+                      } else if (dropdownValue1.compareTo('Vừa') == 0) {
+                        widget.product.price = 239000.toString();
                       } else {
-                        widget.product.price=139000.toString();
+                        widget.product.price = 139000.toString();
                       }
                     });
                   },
@@ -154,20 +152,21 @@ class _ItemGridState extends State<ItemGrid02> {
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(top: 6, bottom: 16),
-                padding: EdgeInsets.only(left: 15),
+                margin: const EdgeInsets.only(top: 6, bottom: 16),
+                padding: const EdgeInsets.only(left: 15),
                 // width: 200,
                 height: 30,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Color.fromARGB(255, 154, 152, 152)
-                              .withOpacity(0.4),
-                          spreadRadius: 1,
-                          blurRadius: 2)
-                    ]),
+                  borderRadius: BorderRadius.circular(6),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                        color:
+                            const Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
+                        spreadRadius: 1,
+                        blurRadius: 2)
+                  ],
+                ),
                 child: DropdownButton<String>(
                   value: dropdownValue2,
                   isExpanded: true,
@@ -181,7 +180,7 @@ class _ItemGridState extends State<ItemGrid02> {
                       value: value,
                       child: Text(
                         value,
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 15),
                       ),
                     );
                   }).toList(),
@@ -197,22 +196,26 @@ class _ItemGridState extends State<ItemGrid02> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () async {
-                        if(!Get.isRegistered<CartController>()){
+                        if (!Get.isRegistered<CartController>()) {
                           Get.put(CartController());
                         }
-                        widget.product.caseSize=dropdownValue1;
-                        widget.product.cakeBase=dropdownValue2;
+                        widget.product.caseSize = dropdownValue1;
+                        widget.product.cakeBase = dropdownValue2;
 
-                        var productDetal= await PostAPI.postProDuctDetal(widget.product.id, resultSizeId(), resultCaseBaseId());
+                        var productDetal = await PostAPI.postProDuctDetal(
+                            widget.product.id,
+                            resultSizeId(),
+                            resultCaseBaseId());
                         await PostAPI.postProDuctCart(productDetal);
 
-                        Get.find<CartController>().listItem2.value=await GetApi.getAllCart();
+                        Get.find<CartController>().listItem2.value =
+                            await GetApi.getAllCart();
                       },
                       style: ButtonStyle(
                         minimumSize: MaterialStateProperty.all<Size>(
                             const Size(150, 50)),
                         backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.green),
+                            MaterialStateProperty.all<Color>(Colors.green),
                         overlayColor: MaterialStateProperty.all<Color>(
                             const Color.fromARGB(255, 4, 203, 199)),
                         foregroundColor: MaterialStateProperty.all<Color>(
@@ -235,14 +238,16 @@ class _ItemGridState extends State<ItemGrid02> {
       ),
     );
   }
-  int resultSizeId(){
-    if(dropdownValue1.compareTo('Nhỏ')==0) return 1;
-    if(dropdownValue1.compareTo('Vừa')==0) return 2;
+
+  int resultSizeId() {
+    if (dropdownValue1.compareTo('Nhỏ') == 0) return 1;
+    if (dropdownValue1.compareTo('Vừa') == 0) return 2;
     return 3;
   }
-  int resultCaseBaseId(){
-    if(dropdownValue2.compareTo('Đế Giòn Xốp')==0) return 1;
-    if(dropdownValue2.compareTo('Đế Kéo Tay Truyền Thống')==0) return 2;
+
+  int resultCaseBaseId() {
+    if (dropdownValue2.compareTo('Đế Giòn Xốp') == 0) return 1;
+    if (dropdownValue2.compareTo('Đế Kéo Tay Truyền Thống') == 0) return 2;
     return 3;
   }
 }
