@@ -62,13 +62,13 @@ class MenuScreen extends GetView<menu.MenuController> {
                           ),
                         ],
                       ),
+
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Obx(
                             () => Text(
-                              (Get.find<CartController>().listItem.length +
-                                      Get.find<CartController>()
+                              ( Get.find<CartController>()
                                           .listItem2
                                           .length)
                                   .toString(),

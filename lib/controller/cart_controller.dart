@@ -67,10 +67,9 @@ class CartController extends GetxController{
   }
   void cacuTotalPrice() {
 
+
     totalPrice.value=0;
-    for(var i in listItem){
-      totalPrice.value+=i.price!;
-    }
+
     for(var i in listItem2.value){
       int value=i.price*i.quatity;
       totalPrice.value+=value;

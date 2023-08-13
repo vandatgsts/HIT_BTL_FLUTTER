@@ -301,6 +301,7 @@ class RegisterScreen extends GetView<RegisterController> {
       child: SizedBox(
         child: Row(children: [
           SizedBox(
+            height: 100,
             width: MediaQuery.of(context).size.width * 0.45,
             child: Column(
               children: [
@@ -357,6 +358,7 @@ class RegisterScreen extends GetView<RegisterController> {
             width: 8,
           ),
           SizedBox(
+            height: 100.sp,
             width: MediaQuery.of(context).size.width * 0.45,
             child: Column(children: [
               const Row(
