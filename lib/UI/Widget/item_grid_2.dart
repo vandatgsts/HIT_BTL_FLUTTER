@@ -127,6 +127,14 @@ class _ItemGridState extends State<ItemGrid02> {
                   onChanged: (String? newValue) {
                     setState(() {
                       dropdownValue1 = newValue!;
+                      if(dropdownValue1.compareTo('Lớn')==0){
+                        widget.product.price=299000.toString();
+                      }
+                      else if(dropdownValue1.compareTo('Vừa')==0){
+                        widget.product.price=239000.toString();
+                      } else {
+                        widget.product.price=139000.toString();
+                      }
                     });
                   },
                 ),
