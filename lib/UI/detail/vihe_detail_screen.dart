@@ -19,8 +19,8 @@ class ViHeDetailScreen extends GetView<DetalController> {
 
   @override
   Widget build(BuildContext context) {
-    Select.id = controller.bogoItem.id!;
-    Select.cataloryId =controller.bogoItem.categoryId!;
+    Select.id = controller.bogoItem.product.id!;
+    Select.cataloryId =controller.bogoItem.product.categoryId!;
     controller.context=context;
     return Scaffold(
       appBar: AppBar(
@@ -46,14 +46,14 @@ class ViHeDetailScreen extends GetView<DetalController> {
           children: [
             Container(
               margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-              child: Image.network(controller.bogoItem.image ?? ''),
+              child: Image.network(controller.bogoItem.product.image ?? ''),
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
               child: Row(
                 children: [
                   Text(
-                    controller.bogoItem.name ?? ' ',
+                    controller.bogoItem.product.name ?? ' ',
                     style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -68,7 +68,7 @@ class ViHeDetailScreen extends GetView<DetalController> {
               child: Column(
                 children: [
                   Text(
-                    controller.bogoItem.description ?? '',
+                    controller.bogoItem.product.description ?? '',
                     style: const TextStyle(color: Colors.black, fontSize: 18),
                   )
                 ],
@@ -84,7 +84,7 @@ class ViHeDetailScreen extends GetView<DetalController> {
                   controller.onPressAdd();
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: const Color.fromARGB(255, 41, 128, 42),
+                  backgroundColor: const Color.fromARGB(255, 41, 128, 42),
                   padding: const EdgeInsets.symmetric(
                       horizontal:
                           16.0), // Tăng padding ngang để tạo khoảng cách với lề màn hình

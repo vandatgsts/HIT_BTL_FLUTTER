@@ -135,6 +135,7 @@ class Choose_Appetizer extends GetView<DetalController>{
                            onPressed: () {
                              controller.textAppertizer.text =
                                  controller.getDataAppetizer[index].name;
+                             controller.bogoItem.appertizerId= controller.getDataAppetizer[index].id;
                              Navigator.pop(
                                  context); // Close the bottom sheet
                            },

@@ -77,14 +77,17 @@ class GetApi {
         'Content-Type': 'application/json',
       },
     );
-    print(response.body);
     if (response.statusCode == 200) {
-      final List<dynamic> jsonData =
+      final List<dynamic> jsonData1 =
       json.decode(utf8.decode(response.body.codeUnits))["data"]
       ["productDetailResponseDTOS"];
       final List<ProductDetail> products =
-      jsonData.map((item) => ProductDetail.fromJson(item)).toList();
+      jsonData1.map((item) => ProductDetail.fromJson(item)).toList();
       print('cart $products');
+      final List<dynamic> jsonData =
+      json.decode(utf8.decode(response.body.codeUnits))["data"]
+      ["comboCartDTOS"];
+      products.addAll(jsonData.map((item) => ProductDetail.fromJson(item)).toList());
       return products;
     } else {
       throw Exception('Failed to load data');

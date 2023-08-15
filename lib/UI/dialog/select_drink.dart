@@ -130,6 +130,7 @@ class Select_drink  extends GetView<DetalController> {
                                       onPressed: () {
                                          controller.textDrink.text =
                                              controller.getDataDrink[index].name;
+                                         controller.bogoItem.drinkId= controller.getDataDrink[index].id;
                                           Navigator.pop(
                                               context); // Close the bottom sheet
                                       },

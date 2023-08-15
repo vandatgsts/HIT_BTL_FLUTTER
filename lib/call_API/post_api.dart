@@ -109,7 +109,6 @@ class PostAPI{
           'delivery_address':address,//
         })
     );
-    print('status Code ${Get.find<AppControleer>().accessToken.accessToken}');
     if(response.statusCode==200){
       return 'Đặt hàng thành công';
     }
@@ -173,5 +172,41 @@ class PostAPI{
     }
     return 'Đổi điểm không thành công';
   }
+  static Future<bool> postToCartCombo(int comboId) async {
+    String apiUrl = '${apiBase}cart/combo/${comboId}';
+    final reponse = await http.post(Uri.parse(apiUrl),
+      headers: {
+        'Authorization': 'Bearer ${Get
+            .find<AppControleer>()
+            .accessToken
+            .accessToken}',
+        'Content-Type': 'application/json',
+      },
+    );
+    print(reponse.statusCode);
+    if (reponse.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
 
+  static Future<int> postCreateCombo(int comboId,int productDetailId) async {
+    final apiUrl = '${apiBase}combo/product';
+    final response = await http.post(Uri.parse(apiUrl),
+        headers: {
+          'Authorization': 'Bearer ${Get.find<AppControleer>().accessToken.accessToken}',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(<String,int>{
+          "combo_id": comboId,
+          "product_detail_id": productDetailId,
+        })
+    );
+    if(response.statusCode==200){
+      return jsonDecode(response.body)["data"]["id"];
+    }
+    else{
+      return 0;
+    }
+  }
 }

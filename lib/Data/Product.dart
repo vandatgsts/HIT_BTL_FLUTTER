@@ -7,7 +7,7 @@ class Product {
   String price;
   String? cakeBase, caseSize, cakeSizeId;
   int point;
-  String? appertizer,drink;
+
 
 
   Product({

@@ -18,12 +18,17 @@ class ShoppingCartScreen extends GetView<CartController> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: Obx(
-              () => ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.listItem2.length,
-                  itemBuilder: (context, index) =>
-                      ItemCart(controller.listItem2.value[index],2)),
+            child: Container(
+              margin: EdgeInsets.only(
+                bottom: 70.sp,
+              ),
+              child: Obx(
+                () => ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: controller.listItem2.length,
+                    itemBuilder: (context, index) =>
+                        ItemCart(controller.listItem2.value[index],2)),
+              ),
             ),
           ),
           Positioned(bottom: 0.sp, child: bottom()),
@@ -108,7 +113,7 @@ class ItemCart extends GetView<CartController> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  ' ${item.productName}',
+                  ' ${item.name }',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18.sp,

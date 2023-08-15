@@ -124,16 +124,18 @@ class _ItemGridState extends State<ItemGrid02> {
                     );
                   }).toList(),
                   onChanged: (String? newValue) {
-                    setState(() {
-                      dropdownValue1 = newValue!;
-                      if (dropdownValue1.compareTo('Lớn') == 0) {
-                        widget.product.price = 299000.toString();
-                      } else if (dropdownValue1.compareTo('Vừa') == 0) {
-                        widget.product.price = 239000.toString();
-                      } else {
-                        widget.product.price = 139000.toString();
-                      }
-                    });
+                    setState(
+                      () {
+                        dropdownValue1 = newValue!;
+                        if (dropdownValue1.compareTo('Lớn') == 0) {
+                          widget.product.price = 299000.toString();
+                        } else if (dropdownValue1.compareTo('Vừa') == 0) {
+                          widget.product.price = 239000.toString();
+                        } else {
+                          widget.product.price = 139000.toString();
+                        }
+                      },
+                    );
                   },
                 ),
               ),
@@ -161,8 +163,8 @@ class _ItemGridState extends State<ItemGrid02> {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                        color:
-                            const Color.fromARGB(255, 154, 152, 152).withOpacity(0.4),
+                        color: const Color.fromARGB(255, 154, 152, 152)
+                            .withOpacity(0.4),
                         spreadRadius: 1,
                         blurRadius: 2)
                   ],

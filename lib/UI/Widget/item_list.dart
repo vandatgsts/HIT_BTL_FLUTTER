@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../AppRouter/AppRouter.dart';
+import '../../Data/Combo.dart';
 
 class ItemList extends StatelessWidget {
   var bogoItem;
@@ -10,6 +11,7 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Combo combo=Combo(bogoItem);
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
       decoration: BoxDecoration(
@@ -93,7 +95,7 @@ class ItemList extends StatelessWidget {
                       child: ElevatedButton(
                           onPressed: () {
                             Get.toNamed(AppRouter.detalScreen,arguments: {
-                              'bogoItem':bogoItem});
+                              'bogoItem':combo});
                           },
                           style: ElevatedButton.styleFrom(
                               primary: const Color.fromARGB(

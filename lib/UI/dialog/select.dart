@@ -1,8 +1,9 @@
+import 'package:btl_flutter/controller/detal_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../CallAPI/Network/pizza_network.dart';
 import '../../Data/Product.dart';
-
+import 'package:get/get.dart';
 class Select extends StatefulWidget {
 
   static String displayText='';
@@ -15,7 +16,8 @@ class Select extends StatefulWidget {
 
 class _SelectState extends State<Select> {
   var getData = <Product>[];
-  List<String> itemList = [
+  List<String>
+  itemList = [
     'Đế Giòn Xốp',
     'Đế Kéo Tay Truyền Thống',
     'Đế Mỏng Giòn'
@@ -190,6 +192,7 @@ class _SelectState extends State<Select> {
                                                         setState(() {
                                                           selectedValue = itemList[index];
                                                           selectedProductName = getData[index].name;
+                                                          Get.find<DetalController>().bogoItem.pizzaId=getData[index].id;
                                                         });
                                                         Navigator.pop(context);
                                                       },
